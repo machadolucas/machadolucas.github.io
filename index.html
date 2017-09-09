@@ -21,6 +21,14 @@
 
     <script src="/js/responsiveslides.min.js"></script>
 
+    <script type="text/javascript">
+    var server = "me.com";
+    var address = "machadolucas@" + server;
+    function writemail() {
+        document.write(address);
+    }
+    </script>
+
     <meta property="og:site_name" content="machadolucas" />
     <meta property="og:image" content="img/site_logo.jpg" />
     <meta property="og:title" content="Lucas Machado" />
@@ -101,11 +109,6 @@
 </div>
 
 <script type="text/javascript">
-    var server = "me.com";
-    var address = "machadolucas@" + server;
-    function writemail() {
-        document.write(address);
-    }
 
     $(document).ready(function () {
         $('#loading').fadeOut(500, function () {
