@@ -21,69 +21,6 @@
 
     <script src="/js/responsiveslides.min.js"></script>
 
-    <script type="text/javascript">
-        var server = "me.com";
-        var address = "machadolucas@" + server;
-        function writemail() {
-            document.write(address);
-        }
-
-        $(document).ready(function () {
-            $('#loading').fadeOut(500, function () {
-
-                if (window.location.hash == '') {
-                    window.location.hash = '#home';
-                }
-                changePageHash(window.location.hash);
-            });
-        });
-        function changePage(link) {
-            changePageHash(link.hash);
-        }
-
-        function changePageHash(anchor) {
-            switch (anchor) {
-                case "#contact":
-                case "#home":
-                    changeContainer('pages/home.html', anchor);
-                    break;
-                case "#professional":
-                    changeContainer('pages/professional.html', anchor);
-                    break;
-                case "#portfolio":
-                    changeContainer('pages/portfolio.html', anchor);
-                    break;
-                case "#timeline":
-                    changeContainer('pages/timeline.html', anchor);
-                    break;
-                case "#photography":
-                    changeContainer('pages/photography.html', anchor);
-                    break;
-                default:
-                    changeContainer('pages/home.html', anchor);
-                    break;
-            }
-        }
-        function changeContainer(address, anchor) {
-            changeContainer(address, anchor, function () {
-            });
-        }
-        function changeContainer(address, anchor, callback) {
-            var stateObj = {foo: "bar"};
-            $('html, body').animate({scrollTop: 0}, 'slow');
-            $('.landing').removeClass('blurred');
-            $('.content-wrapper, .footer').fadeOut('normal', function () {
-                $('.content-loader').load(address, function () {
-                    $('.home-menu li').removeClass('pure-menu-selected');
-                    $('.home-menu a[href="' + anchor + '"]').parent().addClass('pure-menu-selected');
-                    $('.content-wrapper, .footer').fadeIn('slow', callback);
-                    $('.landing').addClass('blurred');
-                });
-            });
-            history.replaceState(stateObj, address, anchor);
-        }
-    </script>
-
     <meta property="og:site_name" content="machadolucas" />
     <meta property="og:image" content="img/site_logo.jpg" />
     <meta property="og:title" content="Lucas Machado" />
@@ -165,6 +102,67 @@
 </div>
 
 <script type="text/javascript">
+    var server = "me.com";
+    var address = "machadolucas@" + server;
+    function writemail() {
+        document.write(address);
+    }
+
+    $(document).ready(function () {
+        $('#loading').fadeOut(500, function () {
+
+            if (window.location.hash == '') {
+                window.location.hash = '#home';
+            }
+            changePageHash(window.location.hash);
+        });
+    });
+    function changePage(link) {
+        changePageHash(link.hash);
+    }
+
+    function changePageHash(anchor) {
+        switch (anchor) {
+            case "#contact":
+            case "#home":
+                changeContainer('pages/home.html', anchor);
+                break;
+            case "#professional":
+                changeContainer('pages/professional.html', anchor);
+                break;
+            case "#portfolio":
+                changeContainer('pages/portfolio.html', anchor);
+                break;
+            case "#timeline":
+                changeContainer('pages/timeline.html', anchor);
+                break;
+            case "#photography":
+                changeContainer('pages/photography.html', anchor);
+                break;
+            default:
+                changeContainer('pages/home.html', anchor);
+                break;
+        }
+    }
+    function changeContainer(address, anchor) {
+        changeContainer(address, anchor, function () {
+        });
+    }
+    function changeContainer(address, anchor, callback) {
+        var stateObj = {foo: "bar"};
+        $('html, body').animate({scrollTop: 0}, 'slow');
+        $('.landing').removeClass('blurred');
+        $('.content-wrapper, .footer').fadeOut('normal', function () {
+            $('.content-loader').load(address, function () {
+                $('.home-menu li').removeClass('pure-menu-selected');
+                $('.home-menu a[href="' + anchor + '"]').parent().addClass('pure-menu-selected');
+                $('.content-wrapper, .footer').fadeIn('slow', callback);
+                $('.landing').addClass('blurred');
+            });
+        });
+        history.replaceState(stateObj, address, anchor);
+    }
+
     $('a[class="mail"]').attr('href', "mailto:" + address);
 </script>
 
