@@ -28,8 +28,8 @@
             document.write(address);
         }
 
-        jQuery(document).ready(function () {
-            jQuery('#loading').fadeOut(500, function () {
+        $(document).ready(function () {
+            $('#loading').fadeOut(500, function () {
 
                 if (window.location.hash == '') {
                     window.location.hash = '#home';
@@ -71,13 +71,13 @@
         function changeContainer(address, anchor, callback) {
             var stateObj = {foo: "bar"};
             $('html, body').animate({scrollTop: 0}, 'slow');
-            jQuery('.landing').removeClass('blurred');
-            jQuery('.content-wrapper, .footer').fadeOut('normal', function () {
-                jQuery('.content-loader').load(address, function () {
-                    jQuery('.home-menu li').removeClass('pure-menu-selected');
-                    jQuery('.home-menu a[href="' + anchor + '"]').parent().addClass('pure-menu-selected');
-                    jQuery('.content-wrapper, .footer').fadeIn('slow', callback);
-                    jQuery('.landing').addClass('blurred');
+            $('.landing').removeClass('blurred');
+            $('.content-wrapper, .footer').fadeOut('normal', function () {
+                $('.content-loader').load(address, function () {
+                    $('.home-menu li').removeClass('pure-menu-selected');
+                    $('.home-menu a[href="' + anchor + '"]').parent().addClass('pure-menu-selected');
+                    $('.content-wrapper, .footer').fadeIn('slow', callback);
+                    $('.landing').addClass('blurred');
                 });
             });
             history.replaceState(stateObj, address, anchor);
@@ -165,7 +165,7 @@
 </div>
 
 <script type="text/javascript">
-    jQuery('a[class="mail"]').attr('href', "mailto:" + address);
+    $('a[class="mail"]').attr('href', "mailto:" + address);
 </script>
 
 
