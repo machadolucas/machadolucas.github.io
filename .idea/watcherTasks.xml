@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectTasksOptions">
+    <TaskOptions isEnabled="true">
+      <option name="arguments" value="compile $ContentRoot$" />
+      <option name="checkSyntaxErrors" value="true" />
+      <option name="description" />
+      <option name="exitCodeBehavior" value="ERROR" />
+      <option name="fileExtension" value="scss" />
+      <option name="immediateSync" value="false" />
+      <option name="name" value="Compass SCSS" />
+      <option name="output" value="$Projectpath$/build/css" />
+      <option name="outputFilters">
+        <array />
+      </option>
+      <option name="outputFromStdout" value="false" />
+      <option name="program" value="compass" />
+      <option name="runOnExternalChanges" value="true" />
+      <option name="scopeName" value="scss files" />
+      <option name="trackOnlyRoot" value="true" />
+      <option name="workingDir" value="$Projectpath$" />
+      <envs />
+    </TaskOptions>
+    <TaskOptions isEnabled="true">
+      <option name="arguments" value="--compilation_level SIMPLE_OPTIMIZATIONS --js $FileName$ --js_output_file ../../build/js/$FileNameWithoutExtension$.min.js" />
+      <option name="checkSyntaxErrors" value="true" />
+      <option name="description" />
+      <option name="exitCodeBehavior" value="ERROR" />
+      <option name="fileExtension" value="js" />
+      <option name="immediateSync" value="false" />
+      <option name="name" value="Closure Compiler" />
+      <option name="output" value="../../build/js/$FileNameWithoutExtension$.min.js" />
+      <option name="outputFilters">
+        <array />
+      </option>
+      <option name="outputFromStdout" value="false" />
+      <option name="program" value="/opt/closure-compiler/closure-compiler-v20190325.jar" />
+      <option name="runOnExternalChanges" value="true" />
+      <option name="scopeName" value="javascript files" />
+      <option name="trackOnlyRoot" value="true" />
+      <option name="workingDir" value="$FileDir$" />
+      <envs />
+    </TaskOptions>
+  </component>
+</project>

@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="scss files" pattern="file[machadolucas.github.io]:src/scss//*" />
+</component>

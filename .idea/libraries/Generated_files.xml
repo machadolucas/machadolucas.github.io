@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="Generated files" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/build/js/head.min.js" />
+        <item url="file://$PROJECT_DIR$/build/js/swirl.min.js" />
+        <item url="file://$PROJECT_DIR$/build/js/tail.min.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/build/js/head.min.js" />
+      <root url="file://$PROJECT_DIR$/build/js/swirl.min.js" />
+      <root url="file://$PROJECT_DIR$/build/js/tail.min.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

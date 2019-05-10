@@ -1,7 +1,7 @@
 environment = :production
-css_dir = 'css'
-sass_dir = 'sass'
-images_dir = 'img'
-javascripts_dir = 'js'
+css_dir = 'build/css'
+sass_dir = 'src/scss'
+images_dir = 'build/img'
+javascripts_dir = 'build/js'
 line_comments = false
 output_style = :compressed

@@ -1,0 +1,50 @@
+@import "compass/css3";
+@import "compass/css3/transition";
+@import "compass/css3/transform";
+@import "compass/css3/animation";
+@import "variables";
+@import "fader";
+@import "sidenav";
+@import "header";
+@import "main";
+@import "footer";
+@import url('https://fonts.googleapis.com/css?family=Averia+Serif+Libre:700,700i|Chivo:300,400,400i,700');
+
+
+body {
+  font-family: $default-font;
+  color: white;
+  background: black;
+  min-height: 100vh;
+}
+
+.flex-grow {
+  flex: 1;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $title-font;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1360px;
+  }
+}
+
+a, a > i {
+  @include transition(all 0.3s ease-in-out);
+  color: #e6f9ff !important;
+}
+
+a:hover, a:hover > i {
+  @include background(linear-gradient(left top, #ffff4d 0%, #fb5751 100%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-box-decoration-break: clone;
+
+  &.underline {
+    text-decoration-color: #ff9933;
+  }
+}
