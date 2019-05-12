@@ -1,3 +1,8 @@
+if (window.location.hash === '') {
+    window.location.hash = '#home';
+}
+changePageHash(window.location.hash);
+
 // Shows the page
 fadeInPage();
 
@@ -24,21 +29,21 @@ $(document).mouseup(function (e) {
     }
 });
 
-// Resize youtube videos to mobile
-var allVideos = $("iframe[src*='//www.youtube.com']");
-allVideos.each(function () {
-    $(this).data('aspectRatio', this.height / this.width)
-        .removeAttr('height').removeAttr('width');
-});
-
-$(window).resize(function () {
-    allVideos.each(function () {
-        var el = $(this);
-        var newWidth = el.parent().width() >= 640 ? 640 : el.parent().width();
-        el
-            .width(newWidth)
-            .height(newWidth * el.data('aspectRatio'));
-    });
-}).resize();
-
 $('a.mail').attr('href', 'mailto:' + address);
+
+//Google Analytics
+(function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+    }, i[r].l = 1 * new Date();
+    a = s.createElement(o), m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+})(window, document, 'script',
+    '//www.google-analytics.com/analytics.js', 'ga');
+
+ga('create', 'UA-41237689-1', 'machadolucas.me');
+ga('require', 'displayfeatures');
+ga('send', 'pageview');

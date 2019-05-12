@@ -139,131 +139,120 @@
 const {PI, cos, sin, abs, sqrt, pow, round, random, atan2} = Math;
 const TAU = 2 * PI;
 const rand = n => n * random();
-const randRange = n => n - rand(2 * n);
 const fadeInOut = (t, m) => {
     let hm = 0.5 * m;
     return abs((t + hm) % m - hm) / (hm);
 };
-const lerp = (n1, n2, speed) => (1 - speed) * n1 + speed * n2;
 
-const particleCount = 150;
-const particlePropCount = 9;
-const particlePropsLength = particleCount * particlePropCount;
-const rangeY = 500;
-const baseTTL = 300;
-const rangeTTL = 500;
-const baseSpeed = 0.05;
-const rangeSpeed = 0.5;
-const baseRadius = 2;
-const rangeRadius = 8;
-const baseHue = 220;
-const rangeHue = 100;
-const noiseSteps = 12;
-const xOff = 0.00125;
-const yOff = 0.00125;
-const zOff = 0.0005;
-const backgroundColor = 'rgba(2,0,2,1)';
+const circleCount = 150;
+const circlePropCount = 8;
+const circlePropsLength = circleCount * circlePropCount;
+const baseSpeed = 0.1;
+const rangeSpeed = 1;
+const baseTTL = 800;
+const rangeTTL = 200;
+const baseRadius = 100;
+const rangeRadius = 200;
+const rangeHue = 60;
+const xOff = 0.0015;
+const yOff = 0.0015;
+const zOff = 0.0015;
+const backgroundColor = 'rgba(0,0,0,1)';
 
 let container;
 let canvas;
 let ctx;
-let center;
-let tick;
+let circleProps;
 let simplex;
-let particleProps;
+let baseHue;
 
 function setup() {
     createCanvas();
     resize();
-    initParticles();
+    initCircles();
     draw();
 }
 
-function initParticles() {
-    tick = 0;
+function initCircles() {
+    circleProps = new Float32Array(circlePropsLength);
     simplex = new SimplexNoise();
-    particleProps = new Float32Array(particlePropsLength);
+    baseHue = 220;
 
     let i;
 
-    for (i = 0; i < particlePropsLength; i += particlePropCount) {
-        initParticle(i);
+    for (i = 0; i < circlePropsLength; i += circlePropCount) {
+        initCircle(i);
     }
 }
 
-function initParticle(i) {
-    let x, y, vx, vy, life, ttl, speed, radius, hue;
+function initCircle(i) {
+    let x, y, n, t, speed, vx, vy, life, ttl, radius, hue;
 
     x = rand(canvas.a.width);
-    y = center[1] + randRange(rangeY);
-    vx = 0;
-    vy = 0;
+    y = rand(canvas.a.height);
+    n = simplex.noise3D(x * xOff, y * yOff, baseHue * zOff);
+    t = rand(TAU);
+    speed = baseSpeed + rand(rangeSpeed);
+    vx = speed * cos(t);
+    vy = speed * sin(t);
     life = 0;
     ttl = baseTTL + rand(rangeTTL);
-    speed = baseSpeed + rand(rangeSpeed);
     radius = baseRadius + rand(rangeRadius);
-    hue = baseHue + rand(rangeHue);
+    hue = baseHue + n * rangeHue;
 
-    particleProps.set([x, y, vx, vy, life, ttl, speed, radius, hue], i);
+    circleProps.set([x, y, vx, vy, life, ttl, radius, hue], i);
 }
 
-function drawParticles() {
+function updateCircles() {
     let i;
 
-    for (i = 0; i < particlePropsLength; i += particlePropCount) {
-        updateParticle(i);
+    baseHue++;
+
+    for (i = 0; i < circlePropsLength; i += circlePropCount) {
+        updateCircle(i);
     }
 }
 
-function updateParticle(i) {
-    let i2 = 1 + i, i3 = 2 + i, i4 = 3 + i, i5 = 4 + i, i6 = 5 + i, i7 = 6 + i, i8 = 7 + i, i9 = 8 + i;
-    let n, x, y, vx, vy, life, ttl, speed, x2, y2, radius, hue;
+function updateCircle(i) {
+    let i2 = 1 + i, i3 = 2 + i, i4 = 3 + i, i5 = 4 + i, i6 = 5 + i, i7 = 6 + i, i8 = 7 + i;
+    let x, y, vx, vy, life, ttl, radius, hue;
 
-    x = particleProps[i];
-    y = particleProps[i2];
-    n = simplex.noise3D(x * xOff, y * yOff, tick * zOff) * noiseSteps * TAU;
-    vx = lerp(particleProps[i3], cos(n), 0.5);
-    vy = lerp(particleProps[i4], sin(n), 0.5);
-    life = particleProps[i5];
-    ttl = particleProps[i6];
-    speed = particleProps[i7];
-    x2 = x + vx * speed;
-    y2 = y + vy * speed;
-    radius = particleProps[i8];
-    hue = particleProps[i9];
+    x = circleProps[i];
+    y = circleProps[i2];
+    vx = circleProps[i3];
+    vy = circleProps[i4];
+    life = circleProps[i5];
+    ttl = circleProps[i6];
+    radius = circleProps[i7];
+    hue = circleProps[i8];
 
-    drawParticle(x, y, x2, y2, life, ttl, radius, hue);
+    drawCircle(x, y, life, ttl, radius, hue);
 
     life++;
 
-    particleProps[i] = x2;
-    particleProps[i2] = y2;
-    particleProps[i3] = vx;
-    particleProps[i4] = vy;
-    particleProps[i5] = life;
+    circleProps[i] = x + vx;
+    circleProps[i2] = y + vy;
+    circleProps[i5] = life;
 
-    (checkBounds(x, y) || life > ttl) && initParticle(i);
+    (checkBounds(x, y, radius) || life > ttl) && initCircle(i);
 }
 
-function drawParticle(x, y, x2, y2, life, ttl, radius, hue) {
+function drawCircle(x, y, life, ttl, radius, hue) {
     ctx.a.save();
-    ctx.a.lineCap = 'round';
-    ctx.a.lineWidth = radius;
-    ctx.a.strokeStyle = `hsla(${hue},100%,60%,${fadeInOut(life, ttl)})`;
+    ctx.a.fillStyle = `hsla(${hue},60%,30%,${fadeInOut(life, ttl)})`;
     ctx.a.beginPath();
-    ctx.a.moveTo(x, y);
-    ctx.a.lineTo(x2, y2);
-    ctx.a.stroke();
+    ctx.a.arc(x, y, radius, 0, TAU);
+    ctx.a.fill();
     ctx.a.closePath();
     ctx.a.restore();
 }
 
-function checkBounds(x, y) {
+function checkBounds(x, y, radius) {
     return (
-        x > canvas.a.width ||
-        x < 0 ||
-        y > canvas.a.height ||
-        y < 0
+        x < -radius ||
+        x > canvas.a.width + radius ||
+        y < -radius ||
+        y > canvas.a.height + radius
     );
 }
 
@@ -274,7 +263,6 @@ function createCanvas() {
         b: document.createElement('canvas')
     };
     canvas.b.style = `
-        filter: blur(5px);
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -286,7 +274,6 @@ function createCanvas() {
         a: canvas.a.getContext('2d'),
         b: canvas.b.getContext('2d')
     };
-    center = [];
 }
 
 function resize() {
@@ -301,44 +288,21 @@ function resize() {
     canvas.b.height = innerHeight;
 
     ctx.b.drawImage(canvas.a, 0, 0);
-
-    center[0] = 0.5 * canvas.a.width;
-    center[1] = 0.5 * canvas.a.height;
 }
 
-function renderGlow() {
+function render() {
     ctx.b.save();
-    ctx.b.filter = 'blur(8px) brightness(200%)';
-    ctx.b.globalCompositeOperation = 'lighter';
-    ctx.b.drawImage(canvas.a, 0, 0);
-    ctx.b.restore();
-
-    ctx.b.save();
-    ctx.b.filter = 'blur(4px) brightness(200%)';
-    ctx.b.globalCompositeOperation = 'lighter';
-    ctx.b.drawImage(canvas.a, 0, 0);
-    ctx.b.restore();
-}
-
-function renderToScreen() {
-    ctx.b.save();
-    ctx.b.globalCompositeOperation = 'lighter';
+    ctx.b.filter = 'blur(50px)';
     ctx.b.drawImage(canvas.a, 0, 0);
     ctx.b.restore();
 }
 
 function draw() {
-    tick++;
-
     ctx.a.clearRect(0, 0, canvas.a.width, canvas.a.height);
-
     ctx.b.fillStyle = backgroundColor;
-    ctx.b.fillRect(0, 0, canvas.a.width, canvas.a.height);
-
-    drawParticles();
-    renderGlow();
-    renderToScreen();
-
+    ctx.b.fillRect(0, 0, canvas.b.width, canvas.b.height);
+    updateCircles();
+    render();
     window.requestAnimationFrame(draw);
 }
 

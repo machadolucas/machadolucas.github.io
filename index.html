@@ -34,7 +34,7 @@
     <div class="container py-2 px-3 py-md-2 px-mx-0">
         <nav class="row no-gutters justify-content-between">
             <div class="col-auto">
-                <a href="" class="brand">
+                <a href="#home" onclick="changePage(this)" class="brand">
                     machadolucas
                 </a>
             </div>
@@ -49,56 +49,12 @@
 </header>
 <main class="container-fluid p-0 flex-grow">
     <div class="content--canvas"></div>
-    <div class="container py-4 px-3 py-md-5 px-mx-0">
-
-        <div class="row no-gutters">
-            <noscript>
-                For full functionality of this site it is necessary to enable JavaScript.
-                Here are the <a href="https://www.enable-javascript.com/" target="_blank">
-                instructions how to enable JavaScript in your web browser</a>.
-            </noscript>
-            <div class="col-12 col-md-7 col-xl-9 pr-md-5 py-4">
-                <h1 class="display-1 mb-4">Hello!</h1>
-
-
-                <p>I&#39;m a System Specialist at Demola Global, currently living in Tampere, Finland. But I&#39;m also
-                    much more than
-                    that.</p>
-
-                <p>My main educational background is a bachelor in Information Systems at University of São Paulo
-                    (Brazil), and a Master&#39;s Degree in Software Development at Tampere University (Finland).</p>
-
-                <p>I have about 9 years of professional experience mainly with back-end and Java technologies, but also
-                    with front-end development. I have worked in several important and innovative projects.</p>
-
-                <p>I also have knowlegde in DevOps, usability, accessibility, UI, UX, and quite a lot on Game design and
-                    development.</p>
-
-                <p>Games, books, history, photography, saunas and cottages are also big interests of mine.</p>
-
-                <h4 class="text-right my-4">- Lucas Machado</h4>
-            </div>
-            <div class="col-12 col-md-5 col-xl-3" style="min-height: 35vh">
-                <div class="avatar"></div>
-            </div>
-
-            <div class="col-12 text-center py-4 pt-md-5 mt-md-4">
-                <h3 class="m-0">Get to know more about me:</h3>
-            </div>
-            <div class="col-12 col-md-4 p-3 p-xl-5 text-center">
-                <a href="professional.html" class="box">Professional</a>
-            </div>
-            <div class="col-12 col-md-4 p-3 p-xl-5 text-center">
-                <a href="portfolio.html" class="box">Portfolio</a>
-            </div>
-            <div class="col-12 col-md-4 p-3 p-xl-5 text-center">
-                <a href="personal.html" class="box">Personal</a>
-            </div>
-
-
-        </div>
-
-    </div>
+    <noscript>
+        For full functionality of this site it is necessary to enable JavaScript.
+        Here are the <a href="https://www.enable-javascript.com/" target="_blank">
+        instructions how to enable JavaScript in your web browser</a>.
+    </noscript>
+    <div id="page"></div>
 
 </main>
 <footer class="container-fluid p-0">
@@ -116,18 +72,6 @@
                             class="fa fa-fw fa-3x fa-envelope"></i><br><span>E-mail</span></a>
                 </div>
                 <div class="col-4 col-md-3 col-xl-2 p-2 p-md-3">
-                    <a href="skype:machado_lucas?chat" title="Contact me in Skype: machado_lucas"><i
-                            class="fab fa-fw fa-3x fa-skype"></i><br><span>Skype</span></a>
-                </div>
-                <div class="col-4 col-md-3 col-xl-2 p-2 p-md-3">
-                    <a href="https://www.facebook.com/machadolucas.x" target="_blank" title="Find me in Facebook"><i
-                            class="fab fa-fw fa-3x fa-facebook"></i><br><span>Facebook</span></a>
-                </div>
-                <div class="col-4 col-md-3 col-xl-2 p-2 p-md-3">
-                    <a href="https://twitter.com/machadolucasbr" target="_blank" title="Find me in Twitter"><i
-                            class="fab fa-fw fa-3x fa-twitter"></i><br><span>Twitter</span></a>
-                </div>
-                <div class="col-4 col-md-3 col-xl-2 p-2 p-md-3">
                     <a href="https://github.com/machadolucas" target="_blank" title="Find me in GitHub"><i
                             class="fab fa-fw fa-3x fa-github"></i><br><span>GitHub</span></a>
                 </div>
@@ -136,21 +80,20 @@
                             class="fab fa-fw fa-3x fa-linkedin"></i><br><span>LinkedIn</span></a>
                 </div>
                 <div class="col-4 col-md-3 col-xl-2 p-2 p-md-3">
-                    <a href="https://www.slideshare.net/sirlucasmachado" target="_blank"
-                       title="Find me in Slideshare"><i
-                            class="fab fa-fw fa-3x fa-slideshare"></i><br><span>Slideshare</span></a>
+                    <a href="https://twitter.com/machadolucasbr" target="_blank" title="Find me in Twitter"><i
+                            class="fab fa-fw fa-3x fa-twitter"></i><br><span>Twitter</span></a>
                 </div>
                 <div class="col-4 col-md-3 col-xl-2 p-2 p-md-3">
-                    <a href="https://steamcommunity.com/id/machadolucas" target="_blank" title="Find me in Steam"><i
-                            class="fab fa-fw fa-3x fa-steam"></i><br><span>Steam</span></a>
-                </div>
-                <div class="col-4 col-md-3 col-xl-2 p-2 p-md-3">
-                    <a href="https://0-sirluke-0.deviantart.com/" target="_blank" title="Find me in DeviantArt"><i
-                            class="fab fa-fw fa-3x fa-deviantart"></i><br><span>deviantArt</span></a>
+                    <a href="https://www.facebook.com/machadolucas.x" target="_blank" title="Find me in Facebook"><i
+                            class="fab fa-fw fa-3x fa-facebook"></i><br><span>Facebook</span></a>
                 </div>
                 <div class="col-4 col-md-3 col-xl-2 p-2 p-md-3">
                     <a href="https://www.instagram.com/kumitimantti/" target="_blank" title="Find me in Instagram"><i
                             class="fab fa-fw fa-3x fa-instagram"></i><br><span>Instagram</span></a>
+                </div>
+                <div class="col-4 col-md-3 col-xl-2 p-2 p-md-3">
+                    <a href="https://steamcommunity.com/id/machadolucas" target="_blank" title="Find me in Steam"><i
+                            class="fab fa-fw fa-3x fa-steam"></i><br><span>Steam</span></a>
                 </div>
                 <div class="col-4 col-md-3 col-xl-2 p-2 p-md-3">
                     <a href="https://www.last.fm/user/sirlucasmachado" target="_blank" title="Find me in Last.fm"><i
@@ -167,13 +110,16 @@
     </a>
     <div class="row no-gutters justify-content-end">
         <div class="col-12 py-3">
-            <a href="professional.html" class="underline">Professional</a>
+            <a href="#home" onclick="changePage(this)" class="underline">Home</a>
         </div>
         <div class="col-12 py-3">
-            <a href="portfolio.html" class="underline">Portfolio</a>
+            <a href="#professional" onclick="changePage(this)" class="underline">Professional</a>
         </div>
         <div class="col-12 py-3">
-            <a href="personal.html" class="underline">Personal</a>
+            <a href="#portfolio" onclick="changePage(this)" class="underline">Portfolio</a>
+        </div>
+        <div class="col-12 py-3">
+            <a href="#personal" onclick="changePage(this)" class="underline">Personal</a>
         </div>
     </div>
 
@@ -190,7 +136,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-<script src="build/js/swirl.min.js" type="text/javascript"></script>
+<script src="build/js/animation.min.js" type="text/javascript"></script>
 <script src="build/js/tail.min.js" type="text/javascript"></script>
 
 </body>

@@ -15,14 +15,16 @@ main {
   width: 100%;
   background: url("https://stc.demola.net/img/contacts/lucas-hd.jpg") center no-repeat;
   background-size: cover;
-  outline: 1px solid rgba(128, 0, 128, 0.4);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 2px 1px rgba(255, 255, 255, 0.4);
 }
 
-a.box {
+a.boxlink {
   display: block;
   padding: 3rem 1rem;
+  border-radius: 0.5rem;
   font-size: 1.5rem;
-  border: 1px solid rgba(128, 0, 128, 0.4);
+  border: $border-transparent;
   text-decoration: none;
   @include background(linear-gradient(left top, rgba(128, 0, 128, 0.6) 0%, rgba(128, 0, 128, 0.2) 100%));
 
@@ -31,4 +33,28 @@ a.box {
     -webkit-background-clip: unset;
     -webkit-text-fill-color: black;
   }
+}
+
+.tags {
+  > div {
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    padding: 0.4rem 1.1rem;
+    margin: 0.6rem;
+  }
+}
+
+.quotation {
+  font-family: $title-font;
+  padding: 1rem 1.5rem;
+  @media (min-width: 728px) {
+    padding: 1rem 4rem;
+  }
+}
+
+.box {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 2px rgba(255, 255, 255, 0.1);
+  border-radius: 0.5rem;
 }
