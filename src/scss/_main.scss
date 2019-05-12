@@ -23,10 +23,11 @@ a.boxlink {
   display: block;
   padding: 3rem 1rem;
   border-radius: 0.5rem;
+  font-family: $title-font;
   font-size: 1.5rem;
   border: $border-transparent;
   text-decoration: none;
-  @include background(linear-gradient(left top, rgba(128, 0, 128, 0.6) 0%, rgba(128, 0, 128, 0.2) 100%));
+  @include background(linear-gradient(left top, rgba(255, 255, 50, 0.3) 0%, rgba(255, 255, 255, 0.1) 100%));
 
   &:hover {
     @include background(linear-gradient(left top, rgba(255, 255, 77, 0.8) 0%, rgba(250, 37, 30, 0.4) 100%));
@@ -57,4 +58,17 @@ a.boxlink {
   background: rgba(255, 255, 255, 0.1);
   box-shadow: 0 0 2px rgba(255, 255, 255, 0.1);
   border-radius: 0.5rem;
+
+  &.highlight {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 0 2px rgba(255, 255, 255, 0.25);
+  }
+}
+
+.logo {
+  background-size: contain !important;
+  height: 8rem;
+  min-width: 8rem;
+  max-width: 20vw;
+  margin: auto;
 }
