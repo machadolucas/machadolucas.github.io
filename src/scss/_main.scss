@@ -71,6 +71,7 @@ a.boxlink {
   min-width: 8rem;
   max-width: 20vw;
   margin: auto;
+  filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.3));
 }
 
 .skill-logo {
@@ -78,4 +79,19 @@ a.boxlink {
   height: 8rem;
   max-width: 80%;
   margin: auto;
+  filter: drop-shadow(0 0 1.5em rgba(255, 255, 255, 0.3));
+}
+
+img.portfolio-item {
+  width: 100%;
+  margin: 1rem 0;
+  box-shadow: 0 0 1rem rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
+}
+
+img.timeline-item {
+  max-height: 12rem;
+  max-width: 80vw;
+  box-shadow: 0 0 1rem rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
 }

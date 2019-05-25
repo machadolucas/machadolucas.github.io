@@ -42,8 +42,8 @@ window.addEventListener('pageshow', function (event) {
     fader.classList.remove('fade-in');
 });
 
-var server = "me.com";
-var address = "machadolucas@" + server;
+const server = "me.com";
+const address = "machadolucas@" + server;
 
 function writemail() {
     document.write(address);
@@ -54,26 +54,34 @@ function changePage(link) {
 }
 
 function changePageHash(anchor) {
-    switch (anchor) {
-        case "#home":
-            changeContainer('content/home.html', anchor);
-            break;
-        case "#professional":
-            changeContainer('content/professional.html', anchor);
-            break;
-        case "#portfolio":
-            changeContainer('content/portfolio.html', anchor);
-            break;
-        case "#personal":
-            changeContainer('content/personal.html', anchor);
-            break;
-        default:
-            changeContainer('content/home.html', anchor);
-            break;
+    let address = getAddressforAnchor(anchor);
+    changeContainer(address);
+    if (window.initialized) {
+        history.pushState(null, address, anchor);
+    } else {
+        window.initialized = true;
+        history.replaceState(null, address, anchor);
     }
 }
 
-function changeContainer(address, anchor) {
+function getAddressforAnchor(anchor) {
+    switch (anchor) {
+        case "#home":
+            return 'content/home.html';
+        case "#professional":
+            return 'content/professional.html';
+        case "#portfolio":
+            return 'content/portfolio.html';
+        case "#personal":
+            return 'content/personal.html';
+        default:
+            return 'content/home.html';
+    }
+}
+
+window.initialized = false;
+
+function changeContainer(address) {
     $('html, body').animate({scrollTop: 0}, 300);
     const wrapper = $('#page');
     $('.landing').removeClass('blurred');
@@ -87,7 +95,6 @@ function changeContainer(address, anchor) {
                 $(this).data('aspectRatio', this.height / this.width)
                     .removeAttr('height').removeAttr('width');
             });
-
             $(window).resize(function () {
                 allVideos.each(function () {
                     const el = $(this);
@@ -99,5 +106,8 @@ function changeContainer(address, anchor) {
             }).resize();
         });
     });
-    history.replaceState(null, address, anchor);
 }
+
+window.onpopstate = function (event) {
+    changeContainer(getAddressforAnchor(window.location.hash));
+};
