@@ -95,3 +95,29 @@ img.timeline-item {
   box-shadow: 0 0 1rem rgba(255, 255, 255, 0.2);
   border-radius: 0.5rem;
 }
+
+.grid-thumbphotos {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+
+  @media (min-width: 992px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+img.photo-preview-mini {
+  width: 100%;
+  box-shadow: 0 0 1rem rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+img.photo-preview {
+  max-height: 30rem;
+  max-width: 80vw;
+  box-shadow: 0 0 1rem rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}

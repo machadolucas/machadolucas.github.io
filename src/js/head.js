@@ -50,6 +50,7 @@ function writemail() {
 }
 
 function changePage(link) {
+    closeNav();
     changePageHash(link.hash);
 }
 
