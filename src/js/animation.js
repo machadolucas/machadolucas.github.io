@@ -268,6 +268,7 @@ function createCanvas() {
 		left: 0;
 		width: 100%;
 		height: 100%;
+		filter: blur(50px);
 	`;
     container.appendChild(canvas.b);
     ctx = {
@@ -292,7 +293,6 @@ function resize() {
 
 function render() {
     ctx.b.save();
-    ctx.b.filter = 'blur(50px)';
     ctx.b.drawImage(canvas.a, 0, 0);
     ctx.b.restore();
 }
