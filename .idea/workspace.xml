@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="90e02af5-836b-4b63-9498-c56b0246339e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/js/animation.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/js/animation.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/animation.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/animation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/portfolio.html" beforeDir="false" afterPath="$PROJECT_DIR$/content/portfolio.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -34,7 +33,7 @@
           </split-first>
           <split-second>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file pinned="false" current-in-tab="true">
+              <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/content/professional.html">
                   <provider selected="true" editor-type-id="text-editor">
                     <state relative-caret-position="864">
@@ -102,6 +101,15 @@
                   </provider>
                 </entry>
               </file>
+              <file pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/content/portfolio.html">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="910">
+                      <caret line="160" column="53" selection-start-line="160" selection-start-column="53" selection-end-line="160" selection-end-column="53" />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
               <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/content/personal.html">
                   <provider selected="true" editor-type-id="text-editor">
@@ -125,7 +133,7 @@
               <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/js/head.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="198">
+                    <state relative-caret-position="630">
                       <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
                     </state>
                   </provider>
@@ -134,7 +142,7 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/js/animation.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="545">
+                    <state relative-caret-position="177">
                       <caret line="270" column="27" selection-start-line="270" selection-start-column="27" selection-end-line="270" selection-end-column="27" />
                       <folding>
                         <element signature="e#28#8165#0" />
@@ -267,11 +275,11 @@
         <option value="$PROJECT_DIR$/src/scss/style.scss" />
         <option value="$PROJECT_DIR$/src/scss/_main.scss" />
         <option value="$PROJECT_DIR$/content/professional.html" />
-        <option value="$PROJECT_DIR$/content/portfolio.html" />
         <option value="$PROJECT_DIR$/content/personal.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/src/js/head.js" />
         <option value="$PROJECT_DIR$/src/js/animation.js" />
+        <option value="$PROJECT_DIR$/content/portfolio.html" />
       </list>
     </option>
   </component>
@@ -411,12 +419,13 @@
       <workItem from="1558768339628" duration="168000" />
       <workItem from="1558768516995" duration="18347000" />
       <workItem from="1558856969667" duration="10728000" />
-      <workItem from="1558904888248" duration="210000" />
+      <workItem from="1558904888248" duration="356000" />
+      <workItem from="1558905437299" duration="29000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81360000" />
+    <option name="totallyTimeSpent" value="81535000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="3840" height="2069" extended-state="6" />
@@ -433,7 +442,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32972136" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32955715" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.33023736" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32972136" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -574,10 +583,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/content/portfolio.html">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="83" selection-start-line="13" selection-start-column="83" selection-end-line="13" selection-end-column="83" />
+        <state relative-caret-position="972">
+          <caret line="54" column="22" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -657,10 +666,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/head.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/js/tail.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
           <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/js/animation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="270" column="27" selection-start-line="270" selection-start-column="27" selection-end-line="270" selection-end-column="27" />
+          <folding>
+            <element signature="e#28#8165#0" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -678,27 +704,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/head.js">
+    <entry file="file://$PROJECT_DIR$/content/portfolio.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="972">
-          <caret line="54" column="22" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/js/animation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="545">
-          <caret line="270" column="27" selection-start-line="270" selection-start-column="27" selection-end-line="270" selection-end-column="27" />
-          <folding>
-            <element signature="e#28#8165#0" />
-          </folding>
+        <state relative-caret-position="910">
+          <caret line="160" column="53" selection-start-line="160" selection-start-column="53" selection-end-line="160" selection-end-column="53" />
         </state>
       </provider>
     </entry>
