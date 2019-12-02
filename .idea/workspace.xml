@@ -3,13 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="90e02af5-836b-4b63-9498-c56b0246339e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/img/logos/pagseguro-logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/img/logos/pagseguro-logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/content/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/personal.html" beforeDir="false" afterPath="$PROJECT_DIR$/content/personal.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content/portfolio.html" beforeDir="false" afterPath="$PROJECT_DIR$/content/portfolio.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content/professional.html" beforeDir="false" afterPath="$PROJECT_DIR$/content/professional.html" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,13 +27,12 @@
       <scope name="javascript files" />
     </order>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1920" />
-    <option name="y" value="27" />
-    <option name="width" value="1920" />
-    <option name="height" value="2069" />
-  </component>
   <component name="ProjectId" id="1Sb2lyTARfEri7PAoyBzVMCV9ZH" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="NewWatcherDialog.advanced.open" value="true" />
@@ -67,15 +62,15 @@
       <recent name="$PROJECT_DIR$/build/img" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
+  <component name="ServiceViewManager">
+    <option name="viewStates">
       <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
       </list>
     </option>
   </component>
@@ -104,6 +99,8 @@
       <workItem from="1559387835831" duration="11000" />
       <workItem from="1571818134086" duration="4038000" />
       <workItem from="1573040190741" duration="3731000" />
+      <workItem from="1575289031102" duration="13000" />
+      <workItem from="1575289052399" duration="800000" />
     </task>
     <servers />
   </component>
@@ -136,6 +133,12 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1597" y="758" width="636" height="604" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1575289039661">
+      <screen x="0" y="41" width="3840" height="2039" />
+    </state>
+    <state x="1597" y="758" width="636" height="604" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.41.3840.2039@0.41.3840.2039" timestamp="1575289039661" />
   </component>
   <component name="masterDetails">
     <states>
