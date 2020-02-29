@@ -2,8 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90e02af5-836b-4b63-9498-c56b0246339e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/js/head.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/js/head.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/content/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/personal.html" beforeDir="false" afterPath="$PROJECT_DIR$/content/personal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/portfolio.html" beforeDir="false" afterPath="$PROJECT_DIR$/content/portfolio.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/professional.html" beforeDir="false" afterPath="$PROJECT_DIR$/content/professional.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/js/head.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/head.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scss/_sidenav.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/_sidenav.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,14 +45,14 @@
     <property name="NewWatcherDialog.advanced.open" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/build/img/logos" />
+    <property name="last_opened_file_path" value="/opt/closure-compiler/closure-compiler-v20190929.jar" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="preferences.editor" />
+    <property name="settings.editor.selected.configurable" value="watcher.settings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -101,7 +109,8 @@
       <workItem from="1575289031102" duration="13000" />
       <workItem from="1575289052399" duration="800000" />
       <workItem from="1578423042930" duration="35000" />
-      <workItem from="1582011063425" duration="2191000" />
+      <workItem from="1582011063425" duration="2218000" />
+      <workItem from="1582988969534" duration="4116000" />
     </task>
     <servers />
   </component>
@@ -136,10 +145,30 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="1315" y="559" width="1200" height="1001" key="#File_Watchers" timestamp="1582990136880">
+      <screen x="0" y="41" width="3840" height="2039" />
+    </state>
+    <state x="1315" y="559" width="1200" height="1001" key="#File_Watchers/0.41.3840.2039@0.41.3840.2039" timestamp="1582990136880" />
     <state x="1597" y="758" width="636" height="604" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1575289039661">
       <screen x="0" y="41" width="3840" height="2039" />
     </state>
     <state x="1597" y="758" width="636" height="604" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.41.3840.2039@0.41.3840.2039" timestamp="1575289039661" />
+    <state x="1238" y="591" width="1343" height="937" key="EditFileWatcherDialog" timestamp="1582990136330">
+      <screen x="0" y="41" width="3840" height="2039" />
+    </state>
+    <state x="1238" y="591" width="1343" height="937" key="EditFileWatcherDialog/0.41.3840.2039@0.41.3840.2039" timestamp="1582990136330" />
+    <state x="2214" y="1020" width="636" height="711" key="FileChooserDialogImpl" timestamp="1582990101937">
+      <screen x="0" y="41" width="3840" height="2039" />
+    </state>
+    <state x="2214" y="1020" width="636" height="711" key="FileChooserDialogImpl/0.41.3840.2039@0.41.3840.2039" timestamp="1582990101937" />
+    <state x="1154" y="520" key="SettingsEditor" timestamp="1582990010047">
+      <screen x="0" y="41" width="3840" height="2039" />
+    </state>
+    <state x="1154" y="520" key="SettingsEditor/0.41.3840.2039@0.41.3840.2039" timestamp="1582990010047" />
+    <state x="1388" y="354" width="1064" height="1413" key="find.popup" timestamp="1582989957449">
+      <screen x="0" y="41" width="3840" height="2039" />
+    </state>
+    <state x="1388" y="354" width="1064" height="1413" key="find.popup/0.41.3840.2039@0.41.3840.2039" timestamp="1582989957449" />
   </component>
   <component name="masterDetails">
     <states>

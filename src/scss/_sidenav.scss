@@ -5,11 +5,13 @@
   z-index: 999;
   top: 0;
   right: -100%;
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(0, 0, 0, 0.9);
   overflow-x: hidden;
   padding-top: 5rem;
   text-align: right;
   @include transition(all 0.3s ease-in-out);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 
   @media (min-width: 480px) {
     width: 360px;

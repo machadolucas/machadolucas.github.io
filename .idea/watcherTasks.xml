@@ -34,7 +34,7 @@
         <array />
       </option>
       <option name="outputFromStdout" value="false" />
-      <option name="program" value="/opt/closure-compiler/closure-compiler-v20190325.jar" />
+      <option name="program" value="/opt/closure-compiler/closure-compiler-v20190929.jar" />
       <option name="runOnExternalChanges" value="true" />
       <option name="scopeName" value="javascript files" />
       <option name="trackOnlyRoot" value="true" />

@@ -85,7 +85,6 @@ window.initialized = false;
 function changeContainer(address) {
     $('html, body').animate({scrollTop: 0}, 300);
     const wrapper = $('#page');
-    $('.landing').removeClass('blurred');
     wrapper.fadeOut('fast', function () {
         wrapper.load(address, function () {
             wrapper.fadeIn('fast');
