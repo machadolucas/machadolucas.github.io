@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90e02af5-836b-4b63-9498-c56b0246339e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/js/head.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/js/head.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/content/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/personal.html" beforeDir="false" afterPath="$PROJECT_DIR$/content/personal.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content/portfolio.html" beforeDir="false" afterPath="$PROJECT_DIR$/content/portfolio.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/content/professional.html" beforeDir="false" afterPath="$PROJECT_DIR$/content/professional.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/js/head.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/js/head.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scss/_sidenav.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/scss/_sidenav.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,6 +105,7 @@
       <workItem from="1578423042930" duration="35000" />
       <workItem from="1582011063425" duration="2218000" />
       <workItem from="1582988969534" duration="4116000" />
+      <workItem from="1585634856391" duration="217000" />
     </task>
     <servers />
   </component>
@@ -149,10 +144,10 @@
       <screen x="0" y="41" width="3840" height="2039" />
     </state>
     <state x="1315" y="559" width="1200" height="1001" key="#File_Watchers/0.41.3840.2039@0.41.3840.2039" timestamp="1582990136880" />
-    <state x="1597" y="758" width="636" height="604" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1575289039661">
+    <state x="100" y="141" width="3640" height="1839" key="DiffContextDialog" timestamp="1585635015882">
       <screen x="0" y="41" width="3840" height="2039" />
     </state>
-    <state x="1597" y="758" width="636" height="604" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.41.3840.2039@0.41.3840.2039" timestamp="1575289039661" />
+    <state x="100" y="141" width="3640" height="1839" key="DiffContextDialog/0.41.3840.2039@0.41.3840.2039" timestamp="1585635015882" />
     <state x="1238" y="591" width="1343" height="937" key="EditFileWatcherDialog" timestamp="1582990136330">
       <screen x="0" y="41" width="3840" height="2039" />
     </state>
@@ -165,10 +160,10 @@
       <screen x="0" y="41" width="3840" height="2039" />
     </state>
     <state x="1154" y="520" key="SettingsEditor/0.41.3840.2039@0.41.3840.2039" timestamp="1582990010047" />
-    <state x="1388" y="354" width="1064" height="1413" key="find.popup" timestamp="1582989957449">
+    <state x="1388" y="354" width="1064" height="1413" key="find.popup" timestamp="1585635071964">
       <screen x="0" y="41" width="3840" height="2039" />
     </state>
-    <state x="1388" y="354" width="1064" height="1413" key="find.popup/0.41.3840.2039@0.41.3840.2039" timestamp="1582989957449" />
+    <state x="1388" y="354" width="1064" height="1413" key="find.popup/0.41.3840.2039@0.41.3840.2039" timestamp="1585635071964" />
   </component>
   <component name="masterDetails">
     <states>
