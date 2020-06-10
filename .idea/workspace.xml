@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="90e02af5-836b-4b63-9498-c56b0246339e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/content/professional.html" beforeDir="false" afterPath="$PROJECT_DIR$/content/professional.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/personal.html" beforeDir="false" afterPath="$PROJECT_DIR$/content/personal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/portfolio.html" beforeDir="false" afterPath="$PROJECT_DIR$/content/portfolio.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +30,6 @@
   <component name="ProjectId" id="1Sb2lyTARfEri7PAoyBzVMCV9ZH" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
@@ -43,7 +44,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="watcher.settings" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -59,18 +60,6 @@
       <recent name="$PROJECT_DIR$/content" />
       <recent name="$PROJECT_DIR$/build/img" />
     </key>
-  </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -102,21 +91,20 @@
       <workItem from="1578423042930" duration="35000" />
       <workItem from="1582011063425" duration="2218000" />
       <workItem from="1582988969534" duration="4116000" />
-      <workItem from="1585634856391" duration="249000" />
+      <workItem from="1585634856391" duration="504000" />
+      <workItem from="1591781318762" duration="606000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="2" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
@@ -135,28 +123,17 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="1315" y="559" width="1200" height="1001" key="#File_Watchers" timestamp="1582990136880">
-      <screen x="0" y="41" width="3840" height="2039" />
-    </state>
-    <state x="1315" y="559" width="1200" height="1001" key="#File_Watchers/0.41.3840.2039@0.41.3840.2039" timestamp="1582990136880" />
     <state x="100" y="141" width="3640" height="1839" key="DiffContextDialog" timestamp="1585635015882">
       <screen x="0" y="41" width="3840" height="2039" />
     </state>
     <state x="100" y="141" width="3640" height="1839" key="DiffContextDialog/0.41.3840.2039@0.41.3840.2039" timestamp="1585635015882" />
-    <state x="1238" y="591" width="1343" height="937" key="EditFileWatcherDialog" timestamp="1582990136330">
+    <state x="1151" y="520" key="SettingsEditor" timestamp="1591781451421">
       <screen x="0" y="41" width="3840" height="2039" />
     </state>
-    <state x="1238" y="591" width="1343" height="937" key="EditFileWatcherDialog/0.41.3840.2039@0.41.3840.2039" timestamp="1582990136330" />
-    <state x="2214" y="1020" width="636" height="711" key="FileChooserDialogImpl" timestamp="1582990101937">
-      <screen x="0" y="41" width="3840" height="2039" />
-    </state>
-    <state x="2214" y="1020" width="636" height="711" key="FileChooserDialogImpl/0.41.3840.2039@0.41.3840.2039" timestamp="1582990101937" />
-    <state x="1154" y="520" key="SettingsEditor" timestamp="1582990010047">
-      <screen x="0" y="41" width="3840" height="2039" />
-    </state>
-    <state x="1154" y="520" key="SettingsEditor/0.41.3840.2039@0.41.3840.2039" timestamp="1582990010047" />
+    <state x="1151" y="520" key="SettingsEditor/0.41.3840.2039@0.41.3840.2039" timestamp="1591781451421" />
     <state x="1388" y="354" width="1064" height="1413" key="find.popup" timestamp="1585635071964">
       <screen x="0" y="41" width="3840" height="2039" />
     </state>
