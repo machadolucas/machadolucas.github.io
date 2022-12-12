@@ -25,8 +25,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90e02af5-836b-4b63-9498-c56b0246339e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/savethedate/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/portfolio.html" beforeDir="false" afterPath="$PROJECT_DIR$/content/portfolio.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +43,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="NamedScopeManager">
     <order>
       <scope name="scss files" />
@@ -50,39 +53,37 @@
     </order>
   </component>
   <component name="ProjectId" id="1Sb2lyTARfEri7PAoyBzVMCV9ZH" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="NewWatcherDialog.advanced.open" value="true" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="/opt/closure-compiler/closure-compiler-v20200920.jar" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="watcher.settings" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/machadolucas/git/machadolucas.github.io/wedding&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/wedding" />
+      <recent name="$PROJECT_DIR$/build/img/logos" />
+      <recent name="$PROJECT_DIR$/old/files" />
+      <recent name="$PROJECT_DIR$/content" />
+      <recent name="$PROJECT_DIR$/build/img" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/build/img/timeline" />
       <recent name="$PROJECT_DIR$/build/img/portfolio" />
       <recent name="$PROJECT_DIR$/build/img/skills" />
       <recent name="$PROJECT_DIR$/build/img/logos" />
       <recent name="$PROJECT_DIR$/build/img/feswa-logo.svg" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/build/img/logos" />
-      <recent name="$PROJECT_DIR$/old/files" />
-      <recent name="$PROJECT_DIR$/content" />
-      <recent name="$PROJECT_DIR$/build/img" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -124,6 +125,8 @@
       <workItem from="1602499258668" duration="54000" />
       <workItem from="1603267306719" duration="676000" />
       <workItem from="1603647700381" duration="509000" />
+      <workItem from="1670845687281" duration="150000" />
+      <workItem from="1670845842500" duration="115000" />
     </task>
     <servers />
   </component>
@@ -154,29 +157,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="1816" y="818" width="938" height="419" key="#File_Watchers" timestamp="1602499058886">
-      <screen x="72" y="34" width="3768" height="1981" />
-    </state>
-    <state x="1816" y="818" width="938" height="419" key="#File_Watchers/72.34.3768.1981@72.34.3768.1981" timestamp="1602499058886" />
-    <state x="172" y="134" width="3568" height="1781" key="DiffContextDialog" timestamp="1602499136263">
-      <screen x="72" y="34" width="3768" height="1981" />
-    </state>
-    <state x="172" y="134" width="3568" height="1781" key="DiffContextDialog/72.34.3768.1981@72.34.3768.1981" timestamp="1602499136263" />
-    <state x="1736" y="634" width="1088" height="795" key="EditFileWatcherDialog" timestamp="1602499056096">
-      <screen x="72" y="34" width="3768" height="1981" />
-    </state>
-    <state x="1736" y="634" width="1088" height="795" key="EditFileWatcherDialog/72.34.3768.1981@72.34.3768.1981" timestamp="1602499056096" />
-    <state x="2010" y="732" width="530" height="605" key="FileChooserDialogImpl" timestamp="1602499098713">
-      <screen x="72" y="34" width="3768" height="1981" />
-    </state>
-    <state x="2010" y="732" width="530" height="605" key="FileChooserDialogImpl/72.34.3768.1981@72.34.3768.1981" timestamp="1602499098713" />
-    <state x="1320" y="572" width="1271" height="912" key="SettingsEditor" timestamp="1602499038681">
-      <screen x="72" y="34" width="3768" height="1981" />
-    </state>
-    <state x="1320" y="572" width="1271" height="912" key="SettingsEditor/72.34.3768.1981@72.34.3768.1981" timestamp="1602499038681" />
   </component>
   <component name="masterDetails">
     <states>
