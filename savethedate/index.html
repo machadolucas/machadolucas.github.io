@@ -4,59 +4,448 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
     <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
-    <meta content="index, follow" name="Robots">
+    <meta content="norobots" name="Robots">
 
-    <link rel="icon" type="image/ico" href="build/img/favicon.ico"/>
-    <link rel="canonical" href="https://www.machadolucas.me/">
-    <meta name="description" content="Save the date"/>
-
-    <meta property="og:site_name" content="machadolucas"/>
-    <meta property="og:image" content="build/img/site_logo.jpg"/>
-    <meta property="og:title" content="Lucas & Marja"/>
-    <meta property="og:type" content="website"/>
-
-    <title>Lucas & Marja</title>
-
+    <title>Lucas &amp; Marja</title>
     <meta charset="utf-8">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/css/bootstrap.min.css"
-          integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link media="all" rel="stylesheet" href="/build/css/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css"
+          integrity="sha256-HtCCUh9Hkh//8U1OwcbD8epVEUdBvuI8wj1KtqMhNkI=" crossorigin="anonymous"/>
     <link media="all" rel="stylesheet" href="/build/css/style.css" type="text/css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Mr+De+Haviland&display=swap" rel="stylesheet">
+    <style>
+        *[data-lang] {
+            display: none;
+        }
+
+        .page-title {
+            font-family: 'Mr De Haviland', cursive;
+            font-size: 13vw;
+            font-weight: 300;
+            line-height: 1.2;
+        }
+
+        @media (max-width: 728px) {
+            .page-title {
+                font-size: 16vw;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .page-title {
+                font-size: 10rem;
+            }
+        }
+    </style>
 </head>
 
 <body class="d-flex flex-column" style="min-height: auto;">
-<main class="container py-5 my-md-5">
+<main class="container py-5">
     <div class="content--canvas"></div>
     <noscript>
         For full functionality of this site it is necessary to enable JavaScript. Here are the <a
             href="https://www.enable-javascript.com/" target="_blank"> instructions how to enable JavaScript in your web
         browser</a>.
     </noscript>
-    <div id="page" class="py-md-5 my-md-5 text-center">
-        <h1 class="display-1 py-5" style="font-family: 'Mr De Haviland', cursive;">
-            Lucas &amp; Marja
-        </h1>
-        <h2 class="py-5">
-            Lisätietoa tulossa tammikuussa. Tarkista tämä sivusto myöhemmin uudelleen...
-        </h2>
-        <h2 class="py-5">
-            Mais informações em janeiro. Verifique este site novamente mais tarde...
-        </h2>
+    <div id="page" class="row g-0 py-md-5">
+        <div class="col-12 px-0 my-md-5 text-center animated fadeIn unselectable">
+            <h1 class="page-title py-5">Lucas &amp; Marja</h1>
+            <p>
+                <a class="mx-3" href="javascript:setLanguage('en')">🇬🇧&nbsp;English</a>
+                <a class="mx-3" href="javascript:setLanguage('pt')">🇧🇷&nbsp;Português</a>
+                <a class="mx-3" href="javascript:setLanguage('fi')">🇫🇮&nbsp;Suomi</a>
+            </p>
+        </div>
+
+        <div class="col-12 p-0 px-xl-5 mb-5 animated fadeIn">
+            <h2>
+                <span data-lang="en">When?</span>
+                <span data-lang="pt">Quando?</span>
+                <span data-lang="fi">Milloin?</span>
+            </h2>
+            <div class="row g-0">
+                <div class="col-12">
+                    <div class="box m-3 py-5 px-3 px-lg-5 text-center">
+                        <h3 data-lang="en" class="display-4">August 5th, 2023</h3>
+                        <h4 data-lang="en" class="my-3 display-6">From 15:00</h4>
+                        <p data-lang="en">(Please note the date has been changed from July to August)</p>
+
+                        <h3 data-lang="pt" class="display-4">5 de agosto, 2023</h3>
+                        <h4 data-lang="pt" class="my-3 display-6">A partir das 15:00</h4>
+                        <p data-lang="pt">(Atenção: A data mudou de julho para agosto)</p>
+
+                        <h3 data-lang="fi" class="display-4">5. elokuussa, 2023</h3>
+                        <h4 data-lang="fi" class="my-3 display-6">Klo 15 alkaen</h4>
+                        <p data-lang="fi">(Huom: Tapahtuma vaihtunut helmikuustä elokuun)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 p-0 px-xl-5 mb-5 animated fadeIn">
+            <h2>
+                <span data-lang="en">Where?</span>
+                <span data-lang="pt">Onde?</span>
+                <span data-lang="fi">Missä?</span>
+            </h2>
+            <div class="row g-0">
+                <div class="col-12">
+                    <div class="box m-3 py-4 px-3 px-lg-5">
+                        <div>
+                            <p data-lang="en" class="text-center fs-5 py-4">
+                                Welcome to celebrate our wedding at our new home, located in the lovely city of Tampere!
+                            </p>
+                            <p data-lang="pt" class="text-center fs-5 py-4">
+                                Sejam bem vindos a celebrar o nosso casamento em nossa nova casa, localizada na linda
+                                cidade de Tampere!
+                            </p>
+                            <p data-lang="fi" class="text-center fs-5 py-4">
+                                Tervetuloa juhlimaan häitämme uuteen kotiin, joka sijaitsee ihanassa Tampereella!
+                            </p>
+                            <h3 data-lang="en" class="mt-4">
+                                Address:
+                            </h3>
+                            <h3 data-lang="pt" class="mt-4">
+                                Endereço:
+                            </h3>
+                            <h3 data-lang="fi" class="mt-4">
+                                Osoite:
+                            </h3>
+                            <div class="row align-items-center">
+                                <div class="col text-center">
+                                    <img style="max-height: 20rem;" class="timeline-item" src="/build/img/home.jpg"/>
+                                    <p class="fs-5 my-3 lh-sm">
+                                        Lukonojankatu 8 A<br>
+                                        Tampere 33710
+                                    </p>
+                                    <p>
+                                        <a data-lang="en" target="_blank" href="https://goo.gl/maps/EMq5uNzBqMvQngLMA">🔗&nbsp;See
+                                            in Google Maps</a>
+                                        <a data-lang="pt" target="_blank" href="https://goo.gl/maps/EMq5uNzBqMvQngLMA">🔗&nbsp;Veja
+                                            no Google Maps</a>
+                                        <a data-lang="fi" target="_blank" href="https://goo.gl/maps/EMq5uNzBqMvQngLMA">🔗&nbsp;Katso
+                                            Google Mapsissa</a>
+                                    </p>
+                                </div>
+                                <div class="col">
+                                    <iframe class="rounded"
+                                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110088.06575840556!2d23.88195720332559!3d61.47519878612626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x468edf9f390f076f%3A0x293a788df3be850e!2sLukonojankatu%208%2C%2033710%20Tampere!5e0!3m2!1sen!2sfi!4v1672424528335!5m2!1sen!2sfi"
+                                            width="100%" height="350" style="border:0;" allowfullscreen=""
+                                            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                </div>
+                            </div>
+
+                            <h3 data-lang="en" class="mt-4">
+                                How to get there:
+                            </h3>
+                            <h3 data-lang="pt" class="mt-4">
+                                Como chegar:
+                            </h3>
+                            <h3 data-lang="fi" class="mt-4">
+                                Miten sinne pääsee:
+                            </h3>
+                            <div class="row align-items-center">
+                                <div data-lang="en" class="col">
+                                    <p>
+                                        The easiest way to get to Finland is by flying to <a
+                                            href="https://www.finavia.fi/en/airports/helsinki-airport" target="_blank">🔗&nbsp;Helsinki-Vantaa
+                                        Airport</a>.
+                                        From the airport you can easily get to Tampere by train: First you take a
+                                        commuter train from the airport to Tikkurila station, and there you transfer to
+                                        the train to Tampere. The journey takes between 1h30 and 2h, and you can buy
+                                        tickets for the whole route in VR (company that operates passenger trains in
+                                        Finland) website or app, and you can find more details about VR and trains here:
+                                        <a href="https://www.vr.fi/en?from=LEN&to=TPE"
+                                           target="_blank">🔗&nbsp;vr.fi/en</a>
+                                    </p>
+                                    <p>
+                                        From Tampere city center/railway station it's possible to get to our house
+                                        within 13 minutes by tram. Trams usually run every 7 minutes, and you should
+                                        exit at Hallila stop. Public transportation in Tampere can be paid with
+                                        contactless payment cards, mobile application or tickets bought in advance (cash
+                                        is not accepted). More information about Tampere public transportation at <a
+                                            href="https://www.nysse.fi/en/tickets-and-fares.html" target="_blank">🔗&nbsp;nysse.fi</a>
+                                    </p>
+                                    <p>VR trains and Tampere city trams and buses are fully accessible and have plenty
+                                        of space for luggage.</p>
+                                </div>
+                                <div data-lang="pt" class="col">
+                                    <p>
+                                        A forma mais prática de chegar na finlândia é por vôo para o <a
+                                            href="https://www.finavia.fi/en/airports/helsinki-airport" target="_blank">🔗&nbsp;Aeroporto
+                                        Helsinki-Vantaa</a>.
+                                        É possível ir do aeroporto para a cidade de Tampere facilmente de trem:
+                                        Primeiramente um trem regional (commuter train) do aeroporto até a estação
+                                        Tikkurila, e lá é feita uma baldeação para o trem que vai diretamente à
+                                        Tampere. A viagem leva em torno de 1h30 a 2h no total, e é possível comprar
+                                        passagens para toda a rota no site ou aplicativo da VR (empresa que opera trens
+                                        de passageiros na Finlândia. Você pode encontrar mais detalhes sobre a VR e
+                                        trens aqui:
+                                        <a href="https://www.vr.fi/en?from=LEN&to=TPE"
+                                           target="_blank">🔗&nbsp;vr.fi/en</a>
+                                    </p>
+                                    <p>
+                                        A partir do centro da cidade de Tampere/estação de trem é possível chegar à
+                                        nossa casa em 13 minutos de bonde. Os bondes circulam em intervalos de 7 minutos
+                                        e a parada mais próxima da nossa casa é chamada "Hallila". O transporte público
+                                        em Tampere pode ser pago com cartões de crédito por aproximacão, por aplicativo,
+                                        ou bilhetes em papel comprados antecipadamente em alguns lugares (dinheiro não é
+                                        aceito). Mais informações sobre transporta público em Tampere podem ser
+                                        encontradas em <a href="https://www.nysse.fi/en/tickets-and-fares.html"
+                                                          target="_blank">🔗&nbsp;nysse.fi</a>
+                                    </p>
+                                    <p>Os trens da VR e os bondes e ônibus da cidade de Tampere são totalmente
+                                        acessíveis e contam com bastante espaço para bagagem.</p>
+                                </div>
+                                <div data-lang="fi" class="col">
+                                    <p>
+                                        Tampereen keskustasta/rautatieasemalta pääsee talollemme 13 minuutissa
+                                        raitiovaunulla. Raitiovaunut kulkevat pääsääntöisesti 7 minuutin välein ja
+                                        poistukaa Hallilan pysäkillä. Tampereen joukkoliikenteessä voi maksaa
+                                        lähimaksukorteilla, mobiilisovelluksella tai ennakkoon ostetuilla lipuilla
+                                        (käteistä ei hyväksytä). Lisätietoja Tampereen joukkoliikenteestä osoitteessa <a
+                                            href="https://www.nysse.fi/liput-ja-hinnat.html" target="_blank">🔗&nbsp;nysse.fi</a>
+                                    </p>
+                                </div>
+                                <div class="col">
+                                    <iframe class="rounded"
+                                            src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d30477.768023726527!2d23.767975728276497!3d61.482289460282836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e3!4m5!1s0x468edf54ad86cb03%3A0xa66b15f9e60c4b6b!2sTampereen%20Rautatieasema%2C%20Rautatienkatu%2025%2C%2033100%20Tampere!3m2!1d61.4984336!2d23.773009!4m5!1s0x468edf9f390f076f%3A0x293a788df3be850e!2sLukonojankatu%208%2C%2033710%20Tampere!3m2!1d61.466406!2d23.8456108!5e0!3m2!1sen!2sfi!4v1672229202397!5m2!1sen!2sfi"
+                                            width="100%" height="450" style="border:0;" allowfullscreen=""
+                                            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 p-0 px-xl-5 mb-5 animated fadeIn">
+            <h2>
+                <span data-lang="en">Tampere, Finland</span>
+                <span data-lang="pt">Tampere, Finlândia</span>
+                <span data-lang="fi">Tampere</span>
+            </h2>
+            <div class="row g-0">
+                <div class="col-12">
+                    <div class="box m-3 py-4 px-3 px-lg-5">
+
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h3 data-lang="en">
+                                    About the city
+                                </h3>
+                                <h3 data-lang="pt">
+                                    Sobre a cidade
+                                </h3>
+                                <h3 data-lang="fi">
+                                    Tietoja kaupungista
+                                </h3>
+                                <p data-lang="en">
+                                    Tampere is the most populous inland city in the Nordic countries and the second most
+                                    in Finland, with a metropolitan population of around 400 000 people.
+                                </p>
+                                <p data-lang="pt">
+                                    Tampere é a cidade mais populosa não-costeira dos países nórdicos e a segunda mais
+                                    populosa da Finlândia, com uma população metropolitana de cerca de 400.000 pessoas.
+                                </p>
+                                <p data-lang="fi">
+                                    Tampere on Pohjoismaiden väkirikkain sisämaan kaupunki ja Suomen toiseksi eniten
+                                    pääkaupunkiseudulla asuu noin 400 000 asukasta.
+                                </p>
+
+                                <h3 data-lang="en">
+                                    Weather
+                                </h3>
+                                <h3 data-lang="pt">
+                                    Clima
+                                </h3>
+                                <h3 data-lang="fi">
+                                    Sää
+                                </h3>
+
+                                <p data-lang="en">
+                                    While temperatures can reach up tp -30°C during winter and the lakes surrounding the
+                                    city fully freeze, our celebration is happening in early August during Finnish
+                                    summer. You can expect warm weather and temperatures above +20°C, with fresh nights.
+                                </p>
+                                <p data-lang="pt">
+                                    Enquanto as temperaturas podem chegar a -30°C durante o inverno e os lagos que
+                                    cercam a cidade congelam totalmente, nossa celebração está acontecendo no início de
+                                    agosto durante o verão finlandês. Você pode esperar por um clima quente e
+                                    temperaturas acima de +20°C, com noites frescas.
+                                </p>
+                                <p data-lang="fi">
+                                    Kun talvella lämpötilat voivat nousta -30 asteeseen ja kaupunkia ympäröivät järvet
+                                    jäätyä täysin, juhlimme elokuun alussa Suomen kesällä. Odotettavissa on lämmintä
+                                    säätä ja yli +20C lämpötiloja raikkaana yönä.
+                                </p>
+                            </div>
+                            <div class="col text-center">
+                                <img class="timeline-item" style="max-height: 20rem;"
+                                     src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Tammerkoski_2021.jpg"/>
+                            </div>
+                        </div>
+
+                        <h3 data-lang="en">
+                            Things to do in Tampere
+                        </h3>
+                        <h3 data-lang="pt">
+                            Coisas para se fazer em Tampere
+                        </h3>
+                        <h3 data-lang="fi">
+                            Tekemistä Tampereella
+                        </h3>
+
+                        <p data-lang="en">
+                            Tampere is a nice city for everyone. There's plenty of cultural and artistic events, an
+                            amusement park, nature trails, saunas, museums and countless other opportunities. Check <a
+                                href="https://visittampere.fi/en/" target="_blank">🔗&nbsp;visittampere.fi</a> for more
+                            information.
+                        </p>
+                        <p data-lang="pt">
+                            Tampere é uma cidade agradável para todos. Não faltam eventos culturais e artísticos, parque
+                            de diversões, trilhas ecológicas, saunas, museus e inúmeras outras oportunidades. Verifique
+                            <a
+                                    href="https://visittampere.fi/en/" target="_blank">🔗&nbsp;visittampere.fi</a> para
+                            mais informações.
+                        </p>
+                        <p data-lang="fi">
+                            Tampere on mukava kaupunki kaikille. Siellä on runsaasti kulttuuri- ja taidetapahtumia,
+                            huvipuisto, luontopolkuja, saunoja, museoita ja lukemattomia muita mahdollisuuksia. Katso
+                            lisätietoja <a
+                                href="https://visittampere.fi" target="_blank">🔗&nbsp;visittampere.fi:stä</a>.
+                        </p>
+
+                        <p data-lang="en">
+                            It's possible to easily move around Tampere city center by walking. Public transportation is
+                            also efficient and comfortable. You can find more details about public transportation at the
+                            <a href="https://www.nysse.fi/en/front-page.html" target="_blank">🔗&nbsp;nysse.fi</a>
+                            website.
+                        </p>
+                        <p data-lang="pt">
+                            É possível deslocar-se facilmente pelo centro da cidade de Tampere a pé. O transporte
+                            público também é eficiente e confortável. Você pode encontrar mais detalhes sobre transporte
+                            público no site
+                            <a href="https://www.nysse.fi/en/front-page.html" target="_blank">🔗&nbsp;nysse.fi</a>.
+                        </p>
+                        <p data-lang="fi">
+                            Tampereen keskustassa on helppo liikkua kävellen. Myös julkinen liikenne on tehokasta ja
+                            mukavaa. Lisää tietoa joukkoliikenteestä löydät
+                            <a href="https://www.nysse.fi/etusivu.html"
+                               target="_blank">🔗&nbsp;nysse.fi-sivuilta</a>.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 p-0 px-xl-5 mb-5 animated fadeIn">
+            <h2>
+                <span data-lang="en">Please confirm your attendance</span>
+                <span data-lang="pt">Por favor confirme sua presença</span>
+                <span data-lang="fi">Ilmoitta osallistumisestanne</span>
+            </h2>
+            <div class="row g-0">
+                <div class="col-12">
+                    <div class="box m-3 py-4 px-3" style="background: rgba(255,255,255,0.6);">
+                        <iframe id="rsvp" class="rounded"
+                                src="https://docs.google.com/forms/d/e/1FAIpQLSfT8ol5eVB31NrxTm4lzTY5PrtdvrLkcxBlTcA37brbidaxcQ/viewform?embedded=true"
+                                width="100%" height="540">Loading…
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 p-0 px-xl-5 mb-5 animated fadeIn">
+            <h2>
+                <span data-lang="en">Questions?</span>
+                <span data-lang="pt">Dúvidas?</span>
+                <span data-lang="fi">Kysymykset?</span>
+            </h2>
+            <div class="row g-0">
+                <div class="col-12">
+                    <div class="box m-3 py-4 px-3 px-lg-5">
+                        <p data-lang="en">
+                            Send a message or call either of us:
+                        </p>
+                        <p data-lang="pt">
+                            Envie uma mensagem ou nos ligue:
+                        </p>
+                        <p data-lang="fi">
+                            Lähetä viesti tai soita meille:
+                        </p>
+                        <div class="row text-center pt-3">
+                            <div class="col">
+                                <h4>Lucas</h4>
+                                <p class="m-0">
+                                    <a aria-label="WhatsApp" href="https://wa.me/358413699536"><img alt="WhatsApp"
+                                                                                                    src="/build/img/icons8-whatsapp-128.svg"
+                                                                                                    style="height: 2rem; margin: 0 0.4rem 0.4rem 0.4rem"/></a>
+                                    <a href="tel:+358413699536">+358 41 369 9536</a>
+                                </p>
+                                <p>
+                                    <a href="mailto:machadolucas@me.com">✉️&nbsp;machadolucas@me.com</a>
+                                </p>
+                            </div>
+                            <div class="col">
+                                <h4>Marja</h4>
+                                <p class="m-0">
+                                    <a aria-label="WhatsApp" href="https://wa.me/358400521838"><img alt="WhatsApp"
+                                                                                                    src="/build/img/icons8-whatsapp-128.svg"
+                                                                                                    style="height: 2rem; margin: 0 0.4rem 0.4rem 0.4rem"/></a>
+                                    <a href="tel:+358400521838">+358 40 052 1838</a>
+                                </p>
+                                <p>
+                                    <a href="mailto:marja.h.sivonen@gmail.com">✉️&nbsp;marja.h.sivonen@gmail.com</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 </main>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.2/jquery.min.js"
-        integrity="sha512-tWHlutFnuG0C6nQRlpvrEhE4QpkG1nn2MOUMWmUeRePl4e3Aki0VB6W1v3oLjFtd0hVOtRQ9PHpSfN6u6/QXkQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.min.js"
-        integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="/build/js/jquery.min.js" type="text/javascript"></script>
+<script src="/build/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="/build/js/animation.min.js" type="text/javascript"></script>
+<script type="application/javascript">
+    function setLanguage(lang) {
+        $('[data-lang]').hide();
+        $('[data-lang=' + lang + ']').fadeIn();
+    }
 
+    function inferLanguage() {
+        if (navigator.languages.includes('fi')) {
+            return 'fi';
+        }
+        if (navigator.languages.includes('pt')) {
+            return 'pt';
+        }
+        return 'en';
+    }
+
+    setLanguage(inferLanguage());
+
+    $('#rsvp').on("load", function () {
+        const iframe = $(this);
+        iframe.contents().on("mousedown, mouseup, click", function () {
+            const h = iframe.contents().find("body").height();
+            console.log(h);
+            iframe.height(h);
+        });
+    });
+
+</script>
 </body>
 </html>

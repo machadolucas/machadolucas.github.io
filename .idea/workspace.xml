@@ -28,6 +28,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90e02af5-836b-4b63-9498-c56b0246339e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/build/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/img/home.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/img/icons8-whatsapp-128.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build/js/jquery.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/machadolucas.github.io.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/machadolucas.github.io.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/savethedate/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/savethedate/index.html" afterDir="false" />
     </list>
@@ -69,7 +75,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/machadolucas/git/machadolucas.github.io/wedding&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/machadolucas/git/machadolucas.github.io/build/img&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -80,19 +86,29 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/build/img" />
       <recent name="$PROJECT_DIR$/wedding" />
       <recent name="$PROJECT_DIR$/build/img/logos" />
       <recent name="$PROJECT_DIR$/old/files" />
       <recent name="$PROJECT_DIR$/content" />
-      <recent name="$PROJECT_DIR$/build/img" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/build/img" />
+      <recent name="$PROJECT_DIR$/build/css" />
+      <recent name="$PROJECT_DIR$/build/js" />
       <recent name="$PROJECT_DIR$/build/img/timeline" />
       <recent name="$PROJECT_DIR$/build/img/portfolio" />
-      <recent name="$PROJECT_DIR$/build/img/skills" />
-      <recent name="$PROJECT_DIR$/build/img/logos" />
-      <recent name="$PROJECT_DIR$/build/img/feswa-logo.svg" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/machadolucas.github.io/savethedate/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.index.html" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -135,7 +151,10 @@
       <workItem from="1603647700381" duration="509000" />
       <workItem from="1670845687281" duration="150000" />
       <workItem from="1670845842500" duration="2452000" />
-      <workItem from="1670974495578" duration="1185000" />
+      <workItem from="1670974495578" duration="1788000" />
+      <workItem from="1671784877761" duration="265000" />
+      <workItem from="1671785150156" duration="25436000" />
+      <workItem from="1673176172992" duration="3216000" />
     </task>
     <servers />
   </component>
