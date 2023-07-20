@@ -1,0 +1,58 @@
+@tailwind base;
+
+@layer base {
+  body {
+    @apply font-averia bg-white text-gray-900;
+  }
+
+  p, ul, ol {
+    @apply text-gray-600;
+  }
+
+  h1 {
+    @apply font-chivo font-semibold;
+  }
+
+  h2 {
+    @apply font-chivo font-semibold;
+  }
+
+  h3 {
+    @apply font-chivo font-semibold;
+  }
+
+  h4 {
+    @apply font-chivo font-semibold;
+  }
+
+  h5 {
+    @apply font-chivo font-semibold;
+  }
+
+  h6 {
+    @apply font-chivo font-semibold;
+  }
+
+  a {
+    @apply transition-all duration-300;
+  }
+}
+
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
