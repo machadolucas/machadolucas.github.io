@@ -1,39 +1,38 @@
-import './globals.css'
-import ReactGA from "react-ga4";
-import type { Metadata } from 'next'
-import {averiaSerifLibre, chivo} from "@/app/fonts";
-import Footer from "@/components/layout/Footer";
-import Header from "@/components/layout/Header";
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "@react95/core/GlobalStyle";
+import "@react95/core/themes/win95.css";
+import "@react95/icons/icons.css";
+import "./globals.css";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
-  title: 'Lucas Machado',
-  description: 'Personal webpage of Lucas Machado',
-  openGraph: {
-    title: 'Lucas Machado',
-    description: 'Personal webpage of Lucas Machado',
-    type: 'website',
-  },
-  robots: 'index, follow',
-  metadataBase: new URL('https://www.machadolucas.me')
-}
+  title: "Lucas Machado",
+  description:
+    "Personal website of Lucas Machado showcasing his story, work, and contact info.",
+};
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode
-}) {
-  if (process.env.NODE_ENV === 'production') {
-    ReactGA.initialize('G-GZ0HCLXTHE');
-  }
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html lang="en" className={`${averiaSerifLibre.variable} ${chivo.variable}`}>
-      <body className={'min-h-screen flex flex-col'}>
-      <Header/>
-      <main>
+    <html lang="en">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-[#008080]`}
+      >
         {children}
-      </main>
-      <Footer/>
       </body>
     </html>
-  )
+  );
 }

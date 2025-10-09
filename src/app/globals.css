@@ -1,58 +1,43 @@
-@tailwind base;
-
-@layer base {
-  body {
-    @apply font-averia bg-white text-gray-900;
-  }
-
-  p, ul, ol {
-    @apply text-gray-600;
-  }
-
-  h1 {
-    @apply font-chivo font-semibold;
-  }
-
-  h2 {
-    @apply font-chivo font-semibold;
-  }
-
-  h3 {
-    @apply font-chivo font-semibold;
-  }
-
-  h4 {
-    @apply font-chivo font-semibold;
-  }
-
-  h5 {
-    @apply font-chivo font-semibold;
-  }
-
-  h6 {
-    @apply font-chivo font-semibold;
-  }
-
-  a {
-    @apply transition-all duration-300;
-  }
-}
-
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
-  --foreground-rgb: 255, 255, 255;
-  --background-start-rgb: 0, 0, 0;
-  --background-end-rgb: 0, 0, 0;
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.desktop-wallpaper {
+  background-image: url("/wallpaper.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  image-rendering: pixelated;
+}
+
+.desktop-taskbar {
+  color: #000000;
+}
+
+.desktop-taskbar .r95_f5whxn0,
+.desktop-taskbar .r95_f5whxn1 {
+  color: #000000;
 }
