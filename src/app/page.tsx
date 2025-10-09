@@ -1,9 +1,9 @@
 "use client";
 
 import type { ComponentType, CSSProperties, MouseEvent, ReactNode, SVGProps } from "react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Frame, List, Modal, TaskBar, TitleBar, useModal } from "@react95/core";
-import { Computer, Folder, Globe, Mail } from "@react95/icons";
+import { Computer, Computer3, Folder, Globe, Mail } from "@react95/icons";
 import AboutWindow from "@/components/windows/AboutWindow";
 import ContactWindow from "@/components/windows/ContactWindow";
 import ExperienceWindow from "@/components/windows/ExperienceWindow";
@@ -44,6 +44,50 @@ type DesktopIconProps = {
 
 const DesktopIcon = ({ app, isSelected, onActivate, onFocus }: DesktopIconProps) => {
   const Icon = app.icon;
+  const imageRef = useRef<HTMLDivElement | null>(null);
+  const maskValueRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    const container = imageRef.current;
+
+    if (!container) {
+      return;
+    }
+
+    const ensureMaskValue = () => {
+      if (maskValueRef.current) {
+        return maskValueRef.current;
+      }
+
+      const svgElement = container.querySelector("svg");
+
+      if (!svgElement || typeof window === "undefined") {
+        return null;
+      }
+
+      try {
+        const serializer = new XMLSerializer();
+        const svgString = serializer.serializeToString(svgElement);
+        const encodedSvg = window.btoa(unescape(encodeURIComponent(svgString)));
+        const maskValue = `url("data:image/svg+xml;base64,${encodedSvg}")`;
+        maskValueRef.current = maskValue;
+        return maskValue;
+      } catch (error) {
+        console.error("Failed to encode icon mask", error);
+        return null;
+      }
+    };
+
+    if (isSelected) {
+      const maskValue = ensureMaskValue();
+
+      if (maskValue) {
+        container.style.setProperty("--desktop-icon-mask", maskValue);
+      }
+    } else {
+      container.style.removeProperty("--desktop-icon-mask");
+    }
+  }, [isSelected]);
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     if (event.detail >= 2) {
@@ -70,7 +114,12 @@ const DesktopIcon = ({ app, isSelected, onActivate, onFocus }: DesktopIconProps)
         }
       }}
     >
-      <Icon variant="32x32_4" className="h-12 w-12" />
+      <div
+        ref={imageRef}
+        className={`desktop-icon-image ${isSelected ? "desktop-icon-image-selected" : ""}`}
+      >
+        <Icon variant="32x32_4" className="h-12 w-12" />
+      </div>
       <span
         className={`block px-[1px] text-center leading-tight ${isSelected
           ? "border border-dotted border-white bg-[#000080] text-white"
@@ -92,6 +141,26 @@ export default function Home() {
   const [pendingWindowAction, setPendingWindowAction] = useState<
     { id: string; type: "restore" | "focus" } | null
   >(null);
+  const openAppsRef = useRef(openApps);
+  const [isShutdownModalOpen, setIsShutdownModalOpen] = useState(false);
+
+  useEffect(() => {
+    openAppsRef.current = openApps;
+  }, [openApps]);
+
+  useEffect(() => {
+    if (!isShutdownModalOpen) {
+      return;
+    }
+
+    const runFocus = () => focus("shutdown-confirm");
+
+    if (typeof window !== "undefined") {
+      window.requestAnimationFrame(runFocus);
+    } else {
+      runFocus();
+    }
+  }, [isShutdownModalOpen, focus]);
 
   const apps = useMemo<DesktopApp[]>(
     () => [
@@ -159,6 +228,35 @@ export default function Home() {
     });
   }, []);
 
+  const openShutdownModal = useCallback(() => {
+    setIsShutdownModalOpen(true);
+  }, []);
+
+  const handleShutdownCancel = useCallback(() => {
+    setIsShutdownModalOpen(false);
+  }, []);
+
+  const handleShutdownConfirm = useCallback(() => {
+    setIsShutdownModalOpen(false);
+
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const attemptClose = () => {
+      window.open("", "_self");
+      window.close();
+    };
+
+    attemptClose();
+
+    window.setTimeout(() => {
+      if (!window.closed) {
+        window.location.href = "about:blank";
+      }
+    }, 300);
+  }, []);
+
   useEffect(() => {
     if (!pendingWindowAction) {
       return;
@@ -170,39 +268,53 @@ export default function Home() {
       restore(id);
     }
 
-    const runFocus = () => focus(id);
+    let frameId: number | null = null;
+
+    const runFocus = () => {
+      if (openAppsRef.current[id]) {
+        focus(id);
+      }
+    };
 
     if (typeof window !== "undefined") {
-      window.requestAnimationFrame(runFocus);
+      frameId = window.requestAnimationFrame(runFocus);
     } else {
       runFocus();
     }
 
     setPendingWindowAction(null);
+
+    return () => {
+      if (frameId !== null && typeof window !== "undefined") {
+        window.cancelAnimationFrame(frameId);
+      }
+    };
   }, [pendingWindowAction, focus, restore]);
 
   const startMenu = useMemo(
     () => (
-      <Frame boxShadow="$out" className="min-w-[220px] bg-[#c6c6c6] p-2 text-[#1f1f1f]">
-        <List className="bg-transparent text-sm">
-          {apps.map((app) => (
-            <List.Item
-              key={app.id}
-              onClick={() => openApp(app.id)}
-              className="flex cursor-pointer items-center gap-2 rounded-sm px-2 py-2 hover:bg-[#000080] hover:text-white"
-            >
-              <app.icon variant="16x16_4" />
-              {app.label}
-            </List.Item>
-          ))}
-          <List.Divider className="border-[#9a9a9a]" />
-          <List.Item className="px-2 py-2 text-xs text-[#505050]">
-            Crafted with Next.js · Export static and deploy anywhere ✨
+      <List width={'200px'}>
+        {apps.map((app) => (
+          <List.Item
+            key={app.id}
+            onClick={() => openApp(app.id)}
+            icon={<app.icon variant="32x32_4" />}
+            className="flex cursor-pointer"
+          >
+            {app.label}
           </List.Item>
-        </List>
-      </Frame>
+        ))}
+        <List.Divider className="border-[#9a9a9a]" />
+        <List.Item
+          onClick={openShutdownModal}
+          icon={<Computer3 variant="32x32_4" />}
+          className="flex cursor-pointer"
+        >
+          Shut Down...
+        </List.Item>
+      </List>
     ),
-    [apps, openApp]
+    [apps, openApp, openShutdownModal]
   );
 
   const ModalComponent = Modal as unknown as ComponentType<DesktopModalProps>;
@@ -227,6 +339,34 @@ export default function Home() {
 
         <TaskBar list={startMenu} className="desktop-taskbar" />
       </div>
+
+      {isShutdownModalOpen ? (
+        <ModalComponent
+          id="shutdown-confirm"
+          title="Shut Down Windows"
+          icon={<Computer variant="16x16_4" />}
+          hasWindowButton
+          style={{ left: 360, top: 240, width: 360 }}
+          buttons={[
+            { value: "Cancel", onClick: handleShutdownCancel },
+            { value: "Shut Down", onClick: handleShutdownConfirm },
+          ]}
+          buttonsAlignment="flex-end"
+          titleBarOptions={<TitleBar.Close onClick={handleShutdownCancel} />}
+        >
+          <Modal.Content className="bg-white text-sm text-slate-800">
+            <div className="flex items-center gap-4 p-4">
+              <Computer variant="32x32_4" />
+              <div className="space-y-2">
+                <p className="leading-snug">Are you sure you want to shut down the computer?</p>
+                <p className="text-xs text-[#000080]">
+                  Make sure you have saved all your work before shutting down.
+                </p>
+              </div>
+            </div>
+          </Modal.Content>
+        </ModalComponent>
+      ) : null}
 
       {apps.map((app, index) =>
         openApps[app.id] ? (

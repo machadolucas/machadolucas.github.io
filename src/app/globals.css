@@ -41,3 +41,47 @@ body {
 .desktop-taskbar .r95_f5whxn1 {
   color: #000000;
 }
+
+.desktop-icon-image {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  overflow: hidden;
+}
+
+.desktop-icon-image svg {
+  width: 100%;
+  height: 100%;
+}
+
+.desktop-icon-image-selected::before,
+.desktop-icon-image-selected::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  -webkit-mask-image: var(--desktop-icon-mask);
+  mask-image: var(--desktop-icon-mask);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  image-rendering: pixelated;
+}
+
+.desktop-icon-image-selected::before {
+  background-color: rgba(0, 0, 128, 0.55);
+  mix-blend-mode: multiply;
+}
+
+.desktop-icon-image-selected::after {
+  background-image: radial-gradient(circle, rgba(0, 0, 180, 0.9) 0%, rgba(0, 0, 180, 0.9) 40%, transparent 45%);
+  background-size: 4px 4px;
+  opacity: 0.65;
+  mix-blend-mode: multiply;
+}
