@@ -170,7 +170,7 @@ export default function Home() {
     () => [
       {
         id: "about",
-        title: "ABOUT_ME.TXT",
+        title: "About Lucas Machado",
         label: "About Lucas",
         icon: Progman24,
         iconVariants: {
@@ -426,8 +426,6 @@ export default function Home() {
             }
             hasWindowButton
             style={getModalStyle(app, index)}
-            buttons={[{ value: "Close", onClick: () => closeApp(app.id) }]}
-            buttonsAlignment="flex-end"
             titleBarOptions={
               <>
                 <Modal.Minimize />

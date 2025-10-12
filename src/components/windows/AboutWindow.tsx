@@ -1,10 +1,11 @@
 import Image from "next/image";
-import { Frame } from "@react95/core";
+import { Button, Frame } from "@react95/core";
+import Link from "next/link";
 
 const AboutWindow = () => (
-    <div className="space-y-4 text-slate-800">
-        <Frame className="p-4" boxShadow="$out">
-            <div className="grid grid-cols-[300px_1fr] gap-4 sm:flex-row sm:items-start">
+    <div className="space-y-2 text-slate-800">
+        <Frame className="bg-[#f0f0f0] p-4" boxShadow="$in">
+            <div className="grid grid-cols-1 sm:grid-cols-[300px_1fr] gap-6 sm:flex-row sm:items-center">
                 <Frame boxShadow="$out">
                     <Image
                         src="/lucas.png"
@@ -15,21 +16,52 @@ const AboutWindow = () => (
                         priority
                     />
                 </Frame>
-                <p className="text-sm leading-relaxed">
-                    Hey there! I&apos;m Lucas Machado, a front-end engineer obsessed with craft,
-                    retro aesthetics, and building resilient web experiences. I blend solid
-                    engineering practices with playful storytelling to turn complex product
-                    ideas into interfaces that feel effortless.
-                </p>
+                <div className="flex flex-col gap-2">
+                    <h3 className="mb-2 text-base font-bold text-[#000080]">Lucas Machado</h3>
+                    <p className="text-sm leading-relaxed">
+                        I lead Software & AI at Demola Global, and my day-to-day is building the software that gives Demola its scale: a digital ecosystem that connects people by interests, forms teams, and turns future-facing briefs into concepts and demos. I&apos;ve designed and built most of this platform myself, end-to-end. It&apos;s become the backbone for how Demola runs co-creation at global scale—linking companies, universities and students to create real impact.
+                    </p>
+                    <div className="pt-4 flex flex-wrap gap-2">
+                        <Link href="https://www.linkedin.com/in/machadolucas/" target="_blank" rel="noreferrer"
+                        >
+                            <Button className="cursor-pointer">
+                                Find me on LinkedIn...
+                            </Button>
+                        </Link>
+                        <Link href="https://www.demola.net" target="_blank" rel="noreferrer">
+                            <Button className="cursor-pointer">
+                                Learn more about Demola...
+                            </Button>
+                        </Link>
+                    </div>
+                </div>
             </div>
         </Frame>
         <Frame className="bg-[#f0f0f0] p-4" boxShadow="$in">
-            <h3 className="mb-2 text-base font-bold text-[#000080]">Highlights</h3>
-            <ul className="list-inside list-disc space-y-1 text-sm">
-                <li>7+ years crafting accessible, performant UI.</li>
-                <li>Deep in Next.js, TypeScript, design systems, and testing.</li>
-                <li>Former agency lead; now shipping playful SaaS experiences.</li>
-            </ul>
+            <div className="grid grid-cols-1 sm:grid-cols-[1fr_400px] gap-6 sm:flex-row sm:items-center">
+                <div className="flex flex-col gap-2">
+                    <p className="text-sm leading-relaxed">
+                        I&apos;m a builder first. I move from idea to shipped product, shaping architecture, data flows and delivery so teams can move fast without drama. With 15+ years across product and back-end, I&apos;ve worked in a lot of different environments and can adapt quickly to whatever the problem demands.
+                    </p>
+                    <p className="text-sm leading-relaxed">
+                        Before Demola, I built secure, high-availability systems in Brazilian fintech at PagSeguro (UOL), where reliability and auditability weren&apos;t optional, and earlier worked on PKI/identity and authentication at E-VAL. Those experiences shaped my standard for dependable software and clear processes. I&apos;ve also contributed university research on team formation, recommender systems and fairness—useful when you&apos;re matching people and shaping projects in a platform like ours.
+                    </p>
+                    <p className="text-sm leading-relaxed">
+                        I studied at top public institutions in Brazil and Finland (USP and Tampere University) and was consistently at the top of my class—earning an academic excellence scholarship—published peer-reviewed papers, and even picked up medals in Brazil&apos;s national mathematics olympiad as a kid. That academic rigor shows up in how I reason about product and systems today.
+                    </p>
+
+                </div>
+                <Frame boxShadow="$out" className='p-1 bg-white'>
+                    <Image
+                        src="/maisa.png"
+                        alt="Lucas giving a talk about artificial intelligence"
+                        width={400}
+                        height={300}
+                        className="h-[300px] w-[400px] object-cover"
+                        priority
+                    />
+                </Frame>
+            </div>
         </Frame>
     </div>
 );
