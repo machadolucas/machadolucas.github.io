@@ -231,7 +231,9 @@ export default function Home() {
         maxWidth: "min(96vw, 880px)",
         minHeight: 260,
         maxHeight: "calc(100vh - 96px)",
-        overflow: "auto",
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: "column",
         resize: "both",
       };
     },
@@ -392,7 +394,10 @@ export default function Home() {
             width: "min(82vw, 420px)",
             minWidth: 280,
             maxWidth: "min(90vw, 520px)",
-            overflow: "auto",
+            maxHeight: "calc(100vh - 120px)",
+            overflow: "hidden",
+            display: "flex",
+            flexDirection: "column",
           }}
           buttons={[
             { value: "Cancel", onClick: handleShutdownCancel },
@@ -401,7 +406,9 @@ export default function Home() {
           buttonsAlignment="flex-end"
           titleBarOptions={<TitleBar.Close onClick={handleShutdownCancel} />}
         >
-          <Modal.Content className="bg-white text-sm text-slate-800">
+          <Modal.Content
+            className="bg-[#c3c7cb] text-sm text-slate-800 flex-1 overflow-y-auto"
+          >
             <div className="flex items-center gap-4 p-4">
               <Computer variant="32x32_4" />
               <div className="space-y-2">
@@ -433,7 +440,9 @@ export default function Home() {
               </>
             }
           >
-            <Modal.Content className="bg-white text-sm text-slate-800">
+            <Modal.Content
+              className="bg-[#c3c7cb] text-sm text-slate-800 flex-1 overflow-y-auto"
+            >
               {app.content}
             </Modal.Content>
           </ModalComponent>
