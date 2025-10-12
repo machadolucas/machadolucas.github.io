@@ -8,6 +8,7 @@ import AboutWindow from "@/components/windows/AboutWindow";
 import ContactWindow from "@/components/windows/ContactWindow";
 import ExperienceWindow from "@/components/windows/ExperienceWindow";
 import ProjectsWindow from "@/components/windows/ProjectsWindow";
+import { projects as projectsData } from "@/data/projects";
 
 type IconComponent = ComponentType<Record<string, unknown>>;
 type DesktopModalProps = {
@@ -37,6 +38,8 @@ type DesktopApp = {
     width?: number;
   };
   content: ReactNode;
+  resizable?: boolean;
+  statusBar?: ReactNode;
 };
 
 type DesktopIconProps = {
@@ -184,7 +187,7 @@ export default function Home() {
         overflow: "hidden",
         display: "flex",
         flexDirection: "column",
-        resize: "both",
+        resize: app.resizable === false ? "none" : "both",
       };
     },
     []
@@ -224,6 +227,8 @@ export default function Home() {
             onOpenContact={() => openApp("contact")}
           />
         ),
+        resizable: true,
+        statusBar: "Ready",
       },
       {
         id: "experience",
@@ -236,6 +241,8 @@ export default function Home() {
         },
         windowPosition: { left: 100, top: 200, width: 720 },
         content: <ExperienceWindow />,
+        resizable: true,
+        statusBar: "Ready",
       },
       {
         id: "projects",
@@ -248,6 +255,8 @@ export default function Home() {
         },
         windowPosition: { left: 100, top: 120, width: 760 },
         content: <ProjectsWindow />,
+        resizable: true,
+        statusBar: `${projectsData.length} object(s)`,
       },
       {
         id: "contact",
@@ -260,6 +269,7 @@ export default function Home() {
         },
         windowPosition: { left: 200, top: 260, width: 400 },
         content: <ContactWindow />,
+        resizable: false,
       },
     ],
     [openApp]
@@ -410,6 +420,7 @@ export default function Home() {
             overflow: "hidden",
             display: "flex",
             flexDirection: "column",
+            resize: "none",
           }}
           buttons={[
             { value: "Cancel", onClick: handleShutdownCancel },
@@ -452,11 +463,16 @@ export default function Home() {
               </>
             }
           >
-            <Modal.Content
-              className="@container bg-[#c3c7cb] text-sm p-0! m-0.5! text-slate-800 flex-1 overflow-y-auto"
-            >
-              {app.content}
-            </Modal.Content>
+            {app.resizable === false ? (
+              <Modal.Content className="@container bg-[#c3c7cb] text-sm text-slate-800 flex-1 overflow-y-auto p-0! m-[3px]!">
+                {app.content}
+              </Modal.Content>
+            ) : (
+              <Modal.Content className="@container bg-[#c3c7cb] text-sm text-slate-800 flex-1 window-shell p-0! m-[3px]!">
+                <div className="window-shell__scroller">{app.content}</div>
+                <div className="window-status-bar">{app.statusBar ?? "Ready"}</div>
+              </Modal.Content>
+            )}
           </ModalComponent>
         ) : null
       )}

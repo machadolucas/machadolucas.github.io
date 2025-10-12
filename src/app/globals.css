@@ -109,11 +109,47 @@ body {
 }
 
 .projects-explorer-icon__image {
+  position: relative;
   width: 48px;
   height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+}
+
+.projects-explorer-icon__image svg {
+  width: 100%;
+  height: 100%;
+}
+
+.projects-explorer-icon__image--selected::before,
+.projects-explorer-icon__image--selected::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  -webkit-mask-image: var(--projects-icon-mask);
+  mask-image: var(--projects-icon-mask);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  image-rendering: pixelated;
+}
+
+.projects-explorer-icon__image--selected::before {
+  background-color: rgba(0, 0, 128, 0.55);
+  mix-blend-mode: multiply;
+}
+
+.projects-explorer-icon__image--selected::after {
+  background-image: radial-gradient(circle, rgba(0, 0, 180, 0.9) 0%, rgba(0, 0, 180, 0.9) 40%, transparent 45%);
+  background-size: 4px 4px;
+  opacity: 0.65;
+  mix-blend-mode: multiply;
 }
 
 .projects-explorer-icon__label {
@@ -153,4 +189,37 @@ body {
 
 .browser-markdown :where(h2:first-child, h3:first-child, h4:first-child) {
   margin-top: 0;
+}
+
+.window-shell {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  gap: 0;
+}
+
+.window-shell__scroller {
+  flex: 1;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.window-shell__scroller>* {
+  width: 100%;
+}
+
+.window-status-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 10px;
+  background: #c3c7cb;
+  border-top: 1px solid #9a9a9a;
+  box-shadow: inset 1px 1px 0 #ffffff;
+  color: #333333;
+  font-size: 12px;
+  line-height: 1.2;
 }
