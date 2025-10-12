@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2025-10-12T14:55:15.798Z",
+  "count": 2,
+  "projects": [
+    {
+      "slug": "holoboard",
+      "title": "HoloBoard: Collaborative Whiteboard",
+      "summary": "CRDT-powered canvas for globally distributed product teams.",
+      "date": "2025-01-24T00:00:00.000Z",
+      "tags": [
+        "Next.js",
+        "CRDT",
+        "WebRTC"
+      ],
+      "fileName": "HoloBoard: Collaborative Whiteboard.md",
+      "contentHtml": "<p>HoloBoard is a multiplayer whiteboard that keeps remote teams ideating in sync, even on constrained networks.</p>\n<h3>Highlights</h3>\n<ul>\n<li>Uses <strong>CRDTs</strong> to ensure conflict-free drawing, even when multiple participants edit the same shapes simultaneously.</li>\n<li>Embeds lightweight <strong>WebRTC</strong> voice rooms so participants can jump into audio without leaving the session.</li>\n<li>Hooks into service webhooks to capture moments of insight automatically into Jira or Linear.</li>\n</ul>\n<h3>My role</h3>\n<p>Led the architecture for real-time data flows, built the media services, and created the plug-in system so third parties can extend the canvas experience.</p>\n",
+      "sourceFile": "holoboard.md"
+    },
+    {
+      "slug": "retrostash",
+      "title": "RetroStash: Personal Archive Platform",
+      "summary": "Offline-first storytelling platform for multimedia collections.",
+      "date": "2024-08-12T00:00:00.000Z",
+      "tags": [
+        "React",
+        "Cloudflare R2",
+        "Zustand"
+      ],
+      "fileName": "RetroStash: Personal Archive Platform.md",
+      "contentHtml": "<p>RetroStash is a personal archive platform designed for indie storytellers who need to curate, annotate, and share multimedia collections without losing ownership of their work.</p>\n<h3>Highlights</h3>\n<ul>\n<li>Built with <strong>React 19</strong> and the <strong>React95</strong> design system to keep everything nostalgic yet modern.</li>\n<li>Synchronizes large media libraries using <strong>Cloudflare R2</strong> with transparent retry logic for unreliable networks.</li>\n<li>Ships with an offline-first caching layer that allows curators to keep browsing and editing even without connectivity.</li>\n</ul>\n<h3>My role</h3>\n<p>I designed the end-to-end architecture, implemented the syncing engine, and shaped the authoring UX so that the platform feels approachable to non-technical creators.</p>\n",
+      "sourceFile": "retrostash.md"
+    }
+  ]
+}

@@ -87,3 +87,70 @@ body {
   opacity: 0.65;
   mix-blend-mode: multiply;
 }
+
+.projects-explorer-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100px;
+  margin: 0;
+  padding: 6px 4px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  color: #000000;
+}
+
+.projects-explorer-icon:focus-visible {
+  outline: 1px dotted #000080;
+  outline-offset: 2px;
+}
+
+.projects-explorer-icon__image {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.projects-explorer-icon__label {
+  font-size: 12px;
+  line-height: 1.2;
+  padding: 2px 4px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: inherit;
+}
+
+.projects-explorer-icon.is-selected .projects-explorer-icon__label {
+  border-color: #000080;
+  background: #000080;
+  color: #ffffff;
+}
+
+.browser-content {
+  border: 1px solid #d4d0c8;
+}
+
+.browser-markdown :where(p) {
+  margin-bottom: 12px;
+}
+
+.browser-markdown :where(ul) {
+  margin-bottom: 12px;
+  padding-left: 20px;
+  list-style: square;
+}
+
+.browser-markdown :where(h2, h3, h4) {
+  color: #000080;
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+.browser-markdown :where(h2:first-child, h3:first-child, h4:first-child) {
+  margin-top: 0;
+}

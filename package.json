@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "node scripts/generate-projects.cjs",
     "dev": "next dev -p 3666 --turbopack",
+    "prebuild": "node scripts/generate-projects.cjs",
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint"
@@ -11,6 +13,8 @@
   "dependencies": {
     "@react95/core": "^9.6.2",
     "@react95/icons": "^2.2.0",
+    "gray-matter": "^4.0.3",
+    "marked": "^16.4.0",
     "next": "15.5.4",
     "react": "19.2.0",
     "react-dom": "19.2.0"

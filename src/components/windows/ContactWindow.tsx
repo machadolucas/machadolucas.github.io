@@ -1,4 +1,4 @@
-import { Button, Fieldset, Frame } from "@react95/core";
+import { Fieldset } from "@react95/core";
 
 const ContactWindow = () => (
     <div className="space-y-4 p-3 text-slate-800">

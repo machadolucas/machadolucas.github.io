@@ -3,7 +3,7 @@
 import type { ComponentType, CSSProperties, MouseEvent, ReactNode } from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { List, Modal, TaskBar, TitleBar, useModal } from "@react95/core";
-import { Computer, Computer3, Desk100, Globe, Progman24, Wmsui323926 } from "@react95/icons";
+import { Computer, Computer3, Desk100, Folder, Progman24, Wmsui323926 } from "@react95/icons";
 import AboutWindow from "@/components/windows/AboutWindow";
 import ContactWindow from "@/components/windows/ContactWindow";
 import ExperienceWindow from "@/components/windows/ExperienceWindow";
@@ -216,7 +216,7 @@ export default function Home() {
         iconVariants: {
           large: "32x32_4",
         },
-        windowPosition: { left: 100, top: 140, width: 620 },
+        windowPosition: { left: 100, top: 140, width: 720 },
         content: (
           <AboutWindow
             onOpenProfessional={() => openApp("experience")}
@@ -239,9 +239,9 @@ export default function Home() {
       },
       {
         id: "projects",
-        title: "PORTFOLIO.W95",
+        title: "Projects",
         label: "Projects",
-        icon: Globe,
+        icon: Folder,
         iconVariants: {
           large: "32x32_4",
           small: "16x16_4",
@@ -453,7 +453,7 @@ export default function Home() {
             }
           >
             <Modal.Content
-              className="@container bg-[#c3c7cb] text-sm mb-[16px] text-slate-800 flex-1 overflow-y-auto"
+              className="@container bg-[#c3c7cb] text-sm p-0! m-0.5! text-slate-800 flex-1 overflow-y-auto"
             >
               {app.content}
             </Modal.Content>
