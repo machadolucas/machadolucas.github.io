@@ -3,12 +3,29 @@
 import type { ComponentType, CSSProperties, MouseEvent, ReactNode } from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { List, Modal, TaskBar, TitleBar, useModal } from "@react95/core";
-import { Computer, Computer3, Desk100, Folder, Progman24, Wmsui323926 } from "@react95/icons";
+import { Computer, Computer3, Desk100, Folder, Progman24, Wab321016, Wmsui323926 } from "@react95/icons";
 import AboutWindow from "@/components/windows/AboutWindow";
 import ContactWindow from "@/components/windows/ContactWindow";
 import ExperienceWindow from "@/components/windows/ExperienceWindow";
 import ProjectsWindow from "@/components/windows/ProjectsWindow";
-import { projects as projectsData } from "@/data/projects";
+import HomeAutomationWindow from "@/components/windows/HomeAutomationWindow";
+import ExplorerDetailModal from "@/components/windows/ExplorerDetailModal";
+import { projects } from "@/data/projects";
+import { homeAutomation } from "@/data/homeAutomation";
+import type { ExplorerFile } from "@/types/explorer";
+
+const explorerCollections = {
+  projects: {
+    label: "Projects",
+    items: projects,
+  },
+  homeAutomation: {
+    label: "Home Automation",
+    items: homeAutomation,
+  },
+} as const;
+
+type ExplorerCollectionKey = keyof typeof explorerCollections;
 
 type IconComponent = ComponentType<Record<string, unknown>>;
 type DesktopModalProps = {
@@ -153,6 +170,10 @@ export default function Home() {
   >(null);
   const openAppsRef = useRef(openApps);
   const [isShutdownModalOpen, setIsShutdownModalOpen] = useState(false);
+  const [activeExplorerDetail, setActiveExplorerDetail] = useState<{
+    collection: ExplorerCollectionKey;
+    slug: string;
+  } | null>(null);
 
   useEffect(() => {
     openAppsRef.current = openApps;
@@ -171,6 +192,22 @@ export default function Home() {
       runFocus();
     }
   }, [isShutdownModalOpen, focus]);
+
+  useEffect(() => {
+    if (!activeExplorerDetail) {
+      return;
+    }
+
+    const modalId = `explorer-${activeExplorerDetail.slug}`;
+
+    const runFocus = () => focus(modalId);
+
+    if (typeof window !== "undefined") {
+      window.requestAnimationFrame(runFocus);
+    } else {
+      runFocus();
+    }
+  }, [activeExplorerDetail, focus]);
 
   const getModalStyle = useCallback(
     (app: DesktopApp, index: number): CSSProperties => {
@@ -208,6 +245,18 @@ export default function Home() {
     },
     [openApps]
   );
+
+  const handleProjectsOpen = useCallback((item: ExplorerFile) => {
+    setActiveExplorerDetail({ collection: "projects", slug: item.slug });
+  }, []);
+
+  const handleHomeAutomationOpen = useCallback((item: ExplorerFile) => {
+    setActiveExplorerDetail({ collection: "homeAutomation", slug: item.slug });
+  }, []);
+
+  const handleExplorerDetailClose = useCallback(() => {
+    setActiveExplorerDetail(null);
+  }, []);
 
   const apps = useMemo<DesktopApp[]>(
     () => [
@@ -254,9 +303,24 @@ export default function Home() {
           small: "16x16_4",
         },
         windowPosition: { left: 100, top: 120, width: 760 },
-        content: <ProjectsWindow />,
+        content: <ProjectsWindow onProjectOpen={handleProjectsOpen} />,
         resizable: true,
-        statusBar: `${projectsData.length} object(s)`,
+        statusBar: `${projects.length} object(s)`,
+      },
+      {
+        id: "home-automation",
+        title: "Home Automation",
+        label: "Home Automation",
+        icon: Wab321016,
+        iconVariants: {
+          large: "32x32_4",
+        },
+        windowPosition: { left: 140, top: 160, width: 760 },
+        content: (
+          <HomeAutomationWindow onEntryOpen={handleHomeAutomationOpen} />
+        ),
+        resizable: true,
+        statusBar: `${homeAutomation.length} object(s)`,
       },
       {
         id: "contact",
@@ -272,7 +336,7 @@ export default function Home() {
         resizable: false,
       },
     ],
-    [openApp]
+    [openApp, handleProjectsOpen, handleHomeAutomationOpen]
   );
 
   const closeApp = useCallback((id: string) => {
@@ -378,6 +442,16 @@ export default function Home() {
     [apps, openApp, openShutdownModal]
   );
 
+  const activeExplorerItem = activeExplorerDetail
+    ? explorerCollections[activeExplorerDetail.collection].items.find(
+      (entry) => entry.slug === activeExplorerDetail.slug
+    ) ?? null
+    : null;
+
+  const activeExplorerCollectionLabel = activeExplorerDetail
+    ? explorerCollections[activeExplorerDetail.collection].label
+    : null;
+
   const ModalComponent = Modal as unknown as ComponentType<DesktopModalProps>;
 
   return (
@@ -476,6 +550,14 @@ export default function Home() {
           </ModalComponent>
         ) : null
       )}
+
+      {activeExplorerItem && activeExplorerCollectionLabel ? (
+        <ExplorerDetailModal
+          item={activeExplorerItem}
+          collectionLabel={activeExplorerCollectionLabel}
+          onClose={handleExplorerDetailClose}
+        />
+      ) : null}
     </main>
   );
 }

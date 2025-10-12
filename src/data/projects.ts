@@ -1,7 +1,7 @@
 import projectsManifest from "@/generated/projects.json";
+import type { ExplorerFile } from "@/types/explorer";
 
-type ProjectsManifest = typeof projectsManifest;
-export type ProjectFile = ProjectsManifest["projects"][number];
+export type ProjectFile = ExplorerFile;
 
 export const projects: ProjectFile[] = projectsManifest.projects;
 

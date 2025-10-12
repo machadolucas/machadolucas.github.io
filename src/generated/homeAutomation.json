@@ -1,0 +1,34 @@
+{
+  "generatedAt": "2025-10-12T20:50:02.686Z",
+  "count": 2,
+  "homeAutomation": [
+    {
+      "slug": "security-sentinel",
+      "title": "Security Sentinel",
+      "summary": "Edge-powered monitoring system that fuses camera events with environmental sensors.",
+      "date": "2025-02-14T00:00:00.000Z",
+      "tags": [
+        "Edge AI",
+        "MQTT",
+        "Rust"
+      ],
+      "fileName": "Security Sentinel.md",
+      "contentHtml": "<p>Security Sentinel keeps homes protected by correlating video analytics with door, window, and motion sensors for smarter alerts.</p>\n<h3>Highlights</h3>\n<ul>\n<li>Runs lightweight ML models on the edge so alerts arrive even when the internet is down.</li>\n<li>Publishes normalized MQTT topics so third-party dashboards can subscribe without custom adapters.</li>\n<li>Uses probabilistic scoring to filter out false positives from pets or HVAC cycles.</li>\n</ul>\n<h3>My role</h3>\n<p>Implemented the video inference pipeline, wrote the event correlation engine, and deployed the monitoring stack on containerized edge devices.</p>\n",
+      "sourceFile": "security-sentinel.md"
+    },
+    {
+      "slug": "smart-lighting-hub",
+      "title": "Smart Lighting Hub",
+      "summary": "Unified control surface that syncs lighting scenes across brands and voice assistants.",
+      "date": "2024-11-05T00:00:00.000Z",
+      "tags": [
+        "Zigbee",
+        "Home Assistant",
+        "TypeScript"
+      ],
+      "fileName": "Smart Lighting Hub.md",
+      "contentHtml": "<p>The Smart Lighting Hub bridges Zigbee, Wi-Fi, and Thread networks so households can choreograph lighting scenes without worrying about vendor lock-in.</p>\n<h3>Highlights</h3>\n<ul>\n<li>Normalizes device telemetry into a single schema, then streams it into Home Assistant for automations.</li>\n<li>Ships with a TypeScript SDK so makers can script &quot;if this then that&quot; routines with plain functions.</li>\n<li>Includes an adaptive lighting engine that maps circadian-friendly color temperatures throughout the day.</li>\n</ul>\n<h3>My role</h3>\n<p>Designed the device discovery pipeline, built the SDK, and tuned the adaptive lighting algorithm for natural light transitions.</p>\n",
+      "sourceFile": "smart-lighting-hub.md"
+    }
+  ]
+}
