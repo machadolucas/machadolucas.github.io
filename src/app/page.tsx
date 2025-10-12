@@ -107,6 +107,9 @@ const DesktopIcon = ({ app, isSelected, onActivate, onFocus }: DesktopIconProps)
       className="flex w-[84px] flex-col items-center gap-2 text-sm text-white focus:outline-none"
       onClick={handleClick}
       onDoubleClick={onActivate}
+      onMouseDown={(event) => {
+        event.stopPropagation();
+      }}
       onTouchEnd={(event) => {
         event.preventDefault();
         onActivate();
@@ -365,7 +368,10 @@ export default function Home() {
     <main className="relative min-h-screen w-full overflow-hidden">
       <div className="desktop-wallpaper absolute inset-0" />
       <div className="relative flex min-h-screen flex-col">
-        <section className="flex-1 p-6">
+        <section
+          className="flex-1 p-6"
+          onMouseDown={() => setSelectedIcon(null)}
+        >
           <div className="flex w-max flex-col items-center gap-6">
             {apps.map((app) => (
               <DesktopIcon
@@ -385,7 +391,7 @@ export default function Home() {
       {isShutdownModalOpen ? (
         <ModalComponent
           id="shutdown-confirm"
-          title="Shut Down Windows"
+          title="Shut Down..."
           icon={<Computer variant="16x16_4" />}
           hasWindowButton
           style={{
@@ -407,7 +413,7 @@ export default function Home() {
           titleBarOptions={<TitleBar.Close onClick={handleShutdownCancel} />}
         >
           <Modal.Content
-            className="bg-[#c3c7cb] text-sm text-slate-800 flex-1 overflow-y-auto"
+            className="@container bg-[#c3c7cb] text-sm text-slate-800 flex-1 overflow-y-auto"
           >
             <div className="flex items-center gap-4 p-4">
               <Computer variant="32x32_4" />
@@ -441,7 +447,7 @@ export default function Home() {
             }
           >
             <Modal.Content
-              className="bg-[#c3c7cb] text-sm text-slate-800 flex-1 overflow-y-auto"
+              className="@container bg-[#c3c7cb] text-sm mb-[16px] text-slate-800 flex-1 overflow-y-auto"
             >
               {app.content}
             </Modal.Content>
