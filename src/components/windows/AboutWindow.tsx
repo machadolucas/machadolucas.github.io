@@ -2,7 +2,13 @@ import Image from "next/image";
 import { Button, Frame } from "@react95/core";
 import Link from "next/link";
 
-const AboutWindow = () => (
+type AboutWindowProps = {
+    onOpenProfessional: () => void;
+    onOpenProjects: () => void;
+    onOpenContact: () => void;
+};
+
+const AboutWindow = ({ onOpenProfessional, onOpenProjects, onOpenContact }: AboutWindowProps) => (
     <div className="space-y-2 text-slate-800">
         <Frame className="bg-[#f0f0f0] p-4" boxShadow="$in">
             <div className="grid grid-cols-1 @[600px]:grid-cols-[300px_1fr] gap-6 items-center">
@@ -77,13 +83,13 @@ const AboutWindow = () => (
                     rigor shows up in how I reason about product and systems today.
                 </p>
                 <div className="pt-4 flex flex-wrap gap-2">
-                    <Button className="cursor-pointer">
+                    <Button className="cursor-pointer" onClick={onOpenProfessional}>
                         Read more about my career
                     </Button>
-                    <Button className="cursor-pointer">
+                    <Button className="cursor-pointer" onClick={onOpenProjects}>
                         Check out some of my projects
                     </Button>
-                    <Button className="cursor-pointer">
+                    <Button className="cursor-pointer" onClick={onOpenContact}>
                         Get in touch
                     </Button>
                 </div>

@@ -169,59 +169,6 @@ export default function Home() {
     }
   }, [isShutdownModalOpen, focus]);
 
-  const apps = useMemo<DesktopApp[]>(
-    () => [
-      {
-        id: "about",
-        title: "About Lucas Machado",
-        label: "About Lucas",
-        icon: Progman24,
-        iconVariants: {
-          large: "32x32_4",
-        },
-        windowPosition: { left: 160, top: 140, width: 620 },
-        content: <AboutWindow />,
-      },
-      {
-        id: "experience",
-        title: "WORKLOG.EXE",
-        label: "Professional",
-        icon: Desk100,
-        iconVariants: {
-          large: "32x32_4",
-          small: "16x16_4",
-        },
-        windowPosition: { left: 220, top: 200, width: 720 },
-        content: <ExperienceWindow />,
-      },
-      {
-        id: "projects",
-        title: "PORTFOLIO.W95",
-        label: "Projects",
-        icon: Globe,
-        iconVariants: {
-          large: "32x32_4",
-          small: "16x16_4",
-        },
-        windowPosition: { left: 260, top: 120, width: 760 },
-        content: <ProjectsWindow />,
-      },
-      {
-        id: "contact",
-        title: "CONTACT.ME",
-        label: "Contact",
-        icon: Wmsui323926,
-        iconVariants: {
-          large: "32x32_4",
-          small: "16x16_4",
-        },
-        windowPosition: { left: 200, top: 260, width: 520 },
-        content: <ContactWindow />,
-      },
-    ],
-    []
-  );
-
   const getModalStyle = useCallback(
     (app: DesktopApp, index: number): CSSProperties => {
       const baseWidth = app.windowPosition.width ?? 640;
@@ -257,6 +204,65 @@ export default function Home() {
       }
     },
     [openApps]
+  );
+
+  const apps = useMemo<DesktopApp[]>(
+    () => [
+      {
+        id: "about",
+        title: "About Lucas Machado",
+        label: "About Lucas",
+        icon: Progman24,
+        iconVariants: {
+          large: "32x32_4",
+        },
+        windowPosition: { left: 100, top: 140, width: 620 },
+        content: (
+          <AboutWindow
+            onOpenProfessional={() => openApp("experience")}
+            onOpenProjects={() => openApp("projects")}
+            onOpenContact={() => openApp("contact")}
+          />
+        ),
+      },
+      {
+        id: "experience",
+        title: "WORKLOG.EXE",
+        label: "Professional",
+        icon: Desk100,
+        iconVariants: {
+          large: "32x32_4",
+          small: "16x16_4",
+        },
+        windowPosition: { left: 100, top: 200, width: 720 },
+        content: <ExperienceWindow />,
+      },
+      {
+        id: "projects",
+        title: "PORTFOLIO.W95",
+        label: "Projects",
+        icon: Globe,
+        iconVariants: {
+          large: "32x32_4",
+          small: "16x16_4",
+        },
+        windowPosition: { left: 100, top: 120, width: 760 },
+        content: <ProjectsWindow />,
+      },
+      {
+        id: "contact",
+        title: "Contact me",
+        label: "Contact",
+        icon: Wmsui323926,
+        iconVariants: {
+          large: "32x32_4",
+          small: "16x16_4",
+        },
+        windowPosition: { left: 200, top: 260, width: 400 },
+        content: <ContactWindow />,
+      },
+    ],
+    [openApp]
   );
 
   const closeApp = useCallback((id: string) => {
