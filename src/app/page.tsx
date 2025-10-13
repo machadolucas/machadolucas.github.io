@@ -57,6 +57,19 @@ export default function Home() {
     slug: string;
   } | null>(null);
 
+  const playSound = useCallback((src: string) => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    try {
+      const audio = new Audio(src);
+      void audio.play();
+    } catch (error) {
+      console.error(`Failed to play sound: ${src}`, error);
+    }
+  }, []);
+
   useEffect(() => {
     openAppsRef.current = openApps;
   }, [openApps]);
@@ -90,6 +103,24 @@ export default function Home() {
       runFocus();
     }
   }, [activeExplorerDetail, focus]);
+
+  const isAboutOpen = Boolean(openApps.about);
+
+  useEffect(() => {
+    if (!isAboutOpen) {
+      return;
+    }
+
+    playSound("/TADA.wav");
+  }, [isAboutOpen, playSound]);
+
+  useEffect(() => {
+    if (!isShutdownModalOpen) {
+      return;
+    }
+
+    playSound("/CHORD.wav");
+  }, [isShutdownModalOpen, playSound]);
 
   const getModalStyle = useCallback(
     (app: DesktopApp, index: number): CSSProperties => {
