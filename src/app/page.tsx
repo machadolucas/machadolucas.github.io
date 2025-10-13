@@ -189,7 +189,7 @@ export default function Home() {
       },
       {
         id: "experience",
-        title: "WORKLOG.EXE",
+        title: "Professional information",
         label: "Professional",
         icon: Desk100,
         iconVariants: {
@@ -445,11 +445,11 @@ export default function Home() {
             }
           >
             {app.resizable === false ? (
-              <Modal.Content className="@container bg-[#c3c7cb] text-sm text-slate-800 flex-1 overflow-y-auto p-0! m-[3px]!">
+              <Modal.Content className="@container bg-[#c3c7cb] text-sm text-slate-800 flex-1 overflow-y-auto p-0! m-[2px]!">
                 {app.content}
               </Modal.Content>
             ) : (
-              <Modal.Content className="@container bg-[#c3c7cb] text-sm text-slate-800 flex-1 window-shell p-0! m-[3px]!">
+              <Modal.Content className="@container bg-[#c3c7cb] text-sm text-slate-800 flex-1 window-shell p-0! m-[2px]!">
                 <div className="window-shell__scroller">{app.content}</div>
                 <div className="window-status-bar">{app.statusBar ?? "Ready"}</div>
               </Modal.Content>
