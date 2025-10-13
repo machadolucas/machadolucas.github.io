@@ -28,7 +28,7 @@ body {
 }
 
 .desktop-wallpaper {
-  background-image: url("/wallpaper.jpg");
+  background-image: url("/tampere.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -101,6 +101,7 @@ body {
   cursor: pointer;
   text-align: center;
   color: #000000;
+  image-rendering: pixelated;
 }
 
 .projects-explorer-icon:focus-visible {
@@ -154,15 +155,15 @@ body {
 
 .projects-explorer-icon__label {
   font-size: 12px;
-  line-height: 1.2;
-  padding: 2px 4px;
+  line-height: 1.25;
+  padding: 0px 1px;
   border: 1px solid transparent;
   background: transparent;
   color: inherit;
 }
 
 .projects-explorer-icon.is-selected .projects-explorer-icon__label {
-  border-color: #000080;
+  border: 1px dotted #ffffff;
   background: #000080;
   color: #ffffff;
 }

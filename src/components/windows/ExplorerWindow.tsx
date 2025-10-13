@@ -98,7 +98,7 @@ const ExplorerWindow = ({
         >
             <Frame boxShadow="$in" className="flex-1 overflow-auto bg-white p-3">
                 {sortedItems.length ? (
-                    <div className="flex flex-wrap gap-x-8 gap-y-6">
+                    <div className="flex flex-wrap gap-2">
                         {sortedItems.map((item) => (
                             <ExplorerIcon
                                 key={item.slug}
