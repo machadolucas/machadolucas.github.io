@@ -35,6 +35,7 @@ type DesktopModalProps = {
   icon?: ReactNode;
   hasWindowButton?: boolean;
   style?: CSSProperties;
+  className?: string;
   buttons?: Array<{ value: string; onClick: () => void }>;
   buttonsAlignment?: CSSProperties["justifyContent"];
   titleBarOptions?: ReactNode;
@@ -44,7 +45,7 @@ type DesktopModalProps = {
 const windowOffsets = [0, 40, 80, 120];
 
 export default function Home() {
-  const { focus, restore } = useModal();
+  const { focus, restore, minimize } = useModal();
   const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
   const [openApps, setOpenApps] = useState<Record<string, boolean>>({});
   const [pendingWindowAction, setPendingWindowAction] = useState<
@@ -69,10 +70,6 @@ export default function Home() {
       console.error(`Failed to play sound: ${src}`, error);
     }
   }, []);
-
-  useEffect(() => {
-    openAppsRef.current = openApps;
-  }, [openApps]);
 
   useEffect(() => {
     if (!isShutdownModalOpen) {
@@ -135,8 +132,6 @@ export default function Home() {
         minHeight: 260,
         maxHeight: "calc(100vh - 96px)",
         overflow: "hidden",
-        display: "flex",
-        flexDirection: "column",
         resize: app.resizable === false ? "none" : "both",
       };
     },
@@ -405,8 +400,6 @@ export default function Home() {
             maxWidth: "min(90vw, 520px)",
             maxHeight: "calc(100vh - 120px)",
             overflow: "hidden",
-            display: "flex",
-            flexDirection: "column",
             resize: "none",
           }}
           buttons={[
@@ -443,9 +436,10 @@ export default function Home() {
             }
             hasWindowButton
             style={getModalStyle(app, index)}
+            className="flex flex-col"
             titleBarOptions={
               <>
-                <Modal.Minimize />
+                <Modal.Minimize onClick={() => minimize(app.id)} />
                 <TitleBar.Close onClick={() => closeApp(app.id)} />
               </>
             }

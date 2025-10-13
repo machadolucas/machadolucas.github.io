@@ -218,8 +218,10 @@ body {
   gap: 12px;
   padding: 6px 10px;
   background: #c3c7cb;
-  border-top: 1px solid #9a9a9a;
-  box-shadow: inset 1px 1px 0 #ffffff;
+  -color: #ffffff;
+  box-shadow:
+    inset 1px 1px 0 #9a9a9a,
+    inset -1px -1px 0 #ffffff;
   color: #333333;
   font-size: 12px;
   line-height: 1.2;

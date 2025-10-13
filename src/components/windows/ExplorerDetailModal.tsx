@@ -13,6 +13,7 @@ type ExplorerModalProps = {
     icon?: ReactNode;
     hasWindowButton?: boolean;
     style?: CSSProperties;
+    className?: string;
     buttons?: Array<{ value: string; onClick: () => void }>;
     buttonsAlignment?: CSSProperties["justifyContent"];
     titleBarOptions?: ReactNode;
@@ -49,10 +50,9 @@ const ExplorerDetailModal = ({
                 minWidth: 360,
                 maxHeight: "calc(100vh - 120px)",
                 overflow: "hidden",
-                display: "flex",
-                flexDirection: "column",
                 resize: "both",
             }}
+            className="flex flex-col"
             titleBarOptions={
                 <>
                     <Modal.Minimize />
