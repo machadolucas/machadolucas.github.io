@@ -3,7 +3,7 @@
 import type { ComponentType, CSSProperties, ReactNode } from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { List, Modal, TaskBar, TitleBar, useModal } from "@react95/core";
-import { Computer, Computer3, Desk100, Folder, MediaCd, Mplayer13, Progman24, Wab321016, Wmsui323926 } from "@react95/icons";
+import { Computer, Computer3, Desk100, Folder, MediaCd, Progman24, Wab321016, Wmsui323926 } from "@react95/icons";
 import DesktopIcon from "@/components/desktop/DesktopIcon";
 import type { DesktopApp } from "@/components/desktop/types";
 import AboutWindow from "@/components/windows/AboutWindow";
@@ -197,7 +197,7 @@ export default function Home() {
           large: "32x32_4",
           small: "16x16_4",
         },
-        windowPosition: { left: 100, top: 200, width: 720 },
+        windowPosition: { left: 100, top: 100, width: 720 },
         content: <ExperienceWindow />,
         resizable: true,
         statusBar: "Ready",
