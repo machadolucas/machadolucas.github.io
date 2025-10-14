@@ -3,7 +3,7 @@
 import type { ComponentType, CSSProperties, ReactNode } from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { List, Modal, TaskBar, TitleBar, useModal } from "@react95/core";
-import { Computer, Computer3, Desk100, Folder, Progman24, Wab321016, Wmsui323926 } from "@react95/icons";
+import { Computer, Computer3, Desk100, Folder, MediaCd, Mplayer13, Progman24, Wab321016, Wmsui323926 } from "@react95/icons";
 import DesktopIcon from "@/components/desktop/DesktopIcon";
 import type { DesktopApp } from "@/components/desktop/types";
 import AboutWindow from "@/components/windows/AboutWindow";
@@ -11,6 +11,7 @@ import ContactWindow from "@/components/windows/ContactWindow";
 import ExperienceWindow from "@/components/windows/ExperienceWindow";
 import ProjectsWindow from "@/components/windows/ProjectsWindow";
 import HomeAutomationWindow from "@/components/windows/HomeAutomationWindow";
+import FavoriteSongsWindow from "@/components/windows/FavoriteSongsWindow";
 import ExplorerDetailModal from "@/components/windows/ExplorerDetailModal";
 import { projects } from "@/data/projects";
 import { homeAutomation } from "@/data/homeAutomation";
@@ -229,6 +230,20 @@ export default function Home() {
         ),
         resizable: true,
         statusBar: `${homeAutomation.length} object(s)`,
+      },
+      {
+        id: "favorite-songs",
+        title: "Favorite songs",
+        label: "Favorite songs",
+        icon: MediaCd,
+        iconVariants: {
+          large: "32x32_4",
+          small: "16x16_4",
+        },
+        windowPosition: { left: 180, top: 180, width: 335 },
+        content: <FavoriteSongsWindow />,
+        resizable: true,
+        statusBar: "Ready",
       },
       {
         id: "contact",
