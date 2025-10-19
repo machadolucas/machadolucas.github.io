@@ -1,4 +1,4 @@
-import type { ComponentType, CSSProperties, ReactNode } from "react";
+import type { ComponentType, CSSProperties, ReactNode, MouseEvent as ReactMouseEvent } from "react";
 import { Frame, Modal, TitleBar } from "@react95/core";
 import { FileText, Globe } from "@react95/icons";
 import type { ExplorerFile } from "@/types/explorer";
@@ -30,6 +30,51 @@ type ExplorerDetailModalProps = {
 
 const ModalComponent = Modal as unknown as ComponentType<ExplorerModalProps>;
 
+type TitleBarButtonHandlers = {
+    onMouseDown?: (event: ReactMouseEvent<HTMLButtonElement>) => void;
+    onMouseUp?: (event: ReactMouseEvent<HTMLButtonElement>) => void;
+    onMouseLeave?: (event: ReactMouseEvent<HTMLButtonElement>) => void;
+    onClick: (event: ReactMouseEvent<HTMLButtonElement>) => void;
+};
+
+const createReleaseHandlers = (action: () => void): TitleBarButtonHandlers => {
+    let shouldClose = false;
+
+    return {
+        onMouseDown: (event) => {
+            if (event.button !== 0) {
+                shouldClose = false;
+                return;
+            }
+
+            shouldClose = true;
+        },
+        onMouseLeave: () => {
+            shouldClose = false;
+        },
+        onMouseUp: (event) => {
+            if (!shouldClose || event.button !== 0) {
+                return;
+            }
+
+            shouldClose = false;
+            event.preventDefault();
+            action();
+        },
+        onClick: (event) => {
+            if (event.detail === 0) {
+                event.preventDefault();
+                action();
+                return;
+            }
+
+            if (shouldClose) {
+                event.preventDefault();
+            }
+        },
+    };
+};
+
 const ExplorerDetailModal = ({
     item,
     collectionLabel,
@@ -59,8 +104,7 @@ const ExplorerDetailModal = ({
             titleBarOptions={
                 <>
                     {responsiveHref ? (
-                        <button
-                            type="button"
+                        <TitleBar.Option
                             onClick={() => {
                                 if (typeof window === "undefined") {
                                     return;
@@ -74,14 +118,14 @@ const ExplorerDetailModal = ({
                             }}
                             title="Open responsive view in a new tab"
                             aria-label="Open responsive view in a new tab"
-                            className="ml-1 flex h-6 w-6 items-center justify-center rounded-sm border border-[#7f7f7f] bg-[#e5e5e5] text-[#000080] shadow-[inset_1px_1px_0_#ffffff,inset_-1px_-1px_0_#7f7f7f] transition hover:bg-[#f8f8f8] focus:outline-none focus-visible:ring-1 focus-visible:ring-[#000080]"
+                            className="ml-1"
                         >
                             <Globe variant="16x16_4" />
                             <span className="sr-only">Open responsive view</span>
-                        </button>
+                        </TitleBar.Option>
                     ) : null}
                     <Modal.Minimize />
-                    <TitleBar.Close onClick={onClose} />
+                    <TitleBar.Close {...createReleaseHandlers(onClose)} />
                 </>
             }
         >

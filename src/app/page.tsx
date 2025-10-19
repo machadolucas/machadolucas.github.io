@@ -1,9 +1,14 @@
 "use client";
 
-import type { ComponentType, CSSProperties, ReactNode } from "react";
+import type {
+  ComponentType,
+  CSSProperties,
+  ReactNode,
+  MouseEvent as ReactMouseEvent,
+} from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { List, Modal, TaskBar, TitleBar, useModal } from "@react95/core";
-import { Computer, Computer3, Desk100, Folder, Globe, MediaCd, Progman24, Wab321016, Wmsui323926 } from "@react95/icons";
+import { Computer, Computer3, Desk100, Folder, Globe, MediaCd, Progman24, Shdocvw257, Wab321016, Wmsui323926 } from "@react95/icons";
 import DesktopIcon from "@/components/desktop/DesktopIcon";
 import type { DesktopApp } from "@/components/desktop/types";
 import AboutWindow from "@/components/windows/AboutWindow";
@@ -45,6 +50,51 @@ type DesktopModalProps = {
 
 const windowOffsets = [0, 40, 80, 120];
 
+type TitleBarButtonHandlers = {
+  onMouseDown?: (event: ReactMouseEvent<HTMLButtonElement>) => void;
+  onMouseUp?: (event: ReactMouseEvent<HTMLButtonElement>) => void;
+  onMouseLeave?: (event: ReactMouseEvent<HTMLButtonElement>) => void;
+  onClick: (event: ReactMouseEvent<HTMLButtonElement>) => void;
+};
+
+const createTitleBarReleaseHandlers = (action: () => void): TitleBarButtonHandlers => {
+  let shouldClose = false;
+
+  return {
+    onMouseDown: (event) => {
+      if (event.button !== 0) {
+        shouldClose = false;
+        return;
+      }
+
+      shouldClose = true;
+    },
+    onMouseLeave: () => {
+      shouldClose = false;
+    },
+    onMouseUp: (event) => {
+      if (!shouldClose || event.button !== 0) {
+        return;
+      }
+
+      shouldClose = false;
+      event.preventDefault();
+      action();
+    },
+    onClick: (event) => {
+      if (event.detail === 0) {
+        event.preventDefault();
+        action();
+        return;
+      }
+
+      if (shouldClose) {
+        event.preventDefault();
+      }
+    },
+  };
+};
+
 export default function Home() {
   const { focus, restore, minimize } = useModal();
   const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
@@ -58,6 +108,10 @@ export default function Home() {
     collection: ExplorerCollectionKey;
     slug: string;
   } | null>(null);
+
+  useEffect(() => {
+    openAppsRef.current = openApps;
+  }, [openApps]);
 
   const playSound = useCallback((src: string) => {
     if (typeof window === "undefined") {
@@ -149,7 +203,11 @@ export default function Home() {
       });
 
       if (!alreadyOpen) {
-        setOpenApps((prev) => ({ ...prev, [id]: true }));
+        setOpenApps((prev) => {
+          const nextState = { ...prev, [id]: true };
+          openAppsRef.current = nextState;
+          return nextState;
+        });
       }
     },
     [openApps]
@@ -287,6 +345,7 @@ export default function Home() {
 
       const nextState = { ...prev };
       delete nextState[id];
+      openAppsRef.current = nextState;
       return nextState;
     });
   }, []);
@@ -331,16 +390,19 @@ export default function Home() {
       restore(id);
     }
 
-    let frameId: number | null = null;
-
     const runFocus = () => {
       if (openAppsRef.current[id]) {
         focus(id);
       }
     };
 
+    let firstFrame: number | null = null;
+    let secondFrame: number | null = null;
+
     if (typeof window !== "undefined") {
-      frameId = window.requestAnimationFrame(runFocus);
+      firstFrame = window.requestAnimationFrame(() => {
+        secondFrame = window.requestAnimationFrame(runFocus);
+      });
     } else {
       runFocus();
     }
@@ -348,8 +410,16 @@ export default function Home() {
     setPendingWindowAction(null);
 
     return () => {
-      if (frameId !== null && typeof window !== "undefined") {
-        window.cancelAnimationFrame(frameId);
+      if (typeof window === "undefined") {
+        return;
+      }
+
+      if (firstFrame !== null) {
+        window.cancelAnimationFrame(firstFrame);
+      }
+
+      if (secondFrame !== null) {
+        window.cancelAnimationFrame(secondFrame);
       }
     };
   }, [pendingWindowAction, focus, restore]);
@@ -445,7 +515,7 @@ export default function Home() {
             { value: "Shut Down", onClick: handleShutdownConfirm },
           ]}
           buttonsAlignment="flex-end"
-          titleBarOptions={<TitleBar.Close onClick={handleShutdownCancel} />}
+          titleBarOptions={<TitleBar.Close {...createTitleBarReleaseHandlers(handleShutdownCancel)} />}
         >
           <Modal.Content
             className="@container bg-[#c3c7cb] text-sm text-slate-800 flex-1 overflow-y-auto"
@@ -478,19 +548,18 @@ export default function Home() {
             titleBarOptions={
               <>
                 {app.responsivePath ? (
-                  <button
-                    type="button"
+                  <TitleBar.Option
                     onClick={() => handleOpenResponsive(app.responsivePath!)}
                     title="Open responsive view in a new tab"
                     aria-label="Open responsive view in a new tab"
-                    className="ml-1 flex h-6 w-6 items-center justify-center rounded-sm border border-[#7f7f7f] bg-[#e5e5e5] text-[#000080] shadow-[inset_1px_1px_0_#ffffff,inset_-1px_-1px_0_#7f7f7f] transition hover:bg-[#f8f8f8] focus:outline-none focus-visible:ring-1 focus-visible:ring-[#000080]"
+                    className="ml-1"
                   >
-                    <Globe variant="16x16_4" />
+                    <Shdocvw257 variant="16x16_4" />
                     <span className="sr-only">Open responsive view</span>
-                  </button>
+                  </TitleBar.Option>
                 ) : null}
                 <Modal.Minimize onClick={() => minimize(app.id)} />
-                <TitleBar.Close onClick={() => closeApp(app.id)} />
+                <TitleBar.Close {...createTitleBarReleaseHandlers(() => closeApp(app.id))} />
               </>
             }
           >
