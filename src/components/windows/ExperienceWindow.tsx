@@ -180,7 +180,7 @@ const experiences: ExperienceEntry[] = [
         ],
         highlights: [
             "Handled requirements, implementation, and testing for internet banking systems, cryptographic servers, biometric services, and authentication protocols.",
-            "E-VAL specializes in PKI, information security, software development, and business intelligence, driving cryptography adoption across Brazil.",
+            "E-VAL Tecnologia is a company specialized in PKI, information security, software development and business intelligence that followed the spread and the evolution of cryptography and PKI use in Brazil.",
         ],
     },
 ];

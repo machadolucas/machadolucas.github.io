@@ -66,9 +66,7 @@ const ExplorerWindow = ({
         return sorted;
     }, [items]);
 
-    const [selectedSlug, setSelectedSlug] = useState<string | null>(
-        sortedItems[0]?.slug ?? null
-    );
+    const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
 
     useEffect(() => {
         if (!sortedItems.length) {
@@ -81,7 +79,7 @@ const ExplorerWindow = ({
                 return current;
             }
 
-            return sortedItems[0]?.slug ?? null;
+            return null;
         });
     }, [sortedItems]);
 
