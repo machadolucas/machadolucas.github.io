@@ -1,7 +1,7 @@
 import { Frame } from "@react95/core";
 
 const FavoriteSongsWindow = () => (
-    <div className="flex h-full flex-col gap-4 py-1 text-slate-800">
+    <div className="flex h-full flex-col gap-4 py-1 text-slate-800 overflow-auto">
 
         <Frame boxShadow="$in" className="flex flex-1 items-center justify-center bg-[#c3c7cb] py-3">
             <iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" height="450"

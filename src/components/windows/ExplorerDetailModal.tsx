@@ -60,15 +60,15 @@ const ExplorerDetailModal = ({
                 </>
             }
         >
-            <Modal.Content className="bg-[#c3c7cb] text-sm text-slate-800 flex-1 window-shell p-0! m-[2px]!">
+            <Modal.Content className="bg-[#c3c7cb] text-sm text-slate-800 overflow-hidden flex-1 window-shell p-0! m-[2px]!">
                 <Frame boxShadow="$out" className="browser-toolbar flex items-center gap-2 bg-[#e4e4e4] px-3 py-2 text-xs">
                     <span className="font-semibold uppercase tracking-[0.08em] text-[#000080]">Location</span>
                     <Frame boxShadow="$in" className="flex-1 bg-white px-2 py-[2px] text-[11px]">
                         {locationDisplay}
                     </Frame>
                 </Frame>
-                <div className="window-shell__scroller overflow-x-auto">
-                    <div className="space-y-4 bg-white p-4 leading-relaxed">
+                <div className="window-shell__scroller overflow-hidden">
+                    <div className="space-y-4 bg-white p-4 leading-normal overflow-auto">
                         <h2 className="text-lg font-semibold text-[#000080]">{item.title}</h2>
                         {item.date ? (
                             <p className="text-xs uppercase tracking-[0.08em] text-[#555555]">

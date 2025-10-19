@@ -188,17 +188,9 @@ body {
   margin-top: 0;
 }
 
-.window-shell {
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-  overflow: hidden;
-  gap: 0;
-}
-
 .window-shell__scroller {
   flex: 1;
-  overflow: auto;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   gap: 0;

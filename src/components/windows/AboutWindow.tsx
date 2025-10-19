@@ -9,8 +9,8 @@ type AboutWindowProps = {
 };
 
 const AboutWindow = ({ onOpenProfessional, onOpenProjects, onOpenContact }: AboutWindowProps) => (
-    <div className="space-y-2 text-slate-800">
-        <Frame className="bg-[#f0f0f0] p-4" boxShadow="$in">
+    <div className="space-y-2 text-slate-800 overflow-auto">
+        <Frame className="bg-[#f0f0f0] p-4 m-2" boxShadow="$in">
             <div className="grid grid-cols-1 @[600px]:grid-cols-[300px_1fr] gap-6 items-center">
                 <div className="flex justify-center">
                     <Frame boxShadow="$out" className='p-1 bg-[#c3c7cb]'>
@@ -47,7 +47,7 @@ const AboutWindow = ({ onOpenProfessional, onOpenProjects, onOpenContact }: Abou
                 </div>
             </div>
         </Frame>
-        <Frame className="bg-[#f0f0f0] p-4" boxShadow="$in">
+        <Frame className="bg-[#f0f0f0] p-4 m-2" boxShadow="$in">
             <div className="flex flex-col gap-2">
                 <div className="grid grid-cols-1 @[700px]:grid-cols-[1fr_400px] gap-6 items-center">
                     <div className="flex flex-col gap-2">

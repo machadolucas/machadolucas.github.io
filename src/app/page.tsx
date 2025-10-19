@@ -464,7 +464,7 @@ export default function Home() {
                 {app.content}
               </Modal.Content>
             ) : (
-              <Modal.Content className="@container bg-[#c3c7cb] text-sm text-slate-800 flex-1 window-shell p-0! m-[2px]!">
+              <Modal.Content className="@container bg-[#c3c7cb] text-sm text-slate-800 grid grid-rows-[1fr_auto] overflow-hidden p-0! m-[0px]!">
                 <div className="window-shell__scroller">{app.content}</div>
                 <div className="window-status-bar">{app.statusBar ?? "Ready"}</div>
               </Modal.Content>
