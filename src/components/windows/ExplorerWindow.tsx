@@ -10,6 +10,7 @@ import type {
 import { Frame } from "@react95/core";
 import { FileText } from "@react95/icons";
 import type { ExplorerFile } from "@/types/explorer";
+import useModalContentFlex from "@/hooks/useModalContentFlex";
 
 type IconComponentType = ComponentType<{ variant?: string }>;
 
@@ -25,7 +26,7 @@ type ExplorerWindowProps = {
 const ExplorerWindow = ({
     items,
     onItemOpen,
-    emptyMessage = "No files were found. Add markdown files to populate this folder.",
+    emptyMessage = "No files were found.",
     IconComponent = defaultIconComponent,
 }: ExplorerWindowProps) => {
     const sortedItems = useMemo<ExplorerFile[]>(() => {
@@ -84,9 +85,12 @@ const ExplorerWindow = ({
         });
     }, [sortedItems]);
 
+    const containerRef = useModalContentFlex();
+
     return (
         <div
-            className="flex h-full flex-col text-slate-800"
+            ref={containerRef}
+            className="flex flex-1 flex-col overflow-hidden text-slate-800"
             onMouseDown={(event: ReactMouseEvent<HTMLDivElement>) => {
                 const target = event.target as HTMLElement | null;
                 if (target?.closest("button")) {
@@ -96,7 +100,11 @@ const ExplorerWindow = ({
                 setSelectedSlug(null);
             }}
         >
-            <Frame boxShadow="$in" className="flex-1 overflow-auto bg-white p-3">
+            <Frame
+                boxShadow="$in"
+                className="flex-1 overflow-auto bg-white p-3"
+                style={{ minHeight: 0 }}
+            >
                 {sortedItems.length ? (
                     <div className="flex flex-wrap gap-2">
                         {sortedItems.map((item) => (
