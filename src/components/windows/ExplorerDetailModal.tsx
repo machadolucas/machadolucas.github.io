@@ -1,6 +1,6 @@
 import type { ComponentType, CSSProperties, ReactNode } from "react";
 import { Frame, Modal, TitleBar } from "@react95/core";
-import { FileText } from "@react95/icons";
+import { FileText, Globe } from "@react95/icons";
 import type { ExplorerFile } from "@/types/explorer";
 
 type IconComponentType = ComponentType<{ variant?: string }>;
@@ -25,6 +25,7 @@ type ExplorerDetailModalProps = {
     collectionLabel: string;
     onClose: () => void;
     IconComponent?: IconComponentType;
+    responsiveBasePath?: string;
 };
 
 const ModalComponent = Modal as unknown as ComponentType<ExplorerModalProps>;
@@ -34,8 +35,10 @@ const ExplorerDetailModal = ({
     collectionLabel,
     onClose,
     IconComponent = defaultIconComponent,
+    responsiveBasePath,
 }: ExplorerDetailModalProps) => {
     const locationDisplay = `C:\\Portfolio\\${collectionLabel}\\${item.fileName}`;
+    const responsiveHref = responsiveBasePath ? `${responsiveBasePath}/${item.slug}` : null;
 
     return (
         <ModalComponent
@@ -55,6 +58,28 @@ const ExplorerDetailModal = ({
             className="flex flex-col"
             titleBarOptions={
                 <>
+                    {responsiveHref ? (
+                        <button
+                            type="button"
+                            onClick={() => {
+                                if (typeof window === "undefined") {
+                                    return;
+                                }
+
+                                try {
+                                    window.open(responsiveHref, "_blank", "noopener,noreferrer");
+                                } catch (error) {
+                                    console.error(`Failed to open responsive view for ${responsiveHref}`, error);
+                                }
+                            }}
+                            title="Open responsive view in a new tab"
+                            aria-label="Open responsive view in a new tab"
+                            className="ml-1 flex h-6 w-6 items-center justify-center rounded-sm border border-[#7f7f7f] bg-[#e5e5e5] text-[#000080] shadow-[inset_1px_1px_0_#ffffff,inset_-1px_-1px_0_#7f7f7f] transition hover:bg-[#f8f8f8] focus:outline-none focus-visible:ring-1 focus-visible:ring-[#000080]"
+                        >
+                            <Globe variant="16x16_4" />
+                            <span className="sr-only">Open responsive view</span>
+                        </button>
+                    ) : null}
                     <Modal.Minimize />
                     <TitleBar.Close onClick={onClose} />
                 </>

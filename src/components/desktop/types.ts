@@ -19,4 +19,5 @@ export type DesktopApp = {
     content: ReactNode;
     resizable?: boolean;
     statusBar?: ReactNode;
+    responsivePath?: string;
 };

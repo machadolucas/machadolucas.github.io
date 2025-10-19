@@ -11,7 +11,7 @@ const ProjectsWindow = ({ onProjectOpen }: ProjectsWindowProps) => (
     <ExplorerWindow
         items={projects}
         onItemOpen={onProjectOpen}
-        emptyMessage="No project files were found. Add markdown files to populate this folder."
+        emptyMessage="No files were found."
     />
 );
 

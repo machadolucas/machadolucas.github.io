@@ -3,7 +3,7 @@
 import type { ComponentType, CSSProperties, ReactNode } from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { List, Modal, TaskBar, TitleBar, useModal } from "@react95/core";
-import { Computer, Computer3, Desk100, Folder, MediaCd, Progman24, Wab321016, Wmsui323926 } from "@react95/icons";
+import { Computer, Computer3, Desk100, Folder, Globe, MediaCd, Progman24, Wab321016, Wmsui323926 } from "@react95/icons";
 import DesktopIcon from "@/components/desktop/DesktopIcon";
 import type { DesktopApp } from "@/components/desktop/types";
 import AboutWindow from "@/components/windows/AboutWindow";
@@ -167,6 +167,18 @@ export default function Home() {
     setActiveExplorerDetail(null);
   }, []);
 
+  const handleOpenResponsive = useCallback((path: string) => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    try {
+      window.open(path, "_blank", "noopener,noreferrer");
+    } catch (error) {
+      console.error(`Failed to open responsive view for ${path}`, error);
+    }
+  }, []);
+
   const apps = useMemo<DesktopApp[]>(
     () => [
       {
@@ -187,6 +199,7 @@ export default function Home() {
         ),
         resizable: true,
         statusBar: "Ready",
+        responsivePath: "/responsive/about",
       },
       {
         id: "experience",
@@ -201,6 +214,7 @@ export default function Home() {
         content: <ExperienceWindow />,
         resizable: true,
         statusBar: "Ready",
+        responsivePath: "/responsive/professional",
       },
       {
         id: "projects",
@@ -215,6 +229,7 @@ export default function Home() {
         content: <ProjectsWindow onProjectOpen={handleProjectsOpen} />,
         resizable: true,
         statusBar: `${projects.length} object(s)`,
+        responsivePath: "/responsive/projects",
       },
       {
         id: "home-automation",
@@ -230,6 +245,7 @@ export default function Home() {
         ),
         resizable: true,
         statusBar: `${homeAutomation.length} object(s)`,
+        responsivePath: "/responsive/home-automation",
       },
       {
         id: "favorite-songs",
@@ -257,6 +273,7 @@ export default function Home() {
         windowPosition: { left: 200, top: 260, width: 400 },
         content: <ContactWindow />,
         resizable: false,
+        responsivePath: "/responsive/contact",
       },
     ],
     [openApp, handleProjectsOpen, handleHomeAutomationOpen]
@@ -375,6 +392,12 @@ export default function Home() {
     ? explorerCollections[activeExplorerDetail.collection].label
     : null;
 
+  const activeExplorerResponsiveBasePath = activeExplorerDetail
+    ? activeExplorerDetail.collection === "projects"
+      ? "/responsive/projects"
+      : "/responsive/home-automation"
+    : null;
+
   const ModalComponent = Modal as unknown as ComponentType<DesktopModalProps>;
 
   return (
@@ -454,6 +477,18 @@ export default function Home() {
             className="flex flex-col"
             titleBarOptions={
               <>
+                {app.responsivePath ? (
+                  <button
+                    type="button"
+                    onClick={() => handleOpenResponsive(app.responsivePath!)}
+                    title="Open responsive view in a new tab"
+                    aria-label="Open responsive view in a new tab"
+                    className="ml-1 flex h-6 w-6 items-center justify-center rounded-sm border border-[#7f7f7f] bg-[#e5e5e5] text-[#000080] shadow-[inset_1px_1px_0_#ffffff,inset_-1px_-1px_0_#7f7f7f] transition hover:bg-[#f8f8f8] focus:outline-none focus-visible:ring-1 focus-visible:ring-[#000080]"
+                  >
+                    <Globe variant="16x16_4" />
+                    <span className="sr-only">Open responsive view</span>
+                  </button>
+                ) : null}
                 <Modal.Minimize onClick={() => minimize(app.id)} />
                 <TitleBar.Close onClick={() => closeApp(app.id)} />
               </>
@@ -478,6 +513,7 @@ export default function Home() {
           item={activeExplorerItem}
           collectionLabel={activeExplorerCollectionLabel}
           onClose={handleExplorerDetailClose}
+          responsiveBasePath={activeExplorerResponsiveBasePath ?? undefined}
         />
       ) : null}
     </main>
