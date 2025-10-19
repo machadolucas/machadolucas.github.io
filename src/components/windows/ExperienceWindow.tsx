@@ -1,4 +1,5 @@
 import { Frame, Tab, Tabs } from "@react95/core";
+import { useEffect, useRef, type PropsWithChildren } from "react";
 
 type Role = {
     title: string;
@@ -104,7 +105,8 @@ const experiences: ExperienceEntry[] = [
             },
         ],
         highlights: [
-            "Full stack development and management of company web services, data, and infrastructure. Designed and implemented custom systems that digitized and automated critical processes.",
+            "Development and management of all company web services, data, and infrastructure. Designed and implemented custom systems that digitized and automated critical processes.",
+            "Leading the architecture, development, and deployment of Artificial Intelligence in Demola's global platform.",
         ],
     },
     {
@@ -131,15 +133,16 @@ const experiences: ExperienceEntry[] = [
         ],
         highlights: [
             "Served as developer, lead developer, and architect across local and remote R&D teams while improving testing, build, and deployment workflows.",
+            "Created foundational backend services for high-availability payment systems handling millions of transactions daily. Was part of the core code reviewing team.",
             "Worked on systems where scalability, availability, fault tolerance, traceability, security, performance, and maintainability were non-negotiable.",
-            "PagSeguro is a disruptive fin-tech within UOL, Brazil's largest internet portal with 108M+ unique visitors and 7.4B monthly page views.",
+            "PagBank PagSeguro is a disruptive fin-tech within UOL, Brazil's largest internet portal. It serves over 15 million active customers and processes hundreds of billions in annual transactions.",
         ],
     },
     {
         company: "Feswa Oy",
         roles: [
             {
-                title: "iOS Developer",
+                title: "Freelance iOS Developer",
                 period: "October 2014 – December 2014",
                 location: "Helsinki, Finland",
             },
@@ -159,7 +162,7 @@ const experiences: ExperienceEntry[] = [
             },
         ],
         highlights: [
-            "Built an open-source educational platform for the Finnish Ministry of Education using Python and Django, focusing on front-end, APIs, and architecture.",
+            "Built an open-source educational platform for the Finnish Ministry of Education using Python and Django, focusing on front-end, APIs, and architecture. The platform was not continued, but its authentication module turned out to be the foundation for the Ministry's later official system, which is currently used in all Finnish schools.",
             "Developed a turn-based risk data visualization tool for the insurance domain with Java and JSF/PrimeFaces.",
         ],
     },
@@ -315,12 +318,81 @@ const languages: Language[] = [
     },
 ];
 
+const useTabPanelLayout = () => {
+    const ref = useRef<HTMLDivElement | null>(null);
+
+    useEffect(() => {
+        const container = ref.current;
+
+        if (!container) {
+            return;
+        }
+
+        const panel = container.parentElement;
+
+        if (!panel) {
+            return;
+        }
+
+        const previousPanelStyles = {
+            display: panel.style.display,
+            flex: panel.style.flex,
+            minHeight: panel.style.minHeight,
+            overflow: panel.style.overflow,
+            padding: panel.style.padding,
+        };
+
+        const previousContainerStyles = {
+            display: container.style.display,
+            flex: container.style.flex,
+            flexDirection: container.style.flexDirection,
+            minHeight: container.style.minHeight,
+        };
+
+        panel.style.display = "flex";
+        panel.style.flex = "1 1 auto";
+        panel.style.minHeight = "0";
+        panel.style.overflow = "hidden";
+        panel.style.padding = "0";
+
+        container.style.display = "flex";
+        container.style.flex = "1 1 auto";
+        container.style.flexDirection = "column";
+        container.style.minHeight = "0";
+
+        return () => {
+            panel.style.display = previousPanelStyles.display;
+            panel.style.flex = previousPanelStyles.flex;
+            panel.style.minHeight = previousPanelStyles.minHeight;
+            panel.style.overflow = previousPanelStyles.overflow;
+            panel.style.padding = previousPanelStyles.padding;
+
+            container.style.display = previousContainerStyles.display;
+            container.style.flex = previousContainerStyles.flex;
+            container.style.flexDirection = previousContainerStyles.flexDirection;
+            container.style.minHeight = previousContainerStyles.minHeight;
+        };
+    }, []);
+
+    return ref;
+};
+
+const ScrollableTabPanel = ({ children }: PropsWithChildren) => {
+    const panelRef = useTabPanelLayout();
+
+    return (
+        <div ref={panelRef} className="flex flex-1 flex-col overflow-hidden" style={{ minHeight: 0 }}>
+            {children}
+        </div>
+    );
+};
+
 const ExperienceWindow = () => (
-    <div className="p-1 grid grid-rows-[auto_1fr] overflow-hidden">
-        <Tabs defaultActiveTab="Experience">
+    <div className="grid grid-rows-[auto_1fr] overflow-hidden p-1">
+        <Tabs defaultActiveTab="Experience" style={{ flex: "1 1 auto", flexWrap: "wrap" }}>
             <Tab title="Experience">
-                <div className="flex flex-col overflow-auto">
-                    <div className="grid gap-4 p-4 ">
+                <ScrollableTabPanel>
+                    <div className="grid flex-1 gap-4 overflow-y-auto p-4">
                         {experiences.map((experience) => {
                             const durationLabel = experience.startDate
                                 ? formatDuration(new Date(experience.startDate))
@@ -372,10 +444,10 @@ const ExperienceWindow = () => (
                             );
                         })}
                     </div>
-                </div>
+                </ScrollableTabPanel>
             </Tab>
             <Tab title="Educational background">
-                <div className="flex flex-1 flex-col overflow-hidden" style={{ minHeight: 0 }}>
+                <ScrollableTabPanel>
                     <div className="grid flex-1 gap-4 overflow-y-auto p-4">
                         {education.map((entry) => (
                             <Frame
@@ -402,10 +474,10 @@ const ExperienceWindow = () => (
                             </Frame>
                         ))}
                     </div>
-                </div>
+                </ScrollableTabPanel>
             </Tab>
             <Tab title="Publications">
-                <div className="flex flex-1 flex-col overflow-hidden" style={{ minHeight: 0 }}>
+                <ScrollableTabPanel>
                     <div className="grid flex-1 gap-4 overflow-y-auto p-4">
                         {publicationsByYear.map((publication) => (
                             <Frame
@@ -471,10 +543,10 @@ const ExperienceWindow = () => (
                             </Frame>
                         ))}
                     </div>
-                </div>
+                </ScrollableTabPanel>
             </Tab>
             <Tab title="Honors & Awards">
-                <div className="flex flex-1 flex-col overflow-hidden" style={{ minHeight: 0 }}>
+                <ScrollableTabPanel>
                     <div className="grid flex-1 gap-4 overflow-y-auto p-4">
                         {honors.map((entry) => (
                             <Frame
@@ -487,10 +559,10 @@ const ExperienceWindow = () => (
                             </Frame>
                         ))}
                     </div>
-                </div>
+                </ScrollableTabPanel>
             </Tab>
             <Tab title="Languages">
-                <div className="flex flex-1 flex-col overflow-hidden" style={{ minHeight: 0 }}>
+                <ScrollableTabPanel>
                     <div className="grid flex-1 gap-4 overflow-y-auto p-4">
                         {languages.map((entry) => (
                             <Frame
@@ -503,7 +575,7 @@ const ExperienceWindow = () => (
                             </Frame>
                         ))}
                     </div>
-                </div>
+                </ScrollableTabPanel>
             </Tab>
         </Tabs>
     </div>
