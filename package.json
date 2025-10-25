@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "predev": "node scripts/generate-projects.cjs",
-    "dev": "next dev -p 3666 --turbopack",
+    "dev": "next dev -p 3666",
     "prebuild": "node scripts/generate-projects.cjs",
-    "build": "next build --turbopack",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
@@ -15,7 +15,7 @@
     "@react95/icons": "^2.2.0",
     "gray-matter": "^4.0.3",
     "marked": "^16.4.1",
-    "next": "15.5.6",
+    "next": "16.0.0",
     "react": "19.2.0",
     "react-dom": "19.2.0"
   },
@@ -24,11 +24,15 @@
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^22",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
     "eslint": "^9",
-    "eslint-config-next": "15.5.6",
+    "eslint-config-next": "16.0.0",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "overrides": {
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2"
   }
 }
