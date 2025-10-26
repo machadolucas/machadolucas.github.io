@@ -48,7 +48,7 @@ export default function ResponsiveIndexPage() {
                         <div className="flex items-center gap-3 text-slate-800">
                             <Shdocvw257 variant="32x32_8" className="h-10 w-10" />
                             <span className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">
-                                Responsive mode
+                                Webpage view
                             </span>
                         </div>
                         <div className="space-y-2">
@@ -56,7 +56,7 @@ export default function ResponsiveIndexPage() {
                                 Browse the site without the desktop shell
                             </h1>
                             <p className="text-base text-slate-600">
-                                Jump straight into the mobile-friendly views of every section. Each link below mirrors the
+                                For convenience, if you are for example on a mobile device. Each link below mirrors the
                                 content you can open from the Windows 95-inspired desktop, just tuned for phones and tablets.
                             </p>
                         </div>
@@ -81,9 +81,6 @@ export default function ResponsiveIndexPage() {
                                 <div>
                                     <p className="text-base font-semibold text-slate-900 group-hover:text-slate-700">
                                         {section.title}
-                                    </p>
-                                    <p className="text-xs font-medium uppercase tracking-[0.18em] text-slate-400">
-                                        {section.href.replace("/responsive/", "")}
                                     </p>
                                 </div>
                             </div>

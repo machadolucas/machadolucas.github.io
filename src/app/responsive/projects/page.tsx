@@ -43,10 +43,14 @@ export default function ProjectsResponsivePage() {
                         const formattedDate = formatDate(project.date ?? null);
 
                         return (
-                            <article key={project.slug} className="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+                            <Link
+                                key={project.slug}
+                                href={`/responsive/projects/${project.slug}`}
+                                className="group flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-slate-300 hover:shadow-md"
+                            >
                                 <div className="space-y-3">
                                     <div className="flex items-center justify-between gap-2">
-                                        <h2 className="text-xl font-semibold text-slate-900">{project.title}</h2>
+                                        <h2 className="text-xl font-semibold text-slate-900 group-hover:text-slate-700">{project.title}</h2>
                                         {formattedDate ? (
                                             <span className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{formattedDate}</span>
                                         ) : null}
@@ -62,15 +66,7 @@ export default function ProjectsResponsivePage() {
                                         ))}
                                     </ul>
                                 ) : null}
-                                <div className="mt-6 flex flex-1 items-end">
-                                    <Link
-                                        href={`/responsive/projects/${project.slug}`}
-                                        className="inline-flex items-center text-sm font-semibold text-slate-900 underline-offset-4 transition hover:underline"
-                                    >
-                                        Read case study
-                                    </Link>
-                                </div>
-                            </article>
+                            </Link>
                         );
                     })}
                 </div>
