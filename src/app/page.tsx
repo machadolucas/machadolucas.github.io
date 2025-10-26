@@ -252,6 +252,21 @@ export default function Home() {
     }
   }, []);
 
+  const responsiveShortcut = useMemo<DesktopApp>(() => ({
+    id: "responsive-index",
+    title: "Responsive web version",
+    label: "Web version",
+    icon: Shdocvw257,
+    iconVariants: {
+      large: "32x32_8",
+      small: "16x16_4",
+    },
+    windowPosition: { left: 260, top: 220, width: 480 },
+    content: null,
+    resizable: false,
+    responsivePath: "/responsive",
+  }), []);
+
   const handleDesktopIconFocus = useCallback(
     (id: string) => {
       setSelectedIcon(id);
@@ -263,6 +278,18 @@ export default function Home() {
       }
     },
     [focus]
+  );
+
+  const handleIconActivate = useCallback(
+    (app: DesktopApp) => {
+      if (app.id === "responsive-index") {
+        handleOpenResponsive("/responsive");
+        return;
+      }
+
+      openApp(app.id);
+    },
+    [handleOpenResponsive, openApp]
   );
 
   const apps = useMemo<DesktopApp[]>(
@@ -430,6 +457,11 @@ export default function Home() {
     focusWindow();
   }, [pendingWindowAction, focus]);
 
+  const desktopIcons = useMemo<DesktopApp[]>(
+    () => [responsiveShortcut, ...apps],
+    [apps, responsiveShortcut]
+  );
+
   const startMenu = useMemo(
     () => (
       <List width={'200px'}>
@@ -485,13 +517,13 @@ export default function Home() {
           onMouseDown={() => setSelectedIcon(null)}
         >
           <div className="flex w-max flex-col items-center gap-6">
-            {apps.map((app) => (
+            {desktopIcons.map((app) => (
               <DesktopIcon
                 key={app.id}
                 app={app}
                 isSelected={selectedIcon === app.id}
                 onFocus={() => handleDesktopIconFocus(app.id)}
-                onActivate={() => openApp(app.id)}
+                onActivate={() => handleIconActivate(app)}
               />
             ))}
           </div>

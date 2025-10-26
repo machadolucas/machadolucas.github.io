@@ -1,6 +1,6 @@
 import type { ComponentType, CSSProperties, ReactNode, MouseEvent as ReactMouseEvent } from "react";
 import { Frame, Modal, TitleBar } from "@react95/core";
-import { FileText, Globe } from "@react95/icons";
+import { FileText, Globe, Shdocvw257 } from "@react95/icons";
 import type { ExplorerFile } from "@/types/explorer";
 
 type IconComponentType = ComponentType<{ variant?: string }>;
@@ -120,7 +120,7 @@ const ExplorerDetailModal = ({
                             aria-label="Open responsive view in a new tab"
                             className="ml-1"
                         >
-                            <Globe variant="16x16_4" />
+                            <Shdocvw257 variant="16x16_4" />
                             <span className="sr-only">Open responsive view</span>
                         </TitleBar.Option>
                     ) : null}
