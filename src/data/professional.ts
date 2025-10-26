@@ -10,6 +10,12 @@ export type ExperienceEntry = {
     startDate?: string;
     roles: Role[];
     highlights?: string[];
+    logo?: {
+        src: string;
+        alt: string;
+        width: number;
+        height: number;
+    };
 };
 
 export type Publication = {
@@ -83,6 +89,12 @@ export const formatDuration = (startDate: Date, endDate = new Date()) => {
 export const experiences: ExperienceEntry[] = [
     {
         company: "Demola Global",
+        logo: {
+            src: "/logos/demola-logo.png",
+            alt: "Demola Global logo",
+            width: 300,
+            height: 200,
+        },
         startDate: "2017-09-01",
         roles: [
             {
@@ -108,6 +120,12 @@ export const experiences: ExperienceEntry[] = [
     },
     {
         company: "Tampere University",
+        logo: {
+            src: "/logos/tuni-logo.png",
+            alt: "Tampere University logo",
+            width: 200,
+            height: 200,
+        },
         roles: [
             {
                 title: "Project Researcher",
@@ -121,6 +139,12 @@ export const experiences: ExperienceEntry[] = [
     },
     {
         company: "PagSeguro UOL",
+        logo: {
+            src: "/logos/pagseguro-logo.png",
+            alt: "PagSeguro logo",
+            width: 200,
+            height: 200,
+        },
         roles: [
             {
                 title: "System Analyst",
@@ -137,6 +161,12 @@ export const experiences: ExperienceEntry[] = [
     },
     {
         company: "Feswa Oy",
+        logo: {
+            src: "/logos/feswa-logo.svg",
+            alt: "Feswa logo",
+            width: 200,
+            height: 200,
+        },
         roles: [
             {
                 title: "Freelance iOS Developer",
@@ -151,6 +181,12 @@ export const experiences: ExperienceEntry[] = [
     },
     {
         company: "Demola",
+        logo: {
+            src: "/logos/demola-logo.png",
+            alt: "Demola Global logo",
+            width: 200,
+            height: 200,
+        },
         roles: [
             {
                 title: "Software Engineer",
@@ -165,6 +201,12 @@ export const experiences: ExperienceEntry[] = [
     },
     {
         company: "E-VAL Tecnologia",
+        logo: {
+            src: "/logos/eval-logo.svg",
+            alt: "E-VAL Tecnologia logo",
+            width: 200,
+            height: 200,
+        },
         roles: [
             {
                 title: "Software Developer",

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Frame, Tab, Tabs } from "@react95/core";
 import type { PropsWithChildren } from "react";
 import useReact95TabPanelLayout from "@/hooks/useReact95TabPanelLayout";
@@ -39,12 +40,25 @@ const ExperienceWindow = () => (
                                     boxShadow="$out"
                                     className="space-y-4 bg-white p-4"
                                 >
-                                    <header className="flex items-baseline gap-4 border-b border-[#c0c0c0] pb-2">
-                                        <h3 className="text-lg font-bold leading-snug text-[#000080]">
-                                            {experience.company}
-                                        </h3>
+                                    <header className="flex flex-wrap items-center gap-3 border-b border-[#c0c0c0] pb-2">
+                                        <div className="flex items-center gap-3">
+                                            {experience.logo ? (
+                                                <Frame boxShadow="$in" className="h-12 w-20 overflow-hidden bg-white p-1">
+                                                    <Image
+                                                        src={experience.logo.src}
+                                                        alt={experience.logo.alt}
+                                                        width={experience.logo.width}
+                                                        height={experience.logo.height}
+                                                        className="h-full w-full object-contain"
+                                                    />
+                                                </Frame>
+                                            ) : null}
+                                            <h3 className="text-lg font-bold leading-snug text-[#000080]">
+                                                {experience.company}
+                                            </h3>
+                                        </div>
                                         {durationLabel ? (
-                                            <span className="text-xs uppercase tracking-wide text-[#555]">
+                                            <span className="ml-auto text-xs uppercase tracking-wide text-[#555]">
                                                 {durationLabel}
                                             </span>
                                         ) : null}

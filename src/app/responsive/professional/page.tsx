@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
     education,
@@ -44,13 +45,28 @@ export default function ProfessionalResponsivePage() {
 
                         return (
                             <article key={experience.company} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-                                <header className="flex flex-col gap-1 border-b border-slate-200 pb-4">
-                                    <h2 className="text-xl font-semibold text-slate-900">{experience.company}</h2>
-                                    {durationLabel ? (
-                                        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
-                                            {durationLabel}
-                                        </p>
-                                    ) : null}
+                                <header className="flex flex-col gap-3 border-b border-slate-200 pb-4">
+                                    <div className="flex items-center gap-3">
+                                        {experience.logo ? (
+                                            <div className="flex h-12 w-20 items-center justify-center rounded-2xl bg-slate-100 p-2 ring-1 ring-slate-200">
+                                                <Image
+                                                    src={experience.logo.src}
+                                                    alt={experience.logo.alt}
+                                                    width={experience.logo.width}
+                                                    height={experience.logo.height}
+                                                    className="h-full w-full object-contain"
+                                                />
+                                            </div>
+                                        ) : null}
+                                        <div>
+                                            <h2 className="text-xl font-semibold text-slate-900">{experience.company}</h2>
+                                            {durationLabel ? (
+                                                <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+                                                    {durationLabel}
+                                                </p>
+                                            ) : null}
+                                        </div>
+                                    </div>
                                 </header>
                                 <div className="mt-4 space-y-3">
                                     {experience.roles.map((role) => (
