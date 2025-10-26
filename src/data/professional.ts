@@ -34,6 +34,12 @@ export type EducationEntry = {
     degree: string;
     years: string;
     details?: string[];
+    logo?: {
+        src: string;
+        alt: string;
+        width: number;
+        height: number;
+    };
 };
 
 export type Honor = {
@@ -226,6 +232,12 @@ export const education: EducationEntry[] = [
         institution: "Tampere University",
         degree: "Master’s Degree in Software Development",
         years: "2017 - 2019",
+        logo: {
+            src: "/logos/tuni-logo.png",
+            alt: "Tampere University logo",
+            width: 200,
+            height: 200,
+        },
         details: [
             "<b>Master's Degree Programme in Software Development.</b>",
             "Thesis graded laudatur (5): Fair Team Recommendations for Multidisciplinary Projects.",
@@ -236,6 +248,12 @@ export const education: EducationEntry[] = [
         institution: "Universidade de São Paulo",
         degree: "Bachelor’s Degree in Information Science",
         years: "2010 - 2016",
+        logo: {
+            src: "/logos/usp-logo.svg",
+            alt: "Universidade de São Paulo logo",
+            width: 200,
+            height: 200,
+        },
         details: [
             "<b>Bachelor's degree in Information Systems. Top university in Latin America and between the best in the world.</b>",
             "Peer-reviewed publication: A Practical Analysis Of Relationships Between Input Devices And Playability Evaluation.",
@@ -247,6 +265,12 @@ export const education: EducationEntry[] = [
         institution: "Tampereen yliopisto / University of Tampere",
         degree: "Exchange Student in Computer Science",
         years: "2013 - 2014",
+        logo: {
+            src: "/logos/tuni-logo.png",
+            alt: "University of Tampere logo",
+            width: 200,
+            height: 200,
+        },
         details: [
             "<b>Exchange student in the Computer Science Master's and Bachelor's degree</b>",
         ],
@@ -255,6 +279,12 @@ export const education: EducationEntry[] = [
         institution: "Colégio Embraer Juarez Wanderley",
         degree: "High School Diploma, Engineering Track",
         years: "2007 - 2009",
+        logo: {
+            src: "/logos/cejw-logo.png",
+            alt: "Colégio Embraer Juarez Wanderley logo",
+            width: 200,
+            height: 200,
+        },
         details: [
             "<b>The institution is a social project maintained by Embraer Institute of education and research, ranked between the very best schools in the country. Admission is highly selective, with only 200 students accepted each year from over 5000 applicants. I got in the 4th place in the entrance exam.</b>",
             "Extra activities: Studies of basic principles of technology, physics, chemistry, electricity, electronics and computers as part of an engineering program in university level.",
@@ -265,6 +295,12 @@ export const education: EducationEntry[] = [
         institution: "Institute of Pure and Applied Mathematics (IMPA - OBMEP)",
         degree: "Scientific Initiation Program",
         years: "2006 - 2007",
+        logo: {
+            src: "/logos/impa-logo.png",
+            alt: "Institute of Pure and Applied Mathematics logo",
+            width: 200,
+            height: 200,
+        },
         details: [
             "<b>University level studies on pure and applied mathematics, problem-solving, and mathematical research methodologies.</b>",
         ],

@@ -48,7 +48,7 @@ export default function ProfessionalResponsivePage() {
                                 <header className="flex flex-col gap-3 border-b border-slate-200 pb-4">
                                     <div className="flex items-center gap-3">
                                         {experience.logo ? (
-                                            <div className="flex h-12 w-20 items-center justify-center rounded-2xl bg-slate-100 p-2 ring-1 ring-slate-200">
+                                            <div className="flex h-16 w-22 items-center justify-center rounded-2xl bg-slate-100 p-2 ring-1 ring-slate-200">
                                                 <Image
                                                     src={experience.logo.src}
                                                     alt={experience.logo.alt}
@@ -99,9 +99,24 @@ export default function ProfessionalResponsivePage() {
                 <div className="space-y-4">
                     {education.map((entry) => (
                         <article key={`${entry.institution}-${entry.years}`} className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
-                            <header className="border-b border-slate-200 pb-4">
-                                <p className="text-lg font-semibold text-slate-900">{entry.institution}</p>
-                                <p className="text-sm text-slate-600">{entry.degree}</p>
+                            <header className="flex flex-col gap-3 border-b border-slate-200 pb-4">
+                                <div className="flex items-center gap-3">
+                                    {entry.logo ? (
+                                        <div className="flex h-16 w-22 items-center justify-center rounded-2xl bg-slate-100 p-2 ring-1 ring-slate-200">
+                                            <Image
+                                                src={entry.logo.src}
+                                                alt={entry.logo.alt}
+                                                width={entry.logo.width}
+                                                height={entry.logo.height}
+                                                className="h-full w-full object-contain"
+                                            />
+                                        </div>
+                                    ) : null}
+                                    <div>
+                                        <p className="text-lg font-semibold text-slate-900">{entry.institution}</p>
+                                        <p className="text-sm text-slate-600">{entry.degree}</p>
+                                    </div>
+                                </div>
                                 <span className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{entry.years}</span>
                             </header>
                             {entry.details?.map((detail, index) => (

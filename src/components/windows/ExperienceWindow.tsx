@@ -43,7 +43,7 @@ const ExperienceWindow = () => (
                                     <header className="flex flex-wrap items-center gap-3 border-b border-[#c0c0c0] pb-2">
                                         <div className="flex items-center gap-3">
                                             {experience.logo ? (
-                                                <Frame boxShadow="$in" className="h-12 w-20 overflow-hidden bg-white p-1">
+                                                <Frame boxShadow="$in" className="h-16 w-22 overflow-hidden bg-white p-1">
                                                     <Image
                                                         src={experience.logo.src}
                                                         alt={experience.logo.alt}
@@ -104,12 +104,27 @@ const ExperienceWindow = () => (
                                 boxShadow="$out"
                                 className="space-y-3 bg-white p-4"
                             >
-                                <header className="border-b border-[#c0c0c0] pb-2">
-                                    <p className="pb-1 text-base font-semibold text-[#000080]">
-                                        {entry.institution}
-                                    </p>
-                                    <p className="text-sm text-slate-800">{entry.degree}</p>
-                                    <span className="text-xs uppercase tracking-wide text-[#777]">
+                                <header className="flex flex-wrap items-center gap-3 border-b border-[#c0c0c0] pb-2">
+                                    <div className="flex items-center gap-3">
+                                        {entry.logo ? (
+                                            <Frame boxShadow="$in" className="h-16 w-22 overflow-hidden bg-white p-1">
+                                                <Image
+                                                    src={entry.logo.src}
+                                                    alt={entry.logo.alt}
+                                                    width={entry.logo.width}
+                                                    height={entry.logo.height}
+                                                    className="h-full w-full object-contain"
+                                                />
+                                            </Frame>
+                                        ) : null}
+                                        <div>
+                                            <p className="pb-1 text-base font-semibold text-[#000080]">
+                                                {entry.institution}
+                                            </p>
+                                            <p className="text-sm text-slate-800">{entry.degree}</p>
+                                        </div>
+                                    </div>
+                                    <span className="ml-auto text-xs uppercase tracking-wide text-[#777]">
                                         {entry.years}
                                     </span>
                                 </header>
