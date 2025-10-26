@@ -1,14 +1,15 @@
 "use client";
 
 import type {
+  ChangeEvent,
   ComponentType,
   CSSProperties,
-  ReactNode,
   MouseEvent as ReactMouseEvent,
+  ReactNode,
 } from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { List, Modal, ModalEvents, TaskBar, TitleBar, useModal } from "@react95/core";
-import { Computer, Computer3, Desk100, Folder, Globe, MediaCd, Progman24, Shdocvw257, Wab321016, Wmsui323926 } from "@react95/icons";
+import { Dropdown, List, Modal, ModalEvents, TaskBar, TitleBar, useModal } from "@react95/core";
+import { Computer, Computer3, Computer4, Desk100, Folder, MediaCd, Progman24, Shdocvw257, Wab321016, Wmsui323926 } from "@react95/icons";
 import DesktopIcon from "@/components/desktop/DesktopIcon";
 import type { DesktopApp } from "@/components/desktop/types";
 import AboutWindow from "@/components/windows/AboutWindow";
@@ -18,6 +19,7 @@ import ProjectsWindow from "@/components/windows/ProjectsWindow";
 import HomeAutomationWindow from "@/components/windows/HomeAutomationWindow";
 import FavoriteSongsWindow from "@/components/windows/FavoriteSongsWindow";
 import ExplorerDetailModal from "@/components/windows/ExplorerDetailModal";
+import StarfieldScreensaver from "@/components/screensaver/StarfieldScreensaver";
 import { projects } from "@/data/projects";
 import { homeAutomation } from "@/data/homeAutomation";
 import type { ExplorerFile } from "@/types/explorer";
@@ -95,6 +97,25 @@ const createTitleBarReleaseHandlers = (action: () => void): TitleBarButtonHandle
   };
 };
 
+type ShutdownOption = "shutdown" | "standby";
+
+const shutdownOptionLabels = {
+  shutdown: "Shut down",
+  standby: "Stand by",
+} as const satisfies Record<ShutdownOption, string>;
+
+const shutdownLabelToValue: Record<(typeof shutdownOptionLabels)[ShutdownOption], ShutdownOption> = {
+  [shutdownOptionLabels.shutdown]: "shutdown",
+  [shutdownOptionLabels.standby]: "standby",
+};
+
+const shutdownDropdownOptions = Object.values(shutdownOptionLabels);
+
+const shutdownDescriptions: Record<ShutdownOption, string> = {
+  shutdown: "Ends your session and shuts down the computer so that you can safely turn off power.",
+  standby: "Switches the computer to a low-power state. Press any key or move the mouse to resume.",
+};
+
 export default function Home() {
   const { focus, restore, minimize, subscribe } = useModal();
   const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
@@ -103,6 +124,7 @@ export default function Home() {
   const openAppsRef = useRef(openApps);
   const activeWindowIdRef = useRef<string | null>(null);
   const [isShutdownModalOpen, setIsShutdownModalOpen] = useState(false);
+  const [shutdownSelection, setShutdownSelection] = useState<ShutdownOption>("shutdown");
   const [activeExplorerDetail, setActiveExplorerDetail] = useState<{
     collection: ExplorerCollectionKey;
     slug: string;
@@ -205,28 +227,31 @@ export default function Home() {
     []
   );
 
-  const openApp = useCallback((id: string) => {
-    const alreadyOpen = Boolean(openAppsRef.current[id]);
-    setSelectedIcon(id);
+  const openApp = useCallback(
+    (id: string) => {
+      const alreadyOpen = Boolean(openAppsRef.current[id]);
+      setSelectedIcon(id);
 
-    if (alreadyOpen) {
-      restore(id);
-      focus(id);
-      return;
-    }
-
-    setOpenApps((prev) => {
-      if (prev[id]) {
-        return prev;
+      if (alreadyOpen) {
+        restore(id);
+        focus(id);
+        return;
       }
 
-      const nextState = { ...prev, [id]: true };
-      openAppsRef.current = nextState;
-      return nextState;
-    });
+      setOpenApps((prev) => {
+        if (prev[id]) {
+          return prev;
+        }
 
-    setPendingWindowAction(id);
-  }, [focus, restore]);
+        const nextState = { ...prev, [id]: true };
+        openAppsRef.current = nextState;
+        return nextState;
+      });
+
+      setPendingWindowAction(id);
+    },
+    [focus, restore]
+  );
 
   const handleProjectsOpen = useCallback((item: ExplorerFile) => {
     setActiveExplorerDetail({ collection: "projects", slug: item.slug });
@@ -252,20 +277,23 @@ export default function Home() {
     }
   }, []);
 
-  const responsiveShortcut = useMemo<DesktopApp>(() => ({
-    id: "responsive-index",
-    title: "Responsive web version",
-    label: "Web version",
-    icon: Shdocvw257,
-    iconVariants: {
-      large: "32x32_8",
-      small: "16x16_4",
-    },
-    windowPosition: { left: 260, top: 220, width: 480 },
-    content: null,
-    resizable: false,
-    responsivePath: "/responsive",
-  }), []);
+  const responsiveShortcut = useMemo<DesktopApp>(
+    () => ({
+      id: "responsive-index",
+      title: "Responsive web version",
+      label: "Web version",
+      icon: Shdocvw257,
+      iconVariants: {
+        large: "32x32_8",
+        small: "16x16_4",
+      },
+      windowPosition: { left: 260, top: 220, width: 480 },
+      content: null,
+      resizable: false,
+      responsivePath: "/responsive",
+    }),
+    []
+  );
 
   const handleDesktopIconFocus = useCallback(
     (id: string) => {
@@ -406,11 +434,20 @@ export default function Home() {
   }, []);
 
   const openShutdownModal = useCallback(() => {
+    setShutdownSelection("shutdown");
     setIsShutdownModalOpen(true);
   }, []);
 
   const handleShutdownCancel = useCallback(() => {
     setIsShutdownModalOpen(false);
+  }, []);
+
+  const handleStandBy = useCallback(() => {
+    setIsShutdownModalOpen(false);
+
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("desktop:screensaver:start"));
+    }
   }, []);
 
   const handleShutdownConfirm = useCallback(() => {
@@ -433,6 +470,27 @@ export default function Home() {
       }
     }, 300);
   }, []);
+
+  const handleShutdownOk = useCallback(() => {
+    if (shutdownSelection === "standby") {
+      handleStandBy();
+      return;
+    }
+
+    handleShutdownConfirm();
+  }, [handleShutdownConfirm, handleStandBy, shutdownSelection]);
+
+  const handleShutdownSelectionChange = useCallback(
+    (event: ChangeEvent<HTMLSelectElement>) => {
+      const label = event.target.value as keyof typeof shutdownLabelToValue;
+      const nextValue = shutdownLabelToValue[label];
+
+      if (nextValue) {
+        setShutdownSelection(nextValue);
+      }
+    },
+    []
+  );
 
   useEffect(() => {
     if (!pendingWindowAction) {
@@ -464,14 +522,12 @@ export default function Home() {
 
   const startMenu = useMemo(
     () => (
-      <List width={'200px'}>
+      <List width={"200px"}>
         {apps.map((app) => (
           <List.Item
             key={app.id}
             onClick={() => openApp(app.id)}
-            icon={
-              <app.icon variant={app.iconVariants.large} />
-            }
+            icon={<app.icon variant={app.iconVariants.large} />}
             className="flex cursor-pointer"
           >
             {app.label}
@@ -512,10 +568,7 @@ export default function Home() {
     <main className="relative min-h-screen w-full overflow-hidden">
       <div className="desktop-wallpaper absolute inset-0" />
       <div className="relative flex min-h-screen flex-col">
-        <section
-          className="flex-1 p-6"
-          onMouseDown={() => setSelectedIcon(null)}
-        >
+        <section className="flex-1 p-6" onMouseDown={() => setSelectedIcon(null)}>
           <div className="flex w-max flex-col items-center gap-6">
             {desktopIcons.map((app) => (
               <DesktopIcon
@@ -549,21 +602,27 @@ export default function Home() {
             resize: "none",
           }}
           buttons={[
+            { value: "OK", onClick: handleShutdownOk },
             { value: "Cancel", onClick: handleShutdownCancel },
-            { value: "Shut Down", onClick: handleShutdownConfirm },
           ]}
           buttonsAlignment="flex-end"
           titleBarOptions={<TitleBar.Close {...createTitleBarReleaseHandlers(handleShutdownCancel)} />}
         >
-          <Modal.Content
-            className="@container bg-[#c3c7cb] text-sm text-slate-800 flex-1 overflow-y-auto"
-          >
-            <div className="flex items-center gap-4 p-4">
-              <Computer variant="32x32_4" />
-              <div className="space-y-2">
-                <p className="leading-snug">Are you sure you want to shut down the computer?</p>
-                <p className="text-xs text-[#000080]">
-                  Make sure you have saved all your work before shutting down.
+          <Modal.Content className="@container flex-1 overflow-y-auto bg-[#c3c7cb] text-sm text-slate-800">
+            <div className="flex items-start gap-4 p-4">
+              <Computer4 variant="32x32_4" className="mt-1" />
+              <div className="flex flex-1 flex-col gap-3">
+                <p className="leading-snug">What do you want the computer to do?</p>
+                <Dropdown
+                  id="shutdown-selection"
+                  value={shutdownOptionLabels[shutdownSelection]}
+                  options={shutdownDropdownOptions}
+                  onChange={handleShutdownSelectionChange}
+                  aria-describedby="shutdown-selection-description"
+                  className="h-8 w-full bg-white text-xs"
+                />
+                <p id="shutdown-selection-description" className="text-sm leading-tight pb-4">
+                  {shutdownDescriptions[shutdownSelection]}
                 </p>
               </div>
             </div>
@@ -577,9 +636,7 @@ export default function Home() {
             key={app.id}
             id={app.id}
             title={app.title}
-            icon={
-              <app.icon variant={app.iconVariants.small ?? app.iconVariants.large} />
-            }
+            icon={<app.icon variant={app.iconVariants.small ?? app.iconVariants.large} />}
             hasWindowButton
             style={getModalStyle(app, index)}
             className="flex flex-col"
@@ -602,11 +659,11 @@ export default function Home() {
             }
           >
             {app.resizable === false ? (
-              <Modal.Content className="@container bg-[#c3c7cb] text-sm text-slate-800 flex-1 overflow-y-auto p-0! m-[2px]!">
+              <Modal.Content className="@container m-[2px]! flex-1 overflow-y-auto bg-[#c3c7cb] p-0! text-sm text-slate-800">
                 {app.content}
               </Modal.Content>
             ) : (
-              <Modal.Content className="@container bg-[#c3c7cb] text-sm text-slate-800 grid grid-rows-[1fr_auto] overflow-hidden p-0! m-[0px]!">
+              <Modal.Content className="@container m-[0px]! grid grid-rows-[1fr_auto] overflow-hidden bg-[#c3c7cb] p-0! text-sm text-slate-800">
                 <div className="window-shell__scroller">{app.content}</div>
                 <div className="window-status-bar">{app.statusBar ?? "Ready"}</div>
               </Modal.Content>
@@ -623,6 +680,8 @@ export default function Home() {
           responsiveBasePath={activeExplorerResponsiveBasePath ?? undefined}
         />
       ) : null}
+
+      <StarfieldScreensaver />
     </main>
   );
 }
