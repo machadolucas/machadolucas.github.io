@@ -607,20 +607,26 @@ export default function Home() {
                   aria-describedby="shutdown-selection-description"
                   className="flex flex-col gap-1"
                 >
-                  {shutdownOptions.map((option) => (
-                    <div key={option.value} className="flex gap-1 text-sm text-slate-800">
-                      <div className="pt-[2px]">
+                  {shutdownOptions.map((option) => {
+                    const radioId = `shutdown-option-${option.value}`;
+
+                    return (
+                      <label
+                        key={option.value}
+                        htmlFor={radioId}
+                        className="flex cursor-pointer select-none items-center gap-2 text-sm text-slate-800 hover:text-black"
+                      >
                         <RadioButton
+                          id={radioId}
                           name="shutdown-selection"
                           value={option.value}
                           checked={shutdownSelection === option.value}
                           onChange={handleShutdownSelectionChange}
-                        >
-                        </RadioButton>
-                      </div>
-                      <span>{option.label}</span>
-                    </div>
-                  ))}
+                        />
+                        <span>{option.label}</span>
+                      </label>
+                    );
+                  })}
                 </div>
                 <p id="shutdown-selection-description" className="pb-4" >
                   {shutdownDescriptions[shutdownSelection]}
