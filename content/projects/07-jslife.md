@@ -14,3 +14,5 @@ links:
 [JS Life](http://machadolucas.github.io/jslife/ "Click to access JS Life") is a beautiful JavaScript implementation of Conway's Game of Life, the classic cellular automaton.
 
 ![JS Life](/projects/jslife.jpg)
+
+Click [here](http://machadolucas.github.io/jslife/) to run JS Life in your browser.

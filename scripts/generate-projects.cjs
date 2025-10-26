@@ -6,6 +6,25 @@ const path = require("path");
 const matter = require("gray-matter");
 const { marked } = require("marked");
 
+const defaultLink = marked.Renderer.prototype.link;
+
+marked.use({
+    renderer: {
+        link(href, title, text) {
+            const html = defaultLink.call(this, href, title, text);
+
+            if (typeof html !== "string" || html.includes("target=")) {
+                return html;
+            }
+
+            return html.replace(
+                /<a\s+/i,
+                '<a target="_blank" rel="noreferrer noopener" '
+            );
+        },
+    },
+});
+
 const ROOT_DIR = path.resolve(__dirname, "..");
 const OUTPUT_DIR = path.join(ROOT_DIR, "src", "generated");
 

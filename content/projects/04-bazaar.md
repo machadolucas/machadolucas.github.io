@@ -21,3 +21,5 @@ links:
 I worked with a team during three and a half months to successfully deliver this project. The platform was not continued, but its authentication module turned out to be the foundation for the Ministry's later official system, which is currently used in all Finnish schools.
 
 ![Bazaar](/projects/bazaar.jpg)
+
+Click [here](https://github.com/educloudalliance) to explore the Bazaar project overview.
