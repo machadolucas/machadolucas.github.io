@@ -8,7 +8,7 @@ import type {
   ReactNode,
 } from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Dropdown, List, Modal, ModalEvents, TaskBar, TitleBar, useModal } from "@react95/core";
+import { List, Modal, ModalEvents, RadioButton, TaskBar, TitleBar, useModal } from "@react95/core";
 import { Computer, Computer3, Computer4, Desk100, Folder, MediaCd, Progman24, Shdocvw257, Wab321016, Wmsui323926 } from "@react95/icons";
 import DesktopIcon from "@/components/desktop/DesktopIcon";
 import type { DesktopApp } from "@/components/desktop/types";
@@ -99,17 +99,10 @@ const createTitleBarReleaseHandlers = (action: () => void): TitleBarButtonHandle
 
 type ShutdownOption = "shutdown" | "standby";
 
-const shutdownOptionLabels = {
-  shutdown: "Shut down",
-  standby: "Stand by",
-} as const satisfies Record<ShutdownOption, string>;
-
-const shutdownLabelToValue: Record<(typeof shutdownOptionLabels)[ShutdownOption], ShutdownOption> = {
-  [shutdownOptionLabels.shutdown]: "shutdown",
-  [shutdownOptionLabels.standby]: "standby",
-};
-
-const shutdownDropdownOptions = Object.values(shutdownOptionLabels);
+const shutdownOptions: Array<{ value: ShutdownOption; label: string }> = [
+  { value: "shutdown", label: "Shut down" },
+  { value: "standby", label: "Stand by" },
+];
 
 const shutdownDescriptions: Record<ShutdownOption, string> = {
   shutdown: "Ends your session and shuts down the computer so that you can safely turn off power.",
@@ -481,13 +474,9 @@ export default function Home() {
   }, [handleShutdownConfirm, handleStandBy, shutdownSelection]);
 
   const handleShutdownSelectionChange = useCallback(
-    (event: ChangeEvent<HTMLSelectElement>) => {
-      const label = event.target.value as keyof typeof shutdownLabelToValue;
-      const nextValue = shutdownLabelToValue[label];
-
-      if (nextValue) {
-        setShutdownSelection(nextValue);
-      }
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const value = event.target.value as ShutdownOption;
+      setShutdownSelection(value);
     },
     []
   );
@@ -589,7 +578,7 @@ export default function Home() {
         <ModalComponent
           id="shutdown-confirm"
           title="Shut Down..."
-          icon={<Computer variant="16x16_4" />}
+          icon={<Computer4 variant="16x16_4" />}
           hasWindowButton
           style={{
             left: 360,
@@ -609,19 +598,31 @@ export default function Home() {
           titleBarOptions={<TitleBar.Close {...createTitleBarReleaseHandlers(handleShutdownCancel)} />}
         >
           <Modal.Content className="@container flex-1 overflow-y-auto bg-[#c3c7cb] text-sm text-slate-800">
-            <div className="flex items-start gap-4 p-4">
+            <div className="flex items-start gap-4 p-2">
               <Computer4 variant="32x32_4" className="mt-1" />
               <div className="flex flex-1 flex-col gap-3">
                 <p className="leading-snug">What do you want the computer to do?</p>
-                <Dropdown
-                  id="shutdown-selection"
-                  value={shutdownOptionLabels[shutdownSelection]}
-                  options={shutdownDropdownOptions}
-                  onChange={handleShutdownSelectionChange}
+                <div
+                  role="radiogroup"
                   aria-describedby="shutdown-selection-description"
-                  className="h-8 w-full bg-white text-xs"
-                />
-                <p id="shutdown-selection-description" className="text-sm leading-tight pb-4">
+                  className="flex flex-col gap-1"
+                >
+                  {shutdownOptions.map((option) => (
+                    <div key={option.value} className="flex gap-1 text-sm text-slate-800">
+                      <div className="pt-[2px]">
+                        <RadioButton
+                          name="shutdown-selection"
+                          value={option.value}
+                          checked={shutdownSelection === option.value}
+                          onChange={handleShutdownSelectionChange}
+                        >
+                        </RadioButton>
+                      </div>
+                      <span>{option.label}</span>
+                    </div>
+                  ))}
+                </div>
+                <p id="shutdown-selection-description" className="pb-4" >
                   {shutdownDescriptions[shutdownSelection]}
                 </p>
               </div>
