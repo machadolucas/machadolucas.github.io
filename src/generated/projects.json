@@ -1,5 +1,118 @@
 {
-  "generatedAt": "2025-10-26T13:40:06.164Z",
-  "count": 0,
-  "projects": []
+  "generatedAt": "2025-10-26T15:21:09.401Z",
+  "count": 8,
+  "projects": [
+    {
+      "slug": "diagnosys",
+      "title": "Diagnosys",
+      "summary": "A clinical workflow platform that digitises psychiatric questionnaires and patient diagnostics management.",
+      "date": null,
+      "tags": [
+        "Healthcare",
+        "Web",
+        "Business"
+      ],
+      "fileName": "Diagnosys.md",
+      "contentHtml": "<p>System for management of diagnosis and identification of patients, with the application of psychiatric questionnaires.</p>\n<p><img src=\"/projects/diagnosys.jpg\" alt=\"Diagnosys\"></p>\n",
+      "sourceFile": "01-diagnosys.md"
+    },
+    {
+      "slug": "culturedude",
+      "title": "CultureDude",
+      "summary": "An iOS port of CultureDude's cultural learning games, helping players prepare for real-world situations through play.",
+      "date": null,
+      "tags": [
+        "Mobile",
+        "Education",
+        "Business"
+      ],
+      "fileName": "CultureDude.md",
+      "contentHtml": "<p><a href=\"https://itunes.apple.com/us/app/culturedude/id937261362\" title=\"Click to access CultureDude\">CultureDude</a> is a platform that helps people learn about cultural situations in a fun manner by using cultural games. I developed the port of the game for iOS devices.</p>\n<p><img src=\"/projects/culturedude.jpg\" alt=\"CultureDude\"></p>\n",
+      "sourceFile": "02-culturedude.md"
+    },
+    {
+      "slug": "questionnaire",
+      "title": "Questionnaire",
+      "summary": "A bespoke research questionnaire platform created for my bachelor's thesis experiments.",
+      "date": null,
+      "tags": [
+        "Research",
+        "Web",
+        "Business"
+      ],
+      "fileName": "Questionnaire.md",
+      "contentHtml": "<p><a href=\"https://github.com/machadolucas/questionnaire\" title=\"Click to access Questionnaire code\">Questionnaire</a> is a research questionnaire system developed specially to support the experiments in my bachelor&#39;s thesis.</p>\n<p><img src=\"/projects/questionnaire.jpg\" alt=\"Questionnaire\"></p>\n",
+      "sourceFile": "03-questionnaire.md"
+    },
+    {
+      "slug": "bazaar",
+      "title": "Bazaar",
+      "summary": "A three-and-a-half-month delivery for Finland's Pilviväylä initiative, connecting schools with trusted cloud services.",
+      "date": null,
+      "tags": [
+        "Education",
+        "Open Source",
+        "Business"
+      ],
+      "fileName": "Bazaar.md",
+      "contentHtml": "<p><a href=\"https://github.com/educloudalliance\" title=\"Click to access Bazaar\">Bazaar</a> is part of the Pilviväylä project, run by the Finnish Ministry of Education and Culture. Pilviväylä aims to build a trusted and easy-to-use service that helps schools acquire cloud-computing solutions to support their educational efforts. Core values in Pilviväylä are:</p>\n<ul>\n<li>openness and transparency</li>\n<li>open data and open source</li>\n<li>open APIs</li>\n<li>community-driven working methods</li>\n</ul>\n<p>I worked with a team during three and a half months to successfully deliver this project.</p>\n<p><img src=\"/projects/bazaar.jpg\" alt=\"Bazaar\"></p>\n",
+      "sourceFile": "04-bazaar.md"
+    },
+    {
+      "slug": "line-scroller",
+      "title": "Line Scroller",
+      "summary": "A quick JavaScript experiment that plays with dynamically creating and removing paragraphs as a minimalist game.",
+      "date": null,
+      "tags": [
+        "JavaScript",
+        "Game",
+        "Fun"
+      ],
+      "fileName": "Line Scroller.md",
+      "contentHtml": "<p><a href=\"http://machadolucas.github.io/linescroller\" title=\"Click to access Line Scroller\">Line Scroller</a> is a little JavaScript game based on creating and deleting paragraphs—built in just a few hours to explore the concept.</p>\n<p><img src=\"/projects/linescroller.jpg\" alt=\"Line Scroller\"></p>\n",
+      "sourceFile": "05-linescroller.md"
+    },
+    {
+      "slug": "watch-out",
+      "title": "Watch out!",
+      "summary": "A web-based travel risk simulator built with Java, JSF, PrimeFaces, and JavaScript.",
+      "date": null,
+      "tags": [
+        "Java",
+        "Game",
+        "Fun"
+      ],
+      "fileName": "Watch out!.md",
+      "contentHtml": "<p><a href=\"https://github.com/machadolucas/watchout\" title=\"Click to access Watch Out code\">Watch out!</a> is a web-based game built with Java, JSF, PrimeFaces, and JavaScript. It simulates travelling between destinations and dealing with the risks you encounter along the way.</p>\n<p><img src=\"/projects/watchout.jpg\" alt=\"Watch out!\"></p>\n",
+      "sourceFile": "06-watchout.md"
+    },
+    {
+      "slug": "js-life",
+      "title": "JS Life",
+      "summary": "A colorful JavaScript implementation of Conway's Game of Life for the browser.",
+      "date": null,
+      "tags": [
+        "JavaScript",
+        "Simulation",
+        "Fun"
+      ],
+      "fileName": "JS Life.md",
+      "contentHtml": "<p><a href=\"http://machadolucas.github.io/jslife/\" title=\"Click to access JS Life\">JS Life</a> is a beautiful JavaScript implementation of Conway&#39;s Game of Life, the classic cellular automaton.</p>\n<p><img src=\"/projects/jslife.jpg\" alt=\"JS Life\"></p>\n",
+      "sourceFile": "07-jslife.md"
+    },
+    {
+      "slug": "k-means-simulator",
+      "title": "K-means simulator",
+      "summary": "An interactive visualisation of the K-means clustering algorithm for two-dimensional datasets.",
+      "date": null,
+      "tags": [
+        "JavaScript",
+        "Data Science",
+        "Fun"
+      ],
+      "fileName": "K-means simulator.md",
+      "contentHtml": "<p><a href=\"http://machadolucas.github.io/kmeans\" title=\"Click to access K-means code\">K-means simulator</a> is a simulator of the K-means algorithm. It provides a visualisation of clustering behaviour in a bi-dimensional problem.</p>\n<p><img src=\"/projects/kmeans.jpg\" alt=\"K-means simulator\"></p>\n",
+      "sourceFile": "08-kmeans.md"
+    }
+  ]
 }

@@ -82,7 +82,7 @@ const ExplorerDetailModal = ({
     IconComponent = defaultIconComponent,
     responsiveBasePath,
 }: ExplorerDetailModalProps) => {
-    const locationDisplay = `C:\\Portfolio\\${collectionLabel}\\${item.fileName}`;
+    const locationDisplay = `C:\\Desktop\\${collectionLabel}\\${item.fileName}`;
     const responsiveHref = responsiveBasePath ? `${responsiveBasePath}/${item.slug}` : null;
 
     return (
