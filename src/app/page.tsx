@@ -7,7 +7,7 @@ import type {
   MouseEvent as ReactMouseEvent,
 } from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { List, Modal, TaskBar, TitleBar, useModal } from "@react95/core";
+import { List, Modal, ModalEvents, TaskBar, TitleBar, useModal } from "@react95/core";
 import { Computer, Computer3, Desk100, Folder, Globe, MediaCd, Progman24, Shdocvw257, Wab321016, Wmsui323926 } from "@react95/icons";
 import DesktopIcon from "@/components/desktop/DesktopIcon";
 import type { DesktopApp } from "@/components/desktop/types";
@@ -96,13 +96,12 @@ const createTitleBarReleaseHandlers = (action: () => void): TitleBarButtonHandle
 };
 
 export default function Home() {
-  const { focus, restore, minimize } = useModal();
+  const { focus, restore, minimize, subscribe } = useModal();
   const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
   const [openApps, setOpenApps] = useState<Record<string, boolean>>({});
-  const [pendingWindowAction, setPendingWindowAction] = useState<
-    { id: string; type: "restore" | "focus" } | null
-  >(null);
+  const [pendingWindowAction, setPendingWindowAction] = useState<string | null>(null);
   const openAppsRef = useRef(openApps);
+  const activeWindowIdRef = useRef<string | null>(null);
   const [isShutdownModalOpen, setIsShutdownModalOpen] = useState(false);
   const [activeExplorerDetail, setActiveExplorerDetail] = useState<{
     collection: ExplorerCollectionKey;
@@ -112,6 +111,19 @@ export default function Home() {
   useEffect(() => {
     openAppsRef.current = openApps;
   }, [openApps]);
+
+  useEffect(() => {
+    const unsubscribe = subscribe(ModalEvents.ModalVisibilityChanged, ({ id }) => {
+      if (id === "no-id") {
+        activeWindowIdRef.current = null;
+        return;
+      }
+
+      activeWindowIdRef.current = typeof id === "string" ? id : null;
+    });
+
+    return unsubscribe;
+  }, [subscribe]);
 
   const playSound = useCallback((src: string) => {
     if (typeof window === "undefined") {
@@ -193,25 +205,28 @@ export default function Home() {
     []
   );
 
-  const openApp = useCallback(
-    (id: string) => {
-      const alreadyOpen = Boolean(openApps[id]);
-      setSelectedIcon(id);
-      setPendingWindowAction({
-        id,
-        type: alreadyOpen ? "restore" : "focus",
-      });
+  const openApp = useCallback((id: string) => {
+    const alreadyOpen = Boolean(openAppsRef.current[id]);
+    setSelectedIcon(id);
 
-      if (!alreadyOpen) {
-        setOpenApps((prev) => {
-          const nextState = { ...prev, [id]: true };
-          openAppsRef.current = nextState;
-          return nextState;
-        });
+    if (alreadyOpen) {
+      restore(id);
+      focus(id);
+      return;
+    }
+
+    setOpenApps((prev) => {
+      if (prev[id]) {
+        return prev;
       }
-    },
-    [openApps]
-  );
+
+      const nextState = { ...prev, [id]: true };
+      openAppsRef.current = nextState;
+      return nextState;
+    });
+
+    setPendingWindowAction(id);
+  }, [focus, restore]);
 
   const handleProjectsOpen = useCallback((item: ExplorerFile) => {
     setActiveExplorerDetail({ collection: "projects", slug: item.slug });
@@ -236,6 +251,19 @@ export default function Home() {
       console.error(`Failed to open responsive view for ${path}`, error);
     }
   }, []);
+
+  const handleDesktopIconFocus = useCallback(
+    (id: string) => {
+      setSelectedIcon(id);
+
+      const activeId = activeWindowIdRef.current;
+
+      if (activeId && openAppsRef.current[activeId]) {
+        focus(activeId);
+      }
+    },
+    [focus]
+  );
 
   const apps = useMemo<DesktopApp[]>(
     () => [
@@ -384,45 +412,23 @@ export default function Home() {
       return;
     }
 
-    const { id, type } = pendingWindowAction;
+    const id = pendingWindowAction;
 
-    if (type === "restore") {
-      restore(id);
-    }
-
-    const runFocus = () => {
+    const focusWindow = () => {
       if (openAppsRef.current[id]) {
         focus(id);
       }
-    };
 
-    let firstFrame: number | null = null;
-    let secondFrame: number | null = null;
+      setPendingWindowAction(null);
+    };
 
     if (typeof window !== "undefined") {
-      firstFrame = window.requestAnimationFrame(() => {
-        secondFrame = window.requestAnimationFrame(runFocus);
-      });
-    } else {
-      runFocus();
+      const frame = window.requestAnimationFrame(focusWindow);
+      return () => window.cancelAnimationFrame(frame);
     }
 
-    setPendingWindowAction(null);
-
-    return () => {
-      if (typeof window === "undefined") {
-        return;
-      }
-
-      if (firstFrame !== null) {
-        window.cancelAnimationFrame(firstFrame);
-      }
-
-      if (secondFrame !== null) {
-        window.cancelAnimationFrame(secondFrame);
-      }
-    };
-  }, [pendingWindowAction, focus, restore]);
+    focusWindow();
+  }, [pendingWindowAction, focus]);
 
   const startMenu = useMemo(
     () => (
@@ -484,7 +490,7 @@ export default function Home() {
                 key={app.id}
                 app={app}
                 isSelected={selectedIcon === app.id}
-                onFocus={() => setSelectedIcon(app.id)}
+                onFocus={() => handleDesktopIconFocus(app.id)}
                 onActivate={() => openApp(app.id)}
               />
             ))}
