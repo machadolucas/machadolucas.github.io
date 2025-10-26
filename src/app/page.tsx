@@ -505,7 +505,7 @@ export default function Home() {
   }, [pendingWindowAction, focus]);
 
   const desktopIcons = useMemo<DesktopApp[]>(
-    () => [responsiveShortcut, ...apps],
+    () => [...apps, responsiveShortcut],
     [apps, responsiveShortcut]
   );
 

@@ -80,6 +80,27 @@ const StarfieldScreensaver = () => {
         return starfieldScriptPromiseRef.current;
     }, []);
 
+    const resetStarfieldScript = useCallback(() => {
+        if (typeof window === "undefined") {
+            return;
+        }
+
+        try {
+            window.Starfield?.cleanup?.();
+        } catch (error) {
+            console.error("[screensaver] Failed to cleanup starfield", error);
+        }
+
+        const existingScript = document.querySelector<HTMLScriptElement>(`script[src="${STARFIELD_CDN_SRC}"]`);
+        existingScript?.remove();
+
+        if ("Starfield" in window) {
+            Reflect.deleteProperty(window, "Starfield");
+        }
+
+        starfieldScriptPromiseRef.current = null;
+    }, []);
+
     const stopScreensaver = useCallback(() => {
         if (!activeRef.current && !startInProgressRef.current) {
             return;
@@ -100,7 +121,9 @@ const StarfieldScreensaver = () => {
 
         lastPointerRef.current = null;
         setActiveState(false);
-    }, [setActiveState]);
+
+        resetStarfieldScript();
+    }, [resetStarfieldScript, setActiveState]);
 
     const startScreensaver = useCallback(async () => {
         if (typeof window === "undefined" || activeRef.current || startInProgressRef.current) {
@@ -167,6 +190,15 @@ const StarfieldScreensaver = () => {
         } finally {
             if (startAttemptRef.current === attemptId) {
                 startInProgressRef.current = false;
+
+                if (!activeRef.current) {
+                    const container = containerRef.current;
+                    if (container) {
+                        container.replaceChildren();
+                        container.style.width = "100%";
+                        container.style.height = "100%";
+                    }
+                }
             }
         }
     }, [ensureStarfieldScript, setActiveState]);
