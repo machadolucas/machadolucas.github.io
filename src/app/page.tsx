@@ -51,6 +51,7 @@ type DesktopModalProps = {
 };
 
 const windowOffsets = [0, 40, 80, 120];
+const VIEWPORT_MARGIN = 16;
 
 type TitleBarButtonHandlers = {
   onMouseDown?: (event: ReactMouseEvent<HTMLButtonElement>) => void;
@@ -203,16 +204,47 @@ export default function Home() {
 
   const getModalStyle = useCallback(
     (app: DesktopApp, index: number): CSSProperties => {
-      const baseWidth = app.windowPosition.width ?? 640;
+      const defaultWidth = app.windowPosition.width ?? 640;
+      const defaultHeight = 480;
+      const offset = windowOffsets[index] || 0;
+
+      if (typeof window === "undefined") {
+        return {
+          left: app.windowPosition.left + offset,
+          top: app.windowPosition.top + offset,
+          width: defaultWidth,
+          minWidth: 320,
+          maxWidth: 880,
+          minHeight: 260,
+          maxHeight: "calc(100vh - 96px)",
+          overflow: "hidden",
+          resize: app.resizable === false ? "none" : "both",
+        };
+      }
+
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+
+      const availableWidth = Math.max(240, viewportWidth - VIEWPORT_MARGIN * 2);
+      const width = Math.min(defaultWidth, availableWidth);
+
+      const availableHeight = Math.max(260, viewportHeight - VIEWPORT_MARGIN * 2);
+      const estimatedHeight = Math.min(defaultHeight, availableHeight);
+
+      const rawLeft = app.windowPosition.left + offset;
+      const rawTop = app.windowPosition.top + offset;
+
+      const maxLeft = viewportWidth - VIEWPORT_MARGIN - width;
+      const maxTop = viewportHeight - VIEWPORT_MARGIN - estimatedHeight;
 
       return {
-        left: app.windowPosition.left + (windowOffsets[index] || 0),
-        top: app.windowPosition.top + (windowOffsets[index] || 0),
-        width: `min(92vw, ${baseWidth}px)`,
-        minWidth: 320,
-        maxWidth: "min(96vw, 880px)",
+        left: Math.max(VIEWPORT_MARGIN, Math.min(rawLeft, maxLeft)),
+        top: Math.max(VIEWPORT_MARGIN, Math.min(rawTop, maxTop)),
+        width,
+        minWidth: Math.min(320, availableWidth),
+        maxWidth: availableWidth,
         minHeight: 260,
-        maxHeight: "calc(100vh - 96px)",
+        maxHeight: availableHeight,
         overflow: "hidden",
         resize: app.resizable === false ? "none" : "both",
       };
