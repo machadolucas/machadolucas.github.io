@@ -509,6 +509,45 @@ export default function Home() {
     [apps, responsiveShortcut]
   );
 
+  const secondColumnOrder: Record<string, number> = useMemo(
+    () => ({
+      contact: 0,
+      "favorite-songs": 1,
+      "responsive-index": 2,
+    }),
+    []
+  );
+
+  const secondColumnIds = useMemo(() => new Set(Object.keys(secondColumnOrder)), [secondColumnOrder]);
+
+  const { firstColumn, secondColumn } = useMemo(() => {
+    const firstColumn: DesktopApp[] = [];
+    const secondColumn: DesktopApp[] = [];
+
+    desktopIcons.forEach((app) => {
+      if (secondColumnIds.has(app.id)) {
+        secondColumn.push(app);
+      } else {
+        firstColumn.push(app);
+      }
+    });
+
+    secondColumn.sort((a, b) => (secondColumnOrder[a.id] ?? 0) - (secondColumnOrder[b.id] ?? 0));
+
+    return { firstColumn, secondColumn };
+  }, [desktopIcons, secondColumnIds, secondColumnOrder]);
+
+  const desktopRows = useMemo(() => {
+    const rows: Array<[DesktopApp | null, DesktopApp | null]> = [];
+    const maxLength = Math.max(firstColumn.length, secondColumn.length);
+
+    for (let index = 0; index < maxLength; index += 1) {
+      rows.push([firstColumn[index] ?? null, secondColumn[index] ?? null]);
+    }
+
+    return rows;
+  }, [firstColumn, secondColumn]);
+
   const startMenu = useMemo(
     () => (
       <List width={"200px"}>
@@ -558,16 +597,23 @@ export default function Home() {
       <div className="desktop-wallpaper absolute inset-0" />
       <div className="relative flex min-h-screen flex-col">
         <section className="flex-1 p-6" onMouseDown={() => setSelectedIcon(null)}>
-          <div className="flex w-max flex-col items-center gap-6">
-            {desktopIcons.map((app) => (
-              <DesktopIcon
-                key={app.id}
-                app={app}
-                isSelected={selectedIcon === app.id}
-                onFocus={() => handleDesktopIconFocus(app.id)}
-                onActivate={() => handleIconActivate(app)}
-              />
-            ))}
+          <div className="grid w-max grid-cols-2 gap-x-6 gap-y-6">
+            {desktopRows.map((row, rowIndex) =>
+              row.map((app, columnIndex) => (
+                <div key={`desktop-cell-${rowIndex}-${columnIndex}`} className="flex justify-center">
+                  {app ? (
+                    <DesktopIcon
+                      app={app}
+                      isSelected={selectedIcon === app.id}
+                      onFocus={() => handleDesktopIconFocus(app.id)}
+                      onActivate={() => handleIconActivate(app)}
+                    />
+                  ) : (
+                    <div aria-hidden className="h-0 w-[84px]" />
+                  )}
+                </div>
+              ))
+            )}
           </div>
         </section>
 

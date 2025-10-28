@@ -21,4 +21,9 @@ export const contactMethods = [
         value: "@kumitimantti",
         href: "https://www.instagram.com/kumitimantti/",
     },
+    {
+        label: "Letterboxd",
+        value: "@kumitimantti",
+        href: "https://letterboxd.com/kumitimantti/",
+    }
 ] as const;
