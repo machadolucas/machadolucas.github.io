@@ -14,25 +14,25 @@
     "@react95/core": "9.6.2",
     "@react95/icons": "2.2.0",
     "gray-matter": "4.0.3",
-    "marked": "16.4.1",
-    "next": "16.0.1",
-    "react": "19.2.0",
-    "react-dom": "19.2.0"
+    "marked": "17.0.1",
+    "next": "16.0.7",
+    "react": "19.2.1",
+    "react-dom": "19.2.1"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "3.3.1",
+    "@eslint/eslintrc": "3.3.3",
     "@tailwindcss/container-queries": "0.1.1",
-    "@tailwindcss/postcss": "4.1.16",
-    "@types/node": "22.18.13",
-    "@types/react": "19.2.2",
-    "@types/react-dom": "19.2.2",
-    "eslint": "9.39.0",
-    "eslint-config-next": "16.0.1",
-    "tailwindcss": "4.1.16",
+    "@tailwindcss/postcss": "4.1.17",
+    "@types/node": "22.19.1",
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3",
+    "eslint": "9.39.1",
+    "eslint-config-next": "16.0.7",
+    "tailwindcss": "4.1.17",
     "typescript": "5.9.3"
   },
   "overrides": {
-    "@types/react": "19.2.2",
-    "@types/react-dom": "19.2.2"
+    "@types/react": "19.2.7",
+    "@types/react-dom": "19.2.3"
   }
 }
