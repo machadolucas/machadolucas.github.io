@@ -11,8 +11,8 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@react95/core": "9.6.3",
-    "@react95/icons": "2.2.0",
+    "@react95/core": "9.7.1",
+    "@react95/icons": "2.4.1",
     "gray-matter": "4.0.3",
     "marked": "18.0.5",
     "next": "16.2.9",
