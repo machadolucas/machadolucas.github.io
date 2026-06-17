@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-17T13:22:38.065Z",
-  "count": 8,
+  "generatedAt": "2026-06-17T14:53:27.326Z",
+  "count": 9,
   "projects": [
     {
       "slug": "diagnosys",
@@ -113,6 +113,20 @@
       "fileName": "K-means simulator.md",
       "contentHtml": "<p><a target=\"_blank\" rel=\"noreferrer noopener\" href=\"http://machadolucas.github.io/kmeans\" title=\"Click to access K-means code\">K-means simulator</a> is a simulator of the K-means algorithm. It provides a visualisation of clustering behaviour in a bi-dimensional problem.</p>\n<p><img src=\"/projects/kmeans.jpg\" alt=\"K-means simulator\"></p>\n<p>Click <a target=\"_blank\" rel=\"noreferrer noopener\" href=\"http://machadolucas.github.io/kmeans\">here</a> to experiment with the K-means simulator online.</p>\n",
       "sourceFile": "08-kmeans.md"
+    },
+    {
+      "slug": "sampolio",
+      "title": "Sampolio",
+      "summary": "A self-hosted personal-finance planner I built to replace budgeting spreadsheets — multi-account cash flow, debt and investment projections, all encrypted on my own server.",
+      "date": null,
+      "tags": [
+        "Finance",
+        "Web",
+        "Self-hosted"
+      ],
+      "fileName": "Sampolio.md",
+      "contentHtml": "<p><a target=\"_blank\" rel=\"noreferrer noopener\" href=\"https://github.com/machadolucas/sampolio\" title=\"Click to access Sampolio code\">Sampolio</a> is a self-hosted personal-finance planner I built because I&#39;d outgrown my budgeting spreadsheets. I wanted to project years ahead, model loans and investments, and ask &quot;what if?&quot; without either fighting a wall of formulas or handing my entire financial life to a cloud service. So I wrote my own — and it runs on my own server, where the data never leaves.</p>\n<p>It tracks the boring-but-important basics across multiple accounts and currencies: recurring income and expenses, salaries with tax handling, and custom expense categories. On top of that sit the things spreadsheets are bad at — investment accounts with growth modelling, amortised loans with variable interest rates, and a shared mortgage tracker that handles co-ownership, Euribor rates and equity splits for a jointly-owned home. There are trip and project budgets with grants and per-diems, multi-year cash-flow and net-worth projections, and a scenario mode for playing with &quot;what if I changed jobs / took this loan / moved&quot; without saving anything.</p>\n<p>Because numbers are easier to feel than to read, it leans on visualisations: <strong>Sankey</strong> diagrams for where income flows, <strong>waterfall</strong> charts for how a balance moves through the month, <strong>treemaps</strong> for expense proportions, and net-worth trends over time.</p>\n<p>Under the hood it&#39;s <strong>Next.js 16</strong> with the App Router and Server Actions only — there is no REST API, every operation is a server action — in strict TypeScript, with NextAuth for login, PrimeReact and Tailwind for the UI, and ECharts/Chart.js for the charts. Storage is deliberately simple and private: each record is an individually <strong>AES-256-GCM-encrypted</strong> JSON file on disk (PBKDF2-derived keys, per-file salts), passwords are bcrypt-hashed, and there&#39;s brute-force lockout, rate limiting and the usual security headers. No external database, nothing phoned home. (It happens to share its stack — Next.js 16, TypeScript, Tailwind v4 — with this very website.)</p>\n<p>Running it is the usual clone, <code>pnpm install</code>, set a couple of secrets, and <code>pnpm dev</code> — or the included deploy script and Dockerfile for a real server. The first account to sign up becomes the admin. It&#39;s built to be driven from the keyboard, with a <code>Cmd+K</code> command palette and shortcuts for the things I do constantly: log income, log an expense, run the monthly reconcile.</p>\n<p>It&#39;s open source (MIT) here: <strong><a target=\"_blank\" rel=\"noreferrer noopener\" href=\"https://github.com/machadolucas/sampolio\">github.com/machadolucas/sampolio</a></strong>.</p>\n",
+      "sourceFile": "09-sampolio.md"
     }
   ]
 }
