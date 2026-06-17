@@ -44,7 +44,8 @@ each gate from live evidence every run, and **lift the pin the moment its gate c
 | Package(s) | Held at | Gate — check each run; upgrade when it clears |
 |---|---|---|
 | `eslint`, `eslint-config-next`, bundled `eslint-plugin-*` | **9.x** | Does the target `eslint-config-next` and the plugins it bundles declare an `eslint` peer that allows the new major? eslint-config-next 16 bundles `eslint-plugin-react` etc. capped at `eslint ^9` (tracking vercel/next.js#91702). |
-| `typescript` | **5.9.x** | What TS range does the `typescript-eslint` bundled by `eslint-config-next` declare? (currently ~`^8.46`, peer `>=4.8.4 <6.1.0`, i.e. TS 6.0.x *may* be allowed — verify, then test a clean `build` + `lint` with no "unsupported version" warning before adopting). |
+| `typescript` | **6.0.x** (next gate 6.1) | `typescript-eslint` peer is `>=4.8.4 <6.1.0`, so TS 6.0.x is fine; 6.1 is the next gate. **Coordinate:** `eslint-config-next` may resolve an older `typescript-eslint` (e.g. 8.46.2, peer `<6.0.0`) that makes `pnpm peers check` complain under TS 6 — run `pnpm update typescript-eslint` so the resolved version (≥8.61, peer `<6.1.0`) admits TS 6 and peers check is clean. |
+| `@react95/core`, `@react95/icons` | **core 9.7.1 / icons 2.4.1** | Higher versions break the **Turbopack** build: core ≥9.7.2 ships a malformed inline-SVG data-URI in its vanilla-extract CSS that Turbopack's parser rejects; `@react95/icons@2.5.0` is a broken publish (tarball missing `cjs`/`esm`/`svg`); `@react95/core@9.8.0` hard-requires `@react95/icons@^2.5.0`. The pair moves together (core's `@react95/icons` dependency range). Re-check each run with an actual `pnpm build`; lift when upstream republishes a clean release (verify a green build). |
 | `@types/react`, `@types/react-dom` | coordinated, not pinned | Fully upgradeable, but they sit behind `overrides` in `package.json`. When they move: bump the **`overrides` value too** (not just the devDependency) and keep it tracking the React major (`react`/`react-dom` are React 19 → `@types/react` 19.x). |
 | `@types/node` | major **22** | Tracks the **build** Node major. CI builds on Node 22 (`.github/workflows/pages.yml` → `setup-node` `node-version: 22`). Patch/minor within 22 is fine; bump the major **only together with** the CI `setup-node` version. (There is no deployed Node runtime — the site is static HTML — so this just keeps types aligned with the build environment.) |
 
@@ -78,9 +79,9 @@ generated `src/generated/*.json` entry** to confirm links still render with
 ### Other notable deps
 
 - `next`, `react`/`react-dom`, `tailwindcss` (+ `@tailwindcss/postcss`,
-  `@tailwindcss/container-queries`), `@react95/core`, `@react95/icons` — all upgradeable.
-  Treat **majors** as deliberate, manually-verified steps (Next 16→17, Tailwind 4→5, a
-  React major, or a @react95 major can change behavior or styling); patch/minor are routine.
+  `@tailwindcss/container-queries`) — all upgradeable. Treat **majors** as deliberate,
+  manually-verified steps (Next 16→17, Tailwind 4→5, a React major can change behavior or
+  styling); patch/minor are routine. (`@react95/*` is now a guarded pin — see the table above.)
 
 ## Workflow — two stages
 
