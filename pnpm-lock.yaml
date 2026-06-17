@@ -30,9 +30,6 @@ importers:
         specifier: 19.2.4
         version: 19.2.4(react@19.2.4)
     devDependencies:
-      '@eslint/eslintrc':
-        specifier: 3.3.3
-        version: 3.3.3
       '@tailwindcss/container-queries':
         specifier: 0.1.1
         version: 0.1.1(tailwindcss@4.1.18)

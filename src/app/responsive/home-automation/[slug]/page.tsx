@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getHomeAutomationBySlug, homeAutomation } from "@/data/homeAutomation";
-import ResponsiveIndexLink from "../../ResponsiveIndexLink";
 
 const formatDate = (value: string | null | undefined) => {
     if (!value) {

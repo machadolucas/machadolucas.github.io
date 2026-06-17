@@ -68,20 +68,13 @@ const ExplorerWindow = ({
 
     const [selectedSlug, setSelectedSlug] = useState<string | null>(null);
 
-    useEffect(() => {
-        if (!sortedItems.length) {
-            setSelectedSlug(null);
-            return;
-        }
-
-        setSelectedSlug((current) => {
-            if (current && sortedItems.some((item) => item.slug === current)) {
-                return current;
-            }
-
-            return null;
-        });
-    }, [sortedItems]);
+    // Derive the effective selection during render: a selected slug is only valid
+    // while it still exists in the current items. Computing it here avoids
+    // synchronising state from an effect (react-hooks/set-state-in-effect).
+    const effectiveSelectedSlug =
+        selectedSlug && sortedItems.some((item) => item.slug === selectedSlug)
+            ? selectedSlug
+            : null;
 
     const containerRef = useModalContentFlex();
 
@@ -109,7 +102,7 @@ const ExplorerWindow = ({
                             <ExplorerIcon
                                 key={item.slug}
                                 item={item}
-                                isSelected={selectedSlug === item.slug}
+                                isSelected={effectiveSelectedSlug === item.slug}
                                 onSelect={() => setSelectedSlug(item.slug)}
                                 onOpen={() => onItemOpen(item)}
                                 IconComponent={IconComponent}

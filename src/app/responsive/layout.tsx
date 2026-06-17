@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
-import { Back, Explorer100, Shdocvw257 } from "@react95/icons";
+import { Explorer100 } from "@react95/icons";
 
 export default function ResponsiveLayout({
     children,

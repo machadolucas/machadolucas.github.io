@@ -1,6 +1,6 @@
 import type { ComponentType, CSSProperties, ReactNode, MouseEvent as ReactMouseEvent } from "react";
 import { Frame, Modal, TitleBar } from "@react95/core";
-import { FileText, Globe, Shdocvw257 } from "@react95/icons";
+import { FileText, Shdocvw257 } from "@react95/icons";
 import type { ExplorerFile } from "@/types/explorer";
 
 type IconComponentType = ComponentType<{ variant?: string }>;

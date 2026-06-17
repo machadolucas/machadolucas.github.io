@@ -9,7 +9,7 @@ import type {
 } from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { List, Modal, ModalEvents, RadioButton, TaskBar, TitleBar, useModal } from "@react95/core";
-import { Computer, Computer3, Computer4, Desk100, Folder, MediaCd, Progman24, Shdocvw257, Wab321016, Wmsui323926 } from "@react95/icons";
+import { Computer3, Computer4, Desk100, Folder, MediaCd, Progman24, Shdocvw257, Wab321016, Wmsui323926 } from "@react95/icons";
 import DesktopIcon from "@/components/desktop/DesktopIcon";
 import type { DesktopApp } from "@/components/desktop/types";
 import AboutWindow from "@/components/windows/AboutWindow";
@@ -268,9 +268,7 @@ export default function Home() {
           return prev;
         }
 
-        const nextState = { ...prev, [id]: true };
-        openAppsRef.current = nextState;
-        return nextState;
+        return { ...prev, [id]: true };
       });
 
       setPendingWindowAction(id);
@@ -453,7 +451,6 @@ export default function Home() {
 
       const nextState = { ...prev };
       delete nextState[id];
-      openAppsRef.current = nextState;
       return nextState;
     });
   }, []);
