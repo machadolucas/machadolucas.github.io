@@ -47,7 +47,7 @@ each gate from live evidence every run, and **lift the pin the moment its gate c
 | `typescript` | **6.0.x** (next gate 6.1) | `typescript-eslint` peer is `>=4.8.4 <6.1.0`, so TS 6.0.x is fine; 6.1 is the next gate. **Coordinate:** `eslint-config-next` may resolve an older `typescript-eslint` (e.g. 8.46.2, peer `<6.0.0`) that makes `pnpm peers check` complain under TS 6 — run `pnpm update typescript-eslint` so the resolved version (≥8.61, peer `<6.1.0`) admits TS 6 and peers check is clean. |
 | `@react95/core`, `@react95/icons` | **core 9.7.1 / icons 2.4.1** | Higher versions break the **Turbopack** build: core ≥9.7.2 ships a malformed inline-SVG data-URI in its vanilla-extract CSS that Turbopack's parser rejects; `@react95/icons@2.5.0` is a broken publish (tarball missing `cjs`/`esm`/`svg`); `@react95/core@9.8.0` hard-requires `@react95/icons@^2.5.0`. The pair moves together (core's `@react95/icons` dependency range). Re-check each run with an actual `pnpm build`; lift when upstream republishes a clean release (verify a green build). |
 | `@types/react`, `@types/react-dom` | coordinated, not pinned | Fully upgradeable, but they sit behind `overrides` in `package.json`. When they move: bump the **`overrides` value too** (not just the devDependency) and keep it tracking the React major (`react`/`react-dom` are React 19 → `@types/react` 19.x). |
-| `@types/node` | major **22** | Tracks the **build** Node major. CI builds on Node 22 (`.github/workflows/pages.yml` → `setup-node` `node-version: 22`). Patch/minor within 22 is fine; bump the major **only together with** the CI `setup-node` version. (There is no deployed Node runtime — the site is static HTML — so this just keeps types aligned with the build environment.) |
+| `@types/node` | major **24** | Tracks the **build** Node major. CI builds on Node 24 — the Active LTS (`.github/workflows/pages.yml` → `setup-node` `node-version: 24`). Patch/minor within 24 is fine; bump the major **only together with** the CI `setup-node` version (e.g. when Node 26 becomes LTS). (There is no deployed Node runtime — the site is static HTML — so this just keeps types aligned with the build environment.) |
 
 ### How to evaluate the ESLint / TypeScript gates (evidence-based)
 
@@ -104,7 +104,7 @@ generated `src/generated/*.json` entry** to confirm links still render with
    | Package | From → To | Bump | Decision | Note |
    |---|---|---|---|---|
    | next | 16.1.6 → 16.2.9 | minor | ✅ propose | |
-   | @types/node | 22.19.7 → 25.x | major | ⏸️ hold | tracks CI Node 22 |
+   | @types/node | 24.13.2 → 25.x | major | ⏸️ hold | tracks CI Node 24 |
    | eslint | 9.39.2 → 10.x | major | ⏸️ hold | eslint-config-next caps plugins at ^9 |
 
 ### Stage B — apply & verify (only after approval)
@@ -158,7 +158,7 @@ Nothing was committed or pushed. Working tree left with the applied upgrades for
 
 ## Reference: facts this skill relies on
 
-- One repo, pnpm, lockfile `pnpm-lock.yaml`. CI builds with Node 22 + pnpm 11
+- One repo, pnpm, lockfile `pnpm-lock.yaml`. CI builds with Node 24 + pnpm 11
   (`.github/workflows/pages.yml`); push to `master` deploys to GitHub Pages.
 - `pnpm-workspace.yaml` is **not** a real workspace — it exists only to approve native
   build scripts (`sharp`, `unrs-resolver`) via `allowBuilds`, so pnpm 10+ doesn't abort with

@@ -7,7 +7,7 @@ UI at `/` and a responsive mirror under `/responsive`.
 ## Commands
 
 ```bash
-pnpm install        # Node 22+ and pnpm 10+ (CI uses Node 22 / pnpm 11)
+pnpm install        # Node 24+ and pnpm 10+ (CI uses Node 24 / pnpm 11)
 pnpm dev            # dev server on http://localhost:3666 (runs predev content-gen first)
 pnpm build          # prebuild content-gen + `next build` → static export into out/
 pnpm lint           # ESLint flat config (next/core-web-vitals + next/typescript)
