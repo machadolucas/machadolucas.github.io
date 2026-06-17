@@ -1,0 +1,8 @@
+# pnpm settings file. pnpm 10+ reads dependency build-script approvals from here
+# (the old `pnpm` field in package.json is no longer read). These two transitive
+# deps ship native build scripts; approving them silences pnpm's fatal
+# ERR_PNPM_IGNORED_BUILDS so `pnpm install` / `pnpm dev` / `pnpm build` and the
+# Claude preview run cleanly. Requires pnpm >= 10 (CI is pinned to pnpm 11).
+allowBuilds:
+  sharp: true
+  unrs-resolver: true

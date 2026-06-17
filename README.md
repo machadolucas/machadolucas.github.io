@@ -25,7 +25,7 @@ GitHub Pages. The site has two faces:
 
 ## Getting started
 
-Prerequisites: **Node 22+** and **pnpm** (CI uses Node 22 / pnpm 9).
+Prerequisites: **Node 22+** and **pnpm 10+** (CI uses Node 22 / pnpm 11).
 
 ```bash
 pnpm install

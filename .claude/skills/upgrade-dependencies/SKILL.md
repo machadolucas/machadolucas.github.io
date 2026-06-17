@@ -144,7 +144,7 @@ generated `src/generated/*.json` entry** to confirm links still render with
 | eslint | 9.39.2 → 10.x | major | ⏸️ held | eslint-config-next caps plugins at ^9 |
 | <pkg> | x → y | major | ❌ reverted | build failed: <reason> |
 
-Verification: `pnpm build` ✅  `pnpm lint` ✅ (pre-existing react-hooks errors unchanged)
+Verification: `pnpm build` ✅  `pnpm lint` ✅ (0 problems)
 
 ### Held back this run (gate still failing)
 - eslint (+ bundled plugins): eslint-config-next still caps at ^9.
@@ -157,13 +157,17 @@ Nothing was committed or pushed. Working tree left with the applied upgrades for
 
 ## Reference: facts this skill relies on
 
-- One repo, pnpm, lockfile `pnpm-lock.yaml`. CI builds with Node 22 + pnpm 9
+- One repo, pnpm, lockfile `pnpm-lock.yaml`. CI builds with Node 22 + pnpm 11
   (`.github/workflows/pages.yml`); push to `master` deploys to GitHub Pages.
+- `pnpm-workspace.yaml` is **not** a real workspace — it exists only to approve native
+  build scripts (`sharp`, `unrs-resolver`) via `allowBuilds`, so pnpm 10+ doesn't abort with
+  `ERR_PNPM_IGNORED_BUILDS`. pnpm <10 chokes on it (no `packages:`), hence the pnpm-11 CI pin.
+  If an upgrade introduces a new dep with a build script, add it under `allowBuilds`.
 - Next.js 16 static export (`output: 'export'`, `images.unoptimized`) — no server runtime.
 - `eslint.config.mjs` imports `eslint-config-next` **native flat configs** directly; no
   `@eslint/eslintrc`/`FlatCompat`.
 - `@types/react` / `@types/react-dom` are coordinated via `overrides` in `package.json`.
 - `scripts/generate-projects.cjs` uses `gray-matter` + `marked` with a custom link renderer;
   it runs automatically via `predev` / `prebuild`.
-- Known pre-existing lint errors (react-hooks `refs` / `set-state-in-effect`) are unrelated
-  to dependency versions — don't treat them as upgrade regressions.
+- `pnpm lint` should pass clean (0 problems). A new lint failure after an upgrade is a real
+  regression to investigate, not a pre-existing condition.

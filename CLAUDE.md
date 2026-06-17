@@ -7,7 +7,7 @@ UI at `/` and a responsive mirror under `/responsive`.
 ## Commands
 
 ```bash
-pnpm install        # Node 22+ and pnpm (CI uses Node 22 / pnpm 9)
+pnpm install        # Node 22+ and pnpm 10+ (CI uses Node 22 / pnpm 11)
 pnpm dev            # dev server on http://localhost:3666 (runs predev content-gen first)
 pnpm build          # prebuild content-gen + `next build` → static export into out/
 pnpm lint           # ESLint flat config (next/core-web-vitals + next/typescript)
@@ -63,16 +63,22 @@ hooks.
 reintroduce `@eslint/eslintrc` / `FlatCompat` — that combination crashes with "Converting
 circular structure to JSON" on this toolchain.
 
-Two **pre-existing** errors exist from the React Hooks rules (`react-hooks/refs` in
-`src/app/page.tsx`, `react-hooks/set-state-in-effect` in
-`src/components/windows/ExplorerWindow.tsx`). They are real correctness concerns left for a
-deliberate refactor — don't mistake them for something you introduced.
+`pnpm lint` passes clean (0 problems). The React Hooks rules (`react-hooks/refs`,
+`react-hooks/set-state-in-effect`) are enabled and strict: never read a ref's `.current`
+during render or mutate a ref inside a `setState` updater (updaters run during render), and
+derive state during render instead of syncing it from an effect.
 
 ## Dependency upgrades
 
 Use the **`/upgrade-dependencies`** skill (`.claude/skills/upgrade-dependencies/`). ESLint is
 held at 9.x (eslint-config-next 16 caps bundled plugins at `eslint ^9`); `@types/react` /
 `@types/react-dom` are coordinated via `overrides` in `package.json`.
+
+`pnpm-workspace.yaml` exists only to approve native build scripts (`sharp`,
+`unrs-resolver`) via `allowBuilds` — pnpm 10+ otherwise aborts with
+`ERR_PNPM_IGNORED_BUILDS`. It is **not** a real workspace (no `packages:`), so pnpm <10
+chokes on it; that's why CI is pinned to pnpm 11. If a future dependency adds a build
+script, approve it there.
 
 ## Deployment
 
