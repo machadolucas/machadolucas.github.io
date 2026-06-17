@@ -1,36 +1,111 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# machadolucas.github.io
 
-## Getting Started
+Lucas Machado's personal website — live at **[www.machadolucas.me](https://www.machadolucas.me)**.
 
-First, run the development server:
+It's a [Next.js](https://nextjs.org) app exported to **static HTML** and served from
+GitHub Pages. The site has two faces:
+
+- **`/` — a Windows 95 desktop.** A nostalgic desktop shell (built with
+  [`@react95/core`](https://github.com/React95/React95)) with draggable windows, desktop
+  icons, an Explorer, and a starfield screensaver.
+- **`/responsive` — a modern responsive mirror.** The same content (about, professional
+  background, projects, home automation, contact) in a clean, mobile-friendly layout.
+
+## Tech stack
+
+| Area | Choice |
+|---|---|
+| Framework | Next.js 16 (App Router), output `export` (fully static) |
+| UI | React 19, `@react95/core` + `@react95/icons` |
+| Styling | Tailwind CSS v4 (via `@tailwindcss/postcss`) |
+| Language | TypeScript (strict), path alias `@/* → ./src/*` |
+| Content | Markdown → JSON build step (`gray-matter` + `marked`) |
+| Package manager | pnpm |
+| Hosting | GitHub Pages (custom domain `www.machadolucas.me`) |
+
+## Getting started
+
+Prerequisites: **Node 22+** and **pnpm** (CI uses Node 22 / pnpm 9).
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm dev      # http://localhost:3666
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+`pnpm dev` runs `next dev -p 3666` and is preceded by a `predev` step that regenerates the
+content JSON (see below).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | What it does |
+|---|---|
+| `pnpm dev` | Regenerate content, then start the dev server on port **3666** |
+| `pnpm build` | Regenerate content, then `next build` → static export into `out/` |
+| `pnpm lint` | Run ESLint (Next.js core-web-vitals + TypeScript flat config) |
+| `pnpm start` | Serve a production build (rarely needed for static export) |
 
-## Learn More
+`predev` / `prebuild` automatically run `node scripts/generate-projects.cjs` first.
 
-To learn more about Next.js, take a look at the following resources:
+## Project structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+content/                     Markdown source for projects & home-automation entries
+  projects/*.md
+  home-automation/*.md
+scripts/
+  generate-projects.cjs      Builds content/*.md → src/generated/*.json
+src/
+  app/                       App Router
+    page.tsx                 The Windows 95 desktop ("/")
+    responsive/              The responsive site ("/responsive/...")
+  components/
+    desktop/                 Desktop icons
+    windows/                 Window/modal content (About, Projects, Explorer, …)
+    screensaver/             Starfield screensaver
+    layout/                  Footer, shared layout pieces
+  data/                      Hand-authored content (about, professional, contact)
+  generated/                 AUTO-GENERATED JSON — do not edit by hand
+  hooks/  icons/  types/
+public/                      Static assets (images, CNAME)
+.github/workflows/pages.yml  Build & deploy to GitHub Pages
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Authoring content
 
-## Deploy on Vercel
+Projects and home-automation entries are **Markdown files** in `content/`. They are compiled
+to `src/generated/*.json` by `scripts/generate-projects.cjs`, which the `predev`/`prebuild`
+hooks run automatically — so just add a file and run `pnpm dev`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```markdown
+---
+title: "Diagnosys"                # required
+summary: "One-line description."  # optional
+slug: "diagnosys"                 # optional (defaults to the filename)
+date: 2023-05-01                  # optional (ISO date; used for sorting)
+tags:                             # optional
+  - Healthcare
+  - Web
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Markdown body. Links automatically get target="_blank" rel="noreferrer noopener".
+
+![Alt text](/projects/diagnosys.jpg)
+```
+
+Images referenced from Markdown live under `public/` (e.g. `public/projects/diagnosys.jpg`).
+
+> **Do not edit `src/generated/*.json` directly** — it is overwritten on every dev/build.
+> Other site copy (bio, experience, contact) is hand-authored in `src/data/*.ts`.
+
+## Deployment
+
+Pushing to **`master`** triggers `.github/workflows/pages.yml`, which builds the static export
+and publishes `out/` to GitHub Pages. The workflow adds `.nojekyll` and copies
+`public/CNAME` so the custom domain keeps working. There is no manual deploy step.
+
+## Notes for contributors & AI agents
+
+- Because of `output: 'export'`, there is **no server runtime** — no API routes, no SSR, no
+  middleware. `next/image` runs with `images.unoptimized`. Keep everything build-time-static.
+- See [`CLAUDE.md`](CLAUDE.md) for repository conventions and gotchas.
+- Dependency upgrades have a dedicated workflow: run the **`/upgrade-dependencies`** skill.
